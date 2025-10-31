@@ -1,0 +1,215 @@
+/* 基本リセットとフォント設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial Black', sans-serif; /* ライブ感を出すために太いフォントを推奨 */
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+/* --- 1. メインビジュアル / ヘッダー --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* スライドショーのコンテナ */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slideshow-container img {
+    height: 100%;
+    object-fit: cover; /* 画像が画面いっぱいに広がるように */
+}
+
+.hero-title-box {
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* 白い半透明のボックス */
+    border: 5px solid #CC0000; /* 赤い太枠 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.title-sub {
+    font-size: 1.5em;
+    color: #CC0000;
+    margin: 0 0 5px 0;
+}
+
+.title-main {
+    font-size: 4em;
+    color: #CC0000;
+    margin: 5px 0;
+    line-height: 1.0;
+}
+
+.title-date {
+    font-size: 2em;
+    color: #333;
+    background-color: #FFCC00; /* 識別しやすい黄色 */
+    padding: 5px 15px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* --- 2. 共通セクションスタイル --- */
+.content-section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+/* --- 3. メッセージセクション --- */
+.message-text {
+    font-family: sans-serif; /* 少し読みやすいフォントにする */
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* --- 4. GIG情報セクション --- */
+.gig-info-section {
+    background-color: #FFCC00; /* 背景を黄色にして目立たせる */
+    color: #333;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.info-card {
+    background-color: #FFF;
+    padding: 20px;
+    width: 45%;
+    min-width: 280px;
+    border: 3px solid #CC0000;
+    box-shadow: 5px 5px 0 #CC0000;
+}
+
+.info-card h3 {
+    color: #CC0000;
+    border-bottom: 2px solid #FFCC00;
+    padding-bottom: 5px;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+
+/* --- 5. ボタン共通スタイル --- */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #CC0000;
+    color: #FFCC00; /* 文字は黄色 */
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #CC0000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #FFCC00;
+    color: #CC0000; /* ホバーで色を反転 */
+    border-color: #CC0000;
+}
+
+/* --- 6. フォームセクション (RSVP) --- */
+.rsvp-section {
+    background-color: #333;
+    color: #FFF;
+}
+
+.reservation-form label {
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 3px solid #FFCC00; /* 黄色の枠線 */
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.button-submit {
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #CC0000;
+    color: #FFCC00;
+    font-size: 1.2em;
+}
+
+/* --- 7. フッター --- */
+.footer-section {
+    background-color: #CC0000; /* 赤い背景 */
+    color: #FFF;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-title {
+    color: #FFCC00; /* 黄色のタイトル */
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.contact-info {
+    font-family: monospace; /* ライブ告知風に等幅フォント */
+    line-height: 1.6;
+}
+
+/* メディアクエリ：スマホ対応 */
+@media (max-width: 600px) {
+    .title-main {
+        font-size: 2.5em;
+    }
+    .title-date {
+        font-size: 1.5em;
+    }
+    .section-title {
+        font-size: 2em;
+    }
+    .gig-info-section {
+        flex-direction: column;
+    }
+    .info-card {
+        width: 100%;
+    }
+}
