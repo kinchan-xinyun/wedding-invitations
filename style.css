@@ -46,6 +46,7 @@ body {
     font-size: 1.5em;
     color: #CC0000;
     margin: 0 0 5px 0;
+    transform: skewX(10deg);
 }
 
 .title-main {
@@ -53,6 +54,7 @@ body {
     color: #CC0000;
     margin: 5px 0;
     line-height: 1.0;
+    transform: skewX(10deg);
 }
 
 .title-date {
@@ -62,6 +64,8 @@ body {
     padding: 5px 15px;
     display: inline-block;
     margin-top: 10px;
+    width: fit-content;
+    width: 750px;
 }
 
 /* --- 2. 共通セクションスタイル --- */
@@ -78,6 +82,62 @@ body {
     border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
     padding-bottom: 10px;
     margin-bottom: 40px;
+    transform: skewX(10deg);
+}
+
+/* --- 新しい共有セクションタイトル --- */
+.shared-section-title {
+    font-size: 2.5em;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-top: 40px; /* ヘッダーとの間隔 */
+    margin-bottom: 20px; /* 左右分割コンテナとの間隔 */
+    text-align: center; /* 中央寄せ */
+    max-width: 900px; /* 幅を制限して見やすく */
+    margin-left: auto;
+    margin-right: auto;
+    transform: skewX(10deg);
+}
+
+.bilingual-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    /* 上下のマージンを減らし、タイトルが境界線の役割を果たすようにする */
+    margin: 0 auto; 
+}
+
+/* 左右パネルの上下パディングを調整し、区切りを分かりやすく */
+.side-panel {
+    flex: 1; 
+    min-width: 300px; 
+    padding: 20px 30px; 
+    box-sizing: border-box;
+    /* ★★★ 修正ポイント1: GIG情報のカードを中央寄せにするための設定 ★★★ */
+    display: flex;
+    flex-direction: column; /* カードを縦に並べる */
+    align-items: center; /* 子要素（info-container）を中央寄せ */
+}
+
+/* 左右分割を解除し、全幅を使うセクション */
+.full-width-section {
+    flex-basis: 100%; /* 親要素の幅いっぱいに広がる */
+    width: 100%;
+    margin-top: 40px; /* マージンを調整 */
+}
+
+/* 日本語セクション（左側）のスタイル */
+.ja-panel {
+    background-color: #f8f8f8;
+    border-right: 5px solid #CC0000; /* 中央の境界線を強調 */
+
+}
+
+/* 英語セクション（右側）のスタイル */
+.en-panel {
+    background-color: #fff;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 /* --- 3. メッセージセクション --- */
@@ -88,22 +148,49 @@ body {
 }
 
 /* --- 4. GIG情報セクション --- */
+/* ★★★ GIG INFORMATIONセクション全体の背景 ★★★ */
 .gig-info-section {
-    background-color: #FFCC00; /* 背景を黄色にして目立たせる */
-    color: #333;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+    margin-top: 40px;
+    background-color: #FFCC00; /* タワレコ風の黄色 */
+    padding-bottom: 60px; /* セクション下部にパディングを追加 */
+}
+
+/* ★★★ GIG INFORMATIONセクション内のタイトル調整 ★★★ */
+/* 親要素に黄色が付いたため、タイトルの上下マージンと背景色を調整 */
+.gig-info-section .shared-section-title {
+    margin-top: 0; /* 親要素のpaddingに任せる */
+    padding-top: 60px; /* 親要素の上部から間隔を空ける */
+    background-color: transparent; /* タイトル自体に背景色は不要 */
+}
+
+/* ★★★ 左右パネルの背景色を調整 ★★★ */
+/* GIG情報セクションのパネルは背景色なし（親の黄色が透ける）にする */
+.gig-info-section .ja-panel,
+.gig-info-section .en-panel {
+    background-color: transparent; 
+    padding: 20px 30px 0 30px; /* 下のパディングを減らす */
+}
+
+/* ★★★ 中央の境界線を修正 ★★★ */
+.gig-info-section .ja-panel {
+    border-right: 5px solid #CC0000;
+}
+
+/* ★★★ 中央の境界線を修正 ★★★ */
+.gig-info-section .ja-panel {
+    border-right: 5px solid #CC0000;
 }
 
 .info-card {
-    background-color: #FFF;
+    background-color: #FFF; /* カードの背景を白に戻し、黄色の背景と対比させる */
     padding: 20px;
-    width: 45%;
-    min-width: 280px;
+    /* ★★★ 修正ポイント2: 中央寄せに対応させるため width:100% と max-width を設定 ★★★ */
+    width: 100%; /* 親要素(info-container)の幅いっぱい */
+    max-width: 400px; /* カードの最大幅を制限 (調整可能) */
     border: 3px solid #CC0000;
     box-shadow: 5px 5px 0 #CC0000;
+    margin: 15px auto; /* 上下のマージンと、中央寄せのテクニック */
+    box-sizing: border-box;
 }
 
 .info-card h3 {
@@ -147,6 +234,8 @@ body {
 .rsvp-section {
     background-color: #333;
     color: #FFF;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .reservation-form label {

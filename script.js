@@ -23,25 +23,60 @@ function showSlides() {
   setTimeout(showSlides, 5000); 
 }
 
-// --- フォーム送信時の処理（デモ用） ---
+// --- Form Submission Handling (API Call) / フォーム送信時の処理 ---
 document.getElementById('rsvp-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // ページの再読み込みを防ぐ
-
-    // フォームデータを取得
+    event.preventDefault();
+  
+    // Googleフォームの送信URL（あなたのフォームのURLに置き換えてください）
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScd4O7WPMugqDHceeJO7O3tH-U6rMiv2fhKTDUGgeCxQgxhsg/formResponse";
+  
+    // 各 entry番号（あなたのフォームの質問に合わせて変更）
+    const entryName = "entry.283012233";
+    const entryAttendance = "entry.43483956";
+    const entryMessage = "entry.2107956952";
+  
+    // 入力値の取得
     const name = document.getElementById('name').value;
     const attendance = document.getElementById('attendance').value;
-
-    if (attendance === 'attend') {
-        alert(`${name}様、ご参加ありがとうございます！当日お会いできるのを楽しみにしています！`);
-    } else if (attendance === 'decline') {
-        alert(`${name}様、ご連絡ありがとうございます。また改めてお会いできる機会を楽しみにしております。`);
-    } else {
-        alert('回答が送信されました。改めてご連絡いたします。');
-    }
-
-    // 実際には、ここでサーバーサイドのエンドポイントにデータを送信する処理（fetch APIなど）が必要です。
-});
-
+    const message = document.getElementById('message').value;
+  
+    // Googleフォームに送信
+    const formData = new FormData();
+    formData.append(entryName, name);
+    formData.append(entryAttendance, attendance);
+    formData.append(entryMessage, message);
+  
+    fetch(formURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    }).then(() => {
+      // 送信完了後に新しいページを開く
+      const newPage = `
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>RSVP Confirmation</title>
+          <style>
+            body { font-family: sans-serif; margin: 40px; line-height: 1.8; }
+            h1 { color: #333; }
+          </style>
+        </head>
+        <body>
+          <h1>ご回答ありがとうございます / Thank You for Your Response</h1>
+          <p><strong>お名前 / Name:</strong> ${name}</p>
+          <p><strong>ご出欠 / Attendance:</strong> ${attendance}</p>
+          <p><strong>メッセージ / Message:</strong> ${message || "（なし / None）"}</p>
+          <p>このページを保存して控えとしてお使いください。</p>
+        </body>
+        </html>
+      `;
+  
+      const newWindow = window.open();
+      newWindow.document.write(newPage);
+      newWindow.document.close();
+    });
+  });
 // --- スムーススクロール機能 ---
 document.querySelectorAll('.scroll-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
