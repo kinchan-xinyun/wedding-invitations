@@ -5,27 +5,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const bottomSlide = document.querySelector(".bottom-slide");
     const languageScreen = document.querySelector(".language-screen");
   
-    // STEP 1: 表示 → 2秒後にフェードアウト
-    setTimeout(() => {
-      intro.style.opacity = "0";
-      setTimeout(() => {
-        intro.style.display = "none";
-        slideContainer.style.display = "block";
-  
-        // STEP 2: 画像スライドアニメーション
-        setTimeout(() => {
-          topSlide.style.left = "0";
-          bottomSlide.style.right = "0";
-  
-          // スライド後にSTEP 3へ
-          setTimeout(() => {
-            languageScreen.style.display = "flex";
-          }, 2000);
-        }, 200);
-      }, 1000);
-    }, 2000);
-  
-    // STEP 3: ボタン遷移
     document.getElementById("jp-btn").addEventListener("click", () => {
       window.location.href = "jp.html";
     });
@@ -59,3 +38,164 @@ window.addEventListener("DOMContentLoaded", () => {
       observer.observe(section);
     });
   });
+
+// === COUNTDOWN SCRIPT ===
+document.addEventListener("DOMContentLoaded", function() {
+  const targetDate = new Date("2026-10-26T00:00:00+09:00"); // 日本時間
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+    const finishEl = document.getElementById("countdown-finish");
+
+    if (diff <= 0) {
+      document.getElementById("countdown-timer").style.display = "none";
+      finishEl.textContent = "✨ TODAY IS THE WEDDING DAY! ✨";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("days").textContent = String(days).padStart(2, "0");
+    document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+    document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+});
+
+// --- Add Guest Handling ---
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('guestForm');
+  const addBtn = document.getElementById('addGuestBtn');
+
+  const firstGuest = form.querySelector('.guest');
+  const firstAddress = firstGuest.querySelector('input[name="address[]"]');
+
+  addBtn.addEventListener('click', () => {
+    const newGuest = firstGuest.cloneNode(true);
+    const guestCount = form.querySelectorAll('.guest').length + 1;
+
+    // reset values
+    newGuest.querySelectorAll('input, textarea').forEach(el => {
+      if (el.type !== 'checkbox') el.value = '';
+      el.required = el.hasAttribute('required'); // keep required
+    });
+
+    // 住所欄の下に「送信者と同じ住所」チェックを追加
+    let sameAddressDiv = document.createElement('div');
+    sameAddressDiv.classList.add('same-address');
+    sameAddressDiv.innerHTML = `
+      <input type="checkbox" class="same-as-first">
+      <label>送信者と同じ住所</label>
+    `;
+    const addressRow = newGuest.querySelector('input[name="address[]"]').parentNode;
+    addressRow.appendChild(sameAddressDiv);
+
+    // update guest number
+    const header = newGuest.querySelector('.guest-header .guest-title');
+    header.textContent = `Guest ${guestCount}`;
+
+    // show remove button
+    newGuest.querySelector('.remove-guest').style.display = 'inline-block';
+
+    // remove "open" class so it's closed by default
+    newGuest.classList.remove('open');
+
+    // add to form
+    form.insertBefore(newGuest, addBtn);
+
+    // bind all needed events
+    bindGuestEvents(newGuest);
+  });
+
+  function bindGuestEvents(guest) {
+    const removeBtn = guest.querySelector('.remove-guest');
+    const header = guest.querySelector('.guest-header');
+    const sameCheck = guest.querySelector('.same-as-first');
+    const addressInput = guest.querySelector('input[name="address[]"]');
+
+    if (removeBtn) {
+      removeBtn.addEventListener('click', () => {
+        guest.remove();
+        updateGuestNumbers();
+      });
+    }
+
+    if (header) {
+      header.addEventListener('click', () => {
+        guest.classList.toggle('open');
+      });
+    }
+
+    if (sameCheck) {
+      sameCheck.addEventListener('change', () => {
+        if (sameCheck.checked) {
+          addressInput.value = firstAddress.value;
+        } else {
+          addressInput.value = '';
+        }
+      });
+    }
+  }
+
+  function updateGuestNumbers() {
+    form.querySelectorAll('.guest').forEach((guest, index) => {
+      const title = guest.querySelector('.guest-title');
+      if (index === 0) title.textContent = `Guest 1（送信者）`;
+      else title.textContent = `Guest ${index + 1}`;
+    });
+  }
+
+  bindGuestEvents(firstGuest);
+});
+
+// --- Form Submission Handling (API Call) / フォーム送信時の処理 ---
+document.getElementById("rsvp-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        attendance: document.getElementById("attendance").value,
+        message: document.getElementById("message").value
+    };
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqAkS2OwXGyeNarkuOLXFQyz5gSMuHEdRAUqy1dBt8ZKlx3gfxtcfXIqmLD1ctlu-azQ/exec";
+
+    // URLSearchParams を使って application/x-www-form-urlencoded で送る
+    const body = new URLSearchParams(data);
+
+    try {
+        const response = await fetch(scriptURL, {
+            method: "POST",
+            body: body,
+            // Content-Type を指定しない（fetch が自動で適切に設定する）
+        });
+
+        // ネットワークが返したステータスをチェック
+        if (!response.ok) {
+            const text = await response.text();
+            console.error("非 200 応答:", response.status, text);
+            alert("サーバーエラーが発生しました。管理者に連絡してください。");
+            return;
+        }
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+            alert("送信が完了しました！ありがとうございます。");
+            document.getElementById("rsvp-form").reset();
+        } else {
+            console.error("GAS エラー:", result);
+            alert("送信中にエラーが発生しました。");
+        }
+    } catch (error) {
+        console.error("通信例外:", error);
+        alert("通信エラーが発生しました。ブラウザのコンソールにエラーを表示しました。");
+    }
+});

@@ -3,17 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html, body {
+}
+
+html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
     font-family: 'Arial Black', sans-serif; /* ライブ感を出すために太いフォントを推奨 */
-  }
-  
-  /* ===== INTRO ===== */
-  .intro-screen {
+}
+
+/* ===== INTRO ===== */
+.intro-screen {
     background-color: #FFCC00;
     width: 100%;
     height: 100vh;
@@ -23,9 +23,9 @@
     z-index: 3;
     position: relative;
     animation: fadeOut 1s ease-in-out 2.5s forwards;
-  }
-  
-  .title-intro {
+}
+
+.title-intro {
     color: #CC0000; /* 赤文字 */
     font-size: 8rem;
     text-align: center;
@@ -37,10 +37,10 @@
     transform: skewX(10deg);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     
-  }
-  
-  /* ===== SLIDES ===== */
-  .slide-container {
+}
+
+/* ===== SLIDES ===== */
+.slide-container {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -48,37 +48,46 @@
     left: 0;
     overflow: hidden;
     z-index: 1;
-  }
+}
   
-  .top-slide,
-  .bottom-slide {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    overflow: hidden;
-  }
-  
-  .top-slide {
+/* ===== 背景スライダー全体 ===== */
+.photo-background {
+    position: fixed;
     top: 0;
-    transform: translateX(100%);
-    animation: slideInRight 1.2s ease-out 2.6s forwards;
-  }
-  
-  .bottom-slide {
-    bottom: 0;
-    transform: translateX(-100%);
-    animation: slideInLeft 1.2s ease-out 2.6s forwards;
-  }
-  
-  .top-slide img,
-  .bottom-slide img {
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    overflow: hidden;
+    z-index: 0;
   }
   
-  /* ===== OVERLAY (上から降りてくる薄い黄色) ===== */
-  .overlay {
+/* ===== 上段・下段のスライダーコンテナ ===== */
+.photo-row {
+    display: flex;
+    width: 200%; /* 2倍にしてループ再生用 */
+    height: 50%;
+    position: absolute;
+}
+
+.photo-row.top {
+    top: 0;
+    animation: slideRight 40s linear infinite;
+}
+
+.photo-row.bottom {
+    bottom: 0;
+    animation: slideLeft 40s linear infinite;
+}
+
+/* ===== 画像共通設定 ===== */
+.photo-row img {
+    width: 50vw; /* 各画像の幅（可変） */
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== OVERLAY (上から降りてくる薄い黄色) ===== */
+.overlay {
     position: fixed;
     top: -100%;
     left: 0;
@@ -87,10 +96,10 @@
     background-color: rgba(255, 204, 0, 0.8);
     z-index: 2;
     animation: overlayDown 1.5s ease-in-out 4.0s forwards;
-  }
-  
-  /* ===== LANGUAGE BUTTONS ===== */
-  .lang-buttons {
+}
+
+/* ===== LANGUAGE BUTTONS ===== */
+.lang-buttons {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -103,9 +112,9 @@
     z-index: 4;
     opacity: 0;
     animation: buttonsFadeIn 1s ease-in-out 5.7s forwards;
-  }
-  
-  .lang-btn {
+}
+
+.lang-btn {
     text-decoration: none;
     color: #CC0000;
     background-color: #fff;
@@ -114,58 +123,58 @@
     padding: 14px 60px;
     border-radius: 50px;
     transition: 0.3s;
-  }
-  
-  .lang-btn:hover {
+}
+
+.lang-btn:hover {
     background-color: #CC0000;
     color: #FFCC00;
-  }
+}
   
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeOut {
+/* ===== ANIMATIONS ===== */
+@keyframes fadeOut {
     to {
-      opacity: 0;
-      visibility: hidden;
+        opacity: 0;
+        visibility: hidden;
     }
-  }
-  
-  @keyframes slideInRight {
+}
+
+/* ===== アニメーション ===== */
+@keyframes slideRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes overlayDown {
     to {
-      transform: translateX(0);
+        top: 0;
     }
-  }
-  
-  @keyframes slideInLeft {
+}
+
+@keyframes buttonsFadeIn {
     to {
-      transform: translateX(0);
+        opacity: 1;
     }
-  }
-  
-  @keyframes overlayDown {
-    to {
-      top: 0;
-    }
-  }
-  
-  @keyframes buttonsFadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-  
-  /* ===== iPhone対応 ===== */
-  @media (max-width: 600px) {
+}
+
+/* ===== iPhone対応 ===== */
+@media (max-width: 600px) {
     .title-intro {
-      font-size: 3.5rem;
+        font-size: 3.5rem;
     }
-  
+    /* .photo-row img {
+        width: 40vw;
+    } */
     .lang-btn {
-      font-size: 1.3rem;
-      padding: 12px 36px;
+        font-size: 1.3rem;
+        padding: 12px 36px;
     }
-  
+
     .lang-buttons {
-      gap: 18px;
+        gap: 18px;
     }
-  }
-  
+}

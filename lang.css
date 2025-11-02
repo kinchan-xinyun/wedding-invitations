@@ -1,4 +1,8 @@
 /* 基本リセットとフォント設定 */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -8,12 +12,105 @@ body {
     background-color: #f8f8f8;
 }
 
+/* --- ハンバーガーの配置 --- */
+.menu-header {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+}
+
+/* チェックボックスは非表示 */
+.menu-toggle {
+    display: none;
+}
+
+/* 3本線アイコン */
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    width: 40px;
+    height: 32px;
+    position: relative;
+    z-index: 10000;
+}
+
+.hamburger .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 6px 0;
+    background-color: #CC0000;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+/* X形変化 */
+.menu-toggle:checked + .hamburger .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle:checked + .hamburger .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle:checked + .hamburger .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* メニュー本体 */
+.menu-panel {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    padding: 12px 0;
+    width: 200px;
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+/* チェック時に表示 */
+.menu-toggle:checked ~ .menu-panel {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* メニュー内 */
+.menu-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu-panel li {
+    border-bottom: 1px solid #eee;
+}
+.menu-panel li:last-child {
+    border-bottom: none;
+}
+.menu-panel a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.2s;
+}
+.menu-panel a:hover {
+    background: #f6d365;
+    color: #111;
+}
+
 /* メインタイトルをよりタワレコっぽく太字強調 */
 h2 {
     font-family: 'Luckiest Guy', sans-serif;
     font-weight: 400;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
@@ -36,10 +133,39 @@ h1 {
     transform: translateY(0);
 }
 
-/* --- 1. メインビジュアル / ヘッダー --- */
+/* スライダーコンテナ（画像を背景として全体を覆う） */
+.slider-container {
+    position: absolute; /* hero-sectionを基準に絶対配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* 上段と下段を縦に並べる */
+    flex-direction: column;
+    justify-content: center; /* 垂直方向に中央寄せ（もし高さが足りない場合） */
+    overflow: hidden; /* トラックからはみ出る部分を非表示にする */
+}
+
+/* トラック共通のスタイル */
+.top-track, .bottom-track {
+    display: flex; /* 画像を横並びにする */
+    width: max-content; /* 全ての画像が横に並ぶように幅を広げる */
+    flex-shrink: 0; /* flexアイテムが縮まないようにする */
+}
+
+/* 画像共通のスタイル */
+.top-track img, .bottom-track img {
+    width: 20vw; /* アスペクト比を維持 */
+    height: auto;
+    object-fit: cover; /* 画像がコンテナに収まるように調整 */
+    margin-right: 5px; /* 画像間のスペース */
+    /* トラッカーをデバッグするための枠線（完成したら削除してください） */
+    /* border: 1px solid red; */ 
+}
+
 .hero-section {
     position: relative;
-    height: 40vh;
+    height: 60vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -51,7 +177,7 @@ h1 {
     z-index: 5;
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* 白い半透明のボックス */
+    background-color: #FFCC00; /* 黄色のボックス */
     border: 5px solid #CC0000; /* 赤い太枠 */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
@@ -74,8 +200,8 @@ h1 {
 
 .title-date {
     font-size: 2em;
-    color: #333;
-    background-color: #FFCC00; /* 識別しやすい黄色 */
+    color: #f8f8f8;
+    background-color: #CC0000; /* 赤い背景 */
     padding: 5px 15px;
     display: inline-block;
     margin-top: 10px;
@@ -129,6 +255,115 @@ h1 {
     line-height: 1.8;
     text-align: center;
     max-width: 900px;
+}
+
+
+/* カウントダウンセクション */
+.wedding-date {
+    font-size: 1.5em;
+    color: #CC0000;
+    background-color: #FFCC00;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline-block;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    width: fit-content;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+/* 💛 Elegant Countdown Design */
+.countdown-section {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px 90px;
+    background-color: #edece9;
+    font-family: 'Luckiest Guy', sans-serif;
+    overflow: hidden;
+    margin-block-end: 20px;
+}
+
+
+.countdown-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.countdown-heading {
+    font-family: 'Luckiest Guy', sans-serif;
+    font-size: 2.6rem;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+}
+
+.countdown-date {
+    font-size: 5rem;
+    color: #111;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.countdown-timer div {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1.5px solid #CC0000;
+    height: 80px;
+    border-radius: 18px;
+    padding: 18px 22px;
+    min-width: 90px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.countdown-timer div:hover {
+    transform: translateY(-4px);
+}
+
+.countdown-timer span {
+    display: block;
+    font-size: 3rem;
+    color: #FFCC00;
+    letter-spacing: 1px;
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.countdown-timer small {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+.countdown-message {
+    font-size: 1rem;
+    color: #444;
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.countdown-finish {
+    font-size: 1.5rem;
+    color: #CC0000;
+    font-family: 'Luckiest Guy', sans-serif;
+    margin-top: 28px;
 }
 
 /* --- 4. GIG情報セクション --- */
@@ -227,47 +462,170 @@ h1 {
 
 /* --- 6. フォームセクション (RSVP) --- */
 #rsvp {
-    background-color: #333;
-    color: #FFF;
-    padding: 60px 20px;
-    text-align: center;
-    max-width: 100%;
     margin: 0 auto;
-    box-sizing: border-box;
-
+    padding: 20px;
 }
 
-.rsvp-section {
-    background-color: #333;
-    color: #FFF;
-    width: 100%;
+.rsvp-title {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 400;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    transform: skewX(10deg);
 }
 
-.reservation-form label {
-    display: block;
-    margin-top: 15px;
+.rsvp-form {
+    margin: 0 auto; 
+    max-width: 900px;
     text-align: left;
-    font-weight: bold;
+    background: #fff8e1;
+    padding: 25px;
+    border-radius: 12px;
+    border: 3px solid #CC0000;
 }
 
-.reservation-form input,
-.reservation-form select,
-.reservation-form textarea {
+.note {
+    color: #CC0000;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.guest {
+    border: 2px dashed #FFCC00;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: #fffef6;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.guest-header {
+    background: #FFCC00;
+    color: #CC0000;
+    padding: 12px 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.guest-header:hover {
+    background: #ffe066;
+}
+
+.guest-content {
+    padding: 15px;
+    display: none;
+}
+
+.guest.open .guest-content {
+    display: block;
+}
+
+.remove-guest {
+    background: #CC0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.remove-guest:hover {
+    background: #a50000;
+}
+
+.field-row {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #CC0000;
+    margin-bottom: 5px;
+}
+
+input, textarea {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    border: 3px solid #FFCC00; /* 黄色の枠線 */
+    border: 2px solid #FFCC00;
+    border-radius: 6px;
+    font-size: 14px;
     box-sizing: border-box;
-    font-size: 1em;
 }
 
-.button-submit {
-    width: 100%;
-    padding: 15px;
-    margin-top: 30px;
+textarea {
+    resize: vertical;
+}
+
+.field-group {
+    display: flex;
+    gap: 10px;
+}
+
+.same-address {
+    margin-top: 5px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #555;
+}
+
+/* add guest */
+.add-guest {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #FFCC00;
+    color: #CC0000;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: 2px solid #CC0000;
+    font-weight: 700;
+    font-size: 14px;
+    gap: 6px;
+    margin: 25px auto;
+    transition: all 0.15s;
+}
+
+.add-guest:hover {
     background-color: #CC0000;
-    color: #FFCC00;
-    font-size: 1.2em;
+    color: #FFD400;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.terms {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.submit-btn {
+    display: block;
+    margin: 25px auto 0;
+    background: #CC0000;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.submit-btn:hover {
+    background: #a00000;
 }
 
 /* --- 7. フッター --- */
@@ -294,6 +652,46 @@ h1 {
 .contact-info {
     font-family: monospace; /* ライブ告知風に等幅フォント */
     line-height: 1.6;
+}
+
+/* 1. 左から右への移動 (top-track用) */
+/* 左端（0%の位置）から右端（-50%の位置、コピーセットの開始位置）へ移動 */
+@keyframes slide-to-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* 全画像の幅の半分（最初のセット分）だけ左に移動 */
+        transform: translateX(-50%); 
+    }
+}
+
+/* 2. 右から左への移動 (bottom-track用) */
+/* 右端（-50%の位置、コピーセットの開始位置）から左端（0%の位置）へ移動 */
+@keyframes slide-to-left {
+    0% {
+        /* 全画像の幅の半分だけ左に移動した状態から開始 */
+        transform: translateX(-50%); 
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* --- アニメーション適用 --- */
+
+/* 上段：左から右へ流れる */
+.top-track {
+    /* slide-to-right アニメーションを適用 */
+    animation: slide-to-right 15s linear infinite; 
+    margin-bottom: 5px; /* 上段と下段の間隔 */
+}
+
+/* 下段：右から左へ流れる */
+.bottom-track {
+    /* slide-to-left アニメーションを適用 */
+    animation: slide-to-left 15s linear infinite; 
 }
 
 /* ======= RESPONSIVE FINE-TUNE ======= */
