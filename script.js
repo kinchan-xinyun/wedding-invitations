@@ -24,59 +24,50 @@ function showSlides() {
 }
 
 // --- Form Submission Handling (API Call) / フォーム送信時の処理 ---
-document.getElementById('rsvp-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+document.getElementById("rsvp-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
   
-    // Googleフォームの送信URL（あなたのフォームのURLに置き換えてください）
-    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScd4O7WPMugqDHceeJO7O3tH-U6rMiv2fhKTDUGgeCxQgxhsg/formResponse";
+    const data = {
+      name: document.getElementById("name").value,
+      attendance: document.getElementById("attendance").value,
+      message: document.getElementById("message").value
+    };
   
-    // 各 entry番号（あなたのフォームの質問に合わせて変更）
-    const entryName = "entry.283012233";
-    const entryAttendance = "entry.43483956";
-    const entryMessage = "entry.2107956952";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyqAkS2OwXGyeNarkuOLXFQyz5gSMuHEdRAUqy1dBt8ZKlx3gfxtcfXIqmLD1ctlu-azQ/exec";
   
-    // 入力値の取得
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const message = document.getElementById('message').value;
-  
-    // Googleフォームに送信
-    const formData = new FormData();
-    formData.append(entryName, name);
-    formData.append(entryAttendance, attendance);
-    formData.append(entryMessage, message);
-  
-    fetch(formURL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    }).then(() => {
-      // 送信完了後に新しいページを開く
-      const newPage = `
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>RSVP Confirmation</title>
-          <style>
-            body { font-family: sans-serif; margin: 40px; line-height: 1.8; }
-            h1 { color: #333; }
-          </style>
-        </head>
-        <body>
-          <h1>ご回答ありがとうございます / Thank You for Your Response</h1>
-          <p><strong>お名前 / Name:</strong> ${name}</p>
-          <p><strong>ご出欠 / Attendance:</strong> ${attendance}</p>
-          <p><strong>メッセージ / Message:</strong> ${message || "（なし / None）"}</p>
-          <p>このページを保存して控えとしてお使いください。</p>
-        </body>
-        </html>
-      `;
-  
-      const newWindow = window.open();
-      newWindow.document.write(newPage);
-      newWindow.document.close();
+  // URLSearchParams を使って application/x-www-form-urlencoded で送る
+  const body = new URLSearchParams(data);
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      body: body,
+      // Content-Type を指定しない（fetch が自動で適切に設定する）
     });
-  });
+
+    // ネットワークが返したステータスをチェック
+    if (!response.ok) {
+      const text = await response.text();
+      console.error("非 200 応答:", response.status, text);
+      alert("サーバーエラーが発生しました。管理者に連絡してください。");
+      return;
+    }
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert("送信が完了しました！ありがとうございます。");
+      document.getElementById("rsvp-form").reset();
+    } else {
+      console.error("GAS エラー:", result);
+      alert("送信中にエラーが発生しました。");
+    }
+  } catch (error) {
+    console.error("通信例外:", error);
+    alert("通信エラーが発生しました。ブラウザのコンソールにエラーを表示しました。");
+  }
+});
+
 // --- スムーススクロール機能 ---
 document.querySelectorAll('.scroll-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
