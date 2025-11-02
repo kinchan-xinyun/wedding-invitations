@@ -237,6 +237,60 @@
 
     <section id="rsvp" class="rsvp-section fade-section">
         <h2 class="rsvp-title">RESERVATION</h2>
+
+        <p class="rsvp-message">
+            お手数ではございますが<br />
+            下記お日にち迄にご出欠のご回答賜りますようお願い申し上げます。<br />
+            また期日までのご回答が難しい場合は<br />
+            一度「保留」でのご回答をお願いいたします。
+        </p>
+    
+        <div class="rsvp-deadline">
+            <div class="date-block">
+                <span class="num">12</span>
+                <span class="label">month</span>
+            </div>
+            <div class="separator">|</div>
+            <div class="date-block">
+                <span class="num">02</span>
+                <span class="label">day</span>
+            </div>
+            <div class="separator">|</div>
+            <div class="date-block">
+                <span class="num">2025</span>
+                <span class="label">year</span>
+            </div>
+        </div>
+
+        <!-- 出欠選択 -->
+        <div class="attendance-row">
+            <div class="attendance-buttons">
+                <div class="attend-option" data-choice="attend">
+                    <div class="circle"></div>
+                    <div class="text">
+                        <p class="jp">ご出席</p>
+                        <p class="en">Attend</p>
+                    </div>
+                </div>
+                <div class="attend-option" data-choice="absent">
+                    <div class="circle"></div>
+                    <div class="text">
+                        <p class="jp">ご欠席</p>
+                        <p class="en">Decline</p>
+                    </div>
+                </div>
+                <div class="attend-option" data-choice="keep">
+                    <div class="circle"></div>
+                    <div class="text">
+                        <p class="jp keep">保留</p>
+                        <p class="en">Keep</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" name="attendance[]" />
+        </div>
       
         <form id="guestForm" class="rsvp-form">
           <p class="note"><span>*</span>は必須項目です</p>
@@ -292,22 +346,18 @@
       
           <p class="terms">利用規約をお読みの上、ご登録ください。</p>
           <button type="submit" class="submit-btn">回答</button>
+          <p class="note"><br>キンちゃんの技術不足により通信時間がかかります🙇‍♀️</p>
         </form>
       </section>
     
     <footer class="footer-section full-width-section fade-section">
-        <h3 id="notes" class="footer-title">IMPORTANT NOTES</h3>
-        <p class="footer-text">
-            ご祝儀やご供花につきましては、謹んでご辞退申し上げます。平服でお気軽にお越しください。<br>
-        </p>
-        
         <h3 class="footer-title">CONTACT (TOUR STAFF)</h3>
         <p class="contact-info">
             担当：[担当者名]<br>
             TEL：[電話番号]<br>
             MAIL：[メールアドレス]
         </p>
-        <p>© 2026 XINYUN & HARUYA Wedding Gig</p>
+        <p>© 2026 XINYUN</p>
         <button type="submit" class="return-button">
             <a href="index.html">BACK</a>
         </button>

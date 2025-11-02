@@ -206,3 +206,75 @@ document.getElementById("guestForm").addEventListener("submit", async function(e
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const options = document.querySelectorAll(".attend-option");
+
+  // 各オプションにスタンプアイコンを準備
+  options.forEach((option) => {
+    const circle = option.querySelector(".circle");
+    const choice = option.dataset.choice;
+    
+    // 選択に応じたスタンプ画像を作成
+    const stampIcon = document.createElement("img");
+    stampIcon.className = "stamp-icon";
+    
+    // 選択に応じた画像パスを設定
+    let imagePath = "";
+    if (choice === "attend") {
+      imagePath = "images/xinyun_attend.png";
+    } else if (choice === "absent") {
+      // 欠席用の画像（xinyun_decline.pngがあれば優先、なければimage_decline.png）
+      imagePath = "images/xinyun_decline.png";
+    } else {
+      // 保留用の画像（xinyun_keep.pngがあれば優先、なければimage_keep.png）
+      imagePath = "images/xinyun_keep.png";
+    }
+    
+    stampIcon.src = imagePath;
+    stampIcon.alt = choice === "attend" ? "出席" : choice === "absent" ? "欠席" : "保留";
+    
+    // 画像が見つからない場合のフォールバック
+    stampIcon.onerror = function() {
+      // xinyun_xxx.pngが見つからない場合、image_xxx.pngを試す
+      let fallbackPath = "";
+      if (choice === "absent") {
+        fallbackPath = "images/image_decline.png";
+      } else if (choice === "keep") {
+        fallbackPath = "images/image_keep.png";
+      }
+      
+      if (fallbackPath) {
+        this.onerror = null; // 無限ループを防ぐ
+        this.src = fallbackPath;
+      } else {
+        this.style.display = "none";
+      }
+    };
+    
+    circle.appendChild(stampIcon);
+  });
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      // 全てリセット
+      options.forEach((o) => {
+        o.classList.remove("selected");
+      });
+
+      // 選択したものにスタイルを追加
+      option.classList.add("selected");
+
+      // hidden input に値をセット
+      const hiddenInput = document.querySelector("input[name='attendance[]']");
+      const choice = option.dataset.choice;
+
+      let valueText = "";
+      if (choice === "attend") valueText = "出席";
+      else if (choice === "absent") valueText = "欠席";
+      else valueText = "保留";
+
+      hiddenInput.value = valueText;
+    });
+  });
+});
+
