@@ -1,304 +1,171 @@
-/* 基本リセットとフォント設定 */
-body {
+/* ===== 全体リセット ===== */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial Black', sans-serif; /* ライブ感を出すために太いフォントを推奨 */
-    color: #333;
-    background-color: #f8f8f8;
-}
-
-/* --- 1. メインビジュアル / ヘッダー --- */
-.hero-section {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* スライドショーのコンテナ */
-.slideshow-container {
-    position: absolute;
-    top: 0;
-    left: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
     width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.slideshow-container img {
-    height: 100%;
-    object-fit: cover; /* 画像が画面いっぱいに広がるように */
-}
-
-.hero-title-box {
-    position: absolute;
-    z-index: 5;
+    overflow: hidden;
+    font-family: 'Arial Black', sans-serif; /* ライブ感を出すために太いフォントを推奨 */
+  }
+  
+  /* ===== INTRO ===== */
+  .intro-screen {
+    background-color: #FFCC00;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    position: relative;
+    animation: fadeOut 1s ease-in-out 2.5s forwards;
+  }
+  
+  .title-intro {
+    color: #CC0000; /* 赤文字 */
+    font-size: 8rem;
     text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* 白い半透明のボックス */
-    border: 5px solid #CC0000; /* 赤い太枠 */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.title-sub {
-    font-size: 1.5em;
-    color: #CC0000;
-    margin: 0 0 5px 0;
-    transform: skewX(10deg);
-}
-
-.title-main {
-    font-size: 4em;
-    color: #CC0000;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     margin: 5px 0;
     line-height: 1.0;
     transform: skewX(10deg);
-}
-
-.title-date {
-    font-size: 2em;
-    color: #333;
-    background-color: #FFCC00; /* 識別しやすい黄色 */
-    padding: 5px 15px;
-    display: inline-block;
-    margin-top: 10px;
-    width: fit-content;
-    width: 750px;
-}
-
-/* --- 2. 共通セクションスタイル --- */
-.content-section {
-    padding: 60px 20px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.section-title {
-    font-size: 2.5em;
-    color: #CC0000;
-    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
-    padding-bottom: 10px;
-    margin-bottom: 40px;
-    transform: skewX(10deg);
-}
-
-/* --- 新しい共有セクションタイトル --- */
-.shared-section-title {
-    font-size: 2.5em;
-    color: #CC0000;
-    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
-    padding-bottom: 10px;
-    margin-top: 40px; /* ヘッダーとの間隔 */
-    margin-bottom: 20px; /* 左右分割コンテナとの間隔 */
-    text-align: center; /* 中央寄せ */
-    max-width: 900px; /* 幅を制限して見やすく */
-    margin-left: auto;
-    margin-right: auto;
-    transform: skewX(10deg);
-}
-
-.bilingual-container {
-    display: flex; 
-    flex-wrap: wrap; 
-    /* 上下のマージンを減らし、タイトルが境界線の役割を果たすようにする */
-    margin: 0 auto; 
-}
-
-/* 左右パネルの上下パディングを調整し、区切りを分かりやすく */
-.side-panel {
-    flex: 1; 
-    min-width: 300px; 
-    padding: 20px 30px; 
-    box-sizing: border-box;
-    /* ★★★ 修正ポイント1: GIG情報のカードを中央寄せにするための設定 ★★★ */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+  }
+  
+  /* ===== SLIDES ===== */
+  .slide-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .top-slide,
+  .bottom-slide {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+  }
+  
+  .top-slide {
+    top: 0;
+    transform: translateX(100%);
+    animation: slideInRight 1.2s ease-out 2.6s forwards;
+  }
+  
+  .bottom-slide {
+    bottom: 0;
+    transform: translateX(-100%);
+    animation: slideInLeft 1.2s ease-out 2.6s forwards;
+  }
+  
+  .top-slide img,
+  .bottom-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* ===== OVERLAY (上から降りてくる薄い黄色) ===== */
+  .overlay {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 204, 0, 0.8);
+    z-index: 2;
+    animation: overlayDown 1.5s ease-in-out 4.0s forwards;
+  }
+  
+  /* ===== LANGUAGE BUTTONS ===== */
+  .lang-buttons {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    flex-direction: column; /* カードを縦に並べる */
-    align-items: center; /* 子要素（info-container）を中央寄せ */
-}
-
-/* 左右分割を解除し、全幅を使うセクション */
-.full-width-section {
-    flex-basis: 100%; /* 親要素の幅いっぱいに広がる */
-    width: 100%;
-    margin-top: 40px; /* マージンを調整 */
-}
-
-/* 日本語セクション（左側）のスタイル */
-.ja-panel {
-    background-color: #f8f8f8;
-    border-right: 5px solid #CC0000; /* 中央の境界線を強調 */
-
-}
-
-/* 英語セクション（右側）のスタイル */
-.en-panel {
-    background-color: #fff;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-/* --- 3. メッセージセクション --- */
-.message-text {
-    font-family: sans-serif; /* 少し読みやすいフォントにする */
-    font-size: 1.1em;
-    line-height: 1.8;
-}
-
-/* --- 4. GIG情報セクション --- */
-/* ★★★ GIG INFORMATIONセクション全体の背景 ★★★ */
-.gig-info-section {
-    margin-top: 40px;
-    background-color: #FFCC00; /* タワレコ風の黄色 */
-    padding-bottom: 60px; /* セクション下部にパディングを追加 */
-}
-
-/* ★★★ GIG INFORMATIONセクション内のタイトル調整 ★★★ */
-/* 親要素に黄色が付いたため、タイトルの上下マージンと背景色を調整 */
-.gig-info-section .shared-section-title {
-    margin-top: 0; /* 親要素のpaddingに任せる */
-    padding-top: 60px; /* 親要素の上部から間隔を空ける */
-    background-color: transparent; /* タイトル自体に背景色は不要 */
-}
-
-/* ★★★ 左右パネルの背景色を調整 ★★★ */
-/* GIG情報セクションのパネルは背景色なし（親の黄色が透ける）にする */
-.gig-info-section .ja-panel,
-.gig-info-section .en-panel {
-    background-color: transparent; 
-    padding: 20px 30px 0 30px; /* 下のパディングを減らす */
-}
-
-/* ★★★ 中央の境界線を修正 ★★★ */
-.gig-info-section .ja-panel {
-    border-right: 5px solid #CC0000;
-}
-
-/* ★★★ 中央の境界線を修正 ★★★ */
-.gig-info-section .ja-panel {
-    border-right: 5px solid #CC0000;
-}
-
-.info-card {
-    background-color: #FFF; /* カードの背景を白に戻し、黄色の背景と対比させる */
-    padding: 20px;
-    /* ★★★ 修正ポイント2: 中央寄せに対応させるため width:100% と max-width を設定 ★★★ */
-    width: 100%; /* 親要素(info-container)の幅いっぱい */
-    max-width: 400px; /* カードの最大幅を制限 (調整可能) */
-    border: 3px solid #CC0000;
-    box-shadow: 5px 5px 0 #CC0000;
-    margin: 15px auto; /* 上下のマージンと、中央寄せのテクニック */
-    box-sizing: border-box;
-}
-
-.info-card h3 {
-    color: #CC0000;
-    border-bottom: 2px solid #FFCC00;
-    padding-bottom: 5px;
-}
-
-.info-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.info-card li {
-    font-size: 1.1em;
-    margin: 10px 0;
-}
-
-
-/* --- 5. ボタン共通スタイル --- */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    background-color: #CC0000;
-    color: #FFCC00; /* 文字は黄色 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    z-index: 4;
+    opacity: 0;
+    animation: buttonsFadeIn 1s ease-in-out 5.7s forwards;
+  }
+  
+  .lang-btn {
     text-decoration: none;
-    font-weight: bold;
-    border: 2px solid #CC0000;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #FFCC00;
-    color: #CC0000; /* ホバーで色を反転 */
-    border-color: #CC0000;
-}
-
-/* --- 6. フォームセクション (RSVP) --- */
-.rsvp-section {
-    background-color: #333;
-    color: #FFF;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.reservation-form label {
-    display: block;
-    margin-top: 15px;
-    text-align: left;
-    font-weight: bold;
-}
-
-.reservation-form input,
-.reservation-form select,
-.reservation-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 3px solid #FFCC00; /* 黄色の枠線 */
-    box-sizing: border-box;
-    font-size: 1em;
-}
-
-.button-submit {
-    width: 100%;
-    padding: 15px;
-    margin-top: 30px;
+    color: #CC0000;
+    background-color: #fff;
+    border: 3px solid #CC0000;
+    font-size: 1.6rem;
+    padding: 14px 60px;
+    border-radius: 50px;
+    transition: 0.3s;
+  }
+  
+  .lang-btn:hover {
     background-color: #CC0000;
     color: #FFCC00;
-    font-size: 1.2em;
-}
-
-/* --- 7. フッター --- */
-.footer-section {
-    background-color: #CC0000; /* 赤い背景 */
-    color: #FFF;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-.footer-title {
-    color: #FFCC00; /* 黄色のタイトル */
-    font-size: 1.5em;
-    margin-top: 20px;
-}
-
-.contact-info {
-    font-family: monospace; /* ライブ告知風に等幅フォント */
-    line-height: 1.6;
-}
-
-/* メディアクエリ：スマホ対応 */
-@media (max-width: 600px) {
-    .title-main {
-        font-size: 2.5em;
+  }
+  
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      visibility: hidden;
     }
-    .title-date {
-        font-size: 1.5em;
+  }
+  
+  @keyframes slideInRight {
+    to {
+      transform: translateX(0);
     }
-    .section-title {
-        font-size: 2em;
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      transform: translateX(0);
     }
-    .gig-info-section {
-        flex-direction: column;
+  }
+  
+  @keyframes overlayDown {
+    to {
+      top: 0;
     }
-    .info-card {
-        width: 100%;
+  }
+  
+  @keyframes buttonsFadeIn {
+    to {
+      opacity: 1;
     }
-}
+  }
+  
+  /* ===== iPhone対応 ===== */
+  @media (max-width: 600px) {
+    .title-intro {
+      font-size: 3.5rem;
+    }
+  
+    .lang-btn {
+      font-size: 1.3rem;
+      padding: 12px 36px;
+    }
+  
+    .lang-buttons {
+      gap: 18px;
+    }
+  }
+  

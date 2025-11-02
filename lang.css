@@ -1,0 +1,354 @@
+/* 基本リセットとフォント設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial Black', sans-serif; 
+    letter-spacing: 0.03em;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+/* メインタイトルをよりタワレコっぽく太字強調 */
+h2 {
+    font-family: 'Luckiest Guy', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: 'Luckiest Guy', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ===== スクロールフェードアニメーション ===== */
+.fade-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+/* 表示状態になったとき */
+.fade-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 1. メインビジュアル / ヘッダー --- */
+.hero-section {
+    position: relative;
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-title-box {
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* 白い半透明のボックス */
+    border: 5px solid #CC0000; /* 赤い太枠 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.title-sub {
+    font-family: 'Luckiest Guy', sans-serif;
+    font-size: 1.5em;
+    color: #CC0000;
+    margin: 0 0 5px 0;
+    transform: skewX(10deg);
+}
+
+.title-main {
+    font-size: 6em;
+    color: #CC0000;
+    margin: 5px 0;
+    line-height: 1.0;
+    transform: skewX(10deg);
+}
+
+.title-date {
+    font-size: 2em;
+    color: #333;
+    background-color: #FFCC00; /* 識別しやすい黄色 */
+    padding: 5px 15px;
+    display: inline-block;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+/* --- 2. 共通セクションスタイル --- */
+.content-section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: 400;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+    transform: skewX(10deg);
+}
+
+/* --- 新しい共有セクションタイトル --- */
+.shared-section-title {
+    font-size: 2.5em;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-top: 40px; /* ヘッダーとの間隔 */
+    margin-bottom: 20px; /* 左右分割コンテナとの間隔 */
+    text-align: center; /* 中央寄せ */
+    margin-left: 20px;
+    margin-right: 20px;
+    transform: skewX(10deg);
+}
+
+.bilingual-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    /* 上下のマージンを減らし、タイトルが境界線の役割を果たすようにする */
+    margin: 0 20px; 
+    justify-content: center;
+}
+
+/* --- 3. メッセージセクション --- */
+.message-text {
+    font-family: sans-serif; /* 少し読みやすいフォントにする */
+    font-size: 1.1em;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 900px;
+}
+
+/* --- 4. GIG情報セクション --- */
+/* ★★★ GIG INFORMATIONセクション全体の背景 ★★★ */
+.gig-info-section {
+    margin-bottom: 20px;
+    background-color: #FFCC00; /* タワレコ風の黄色 */
+    padding-bottom: 60px; /* セクション下部にパディングを追加 */
+}
+
+/* ★★★ GIG INFORMATIONセクション内のタイトル調整 ★★★ */
+/* 親要素に黄色が付いたため、タイトルの上下マージンと背景色を調整 */
+.gig-info-section .shared-section-title {
+    margin-top: 0; /* 親要素のpaddingに任せる */
+    padding-top: 60px; /* 親要素の上部から間隔を空ける */
+    background-color: transparent; /* タイトル自体に背景色は不要 */
+}
+
+/* GIG情報セクションのパネルは背景色なし（親の黄色が透ける）にする */
+.gig-info-section .ja-panel{
+    background-color: transparent; 
+    padding: 20px 30px 0 30px; /* 下のパディングを減らす */
+}
+
+.info-card {
+    background-color: #FFF; /* カードの背景を白に戻し、黄色の背景と対比させる */
+    padding: 20px;
+    /* ★★★ 修正ポイント2: 中央寄せに対応させるため width:100% と max-width を設定 ★★★ */
+    width: 100%; /* 親要素(info-container)の幅いっぱい */
+    max-width: 600px; /* カードの最大幅を制限 (調整可能) */
+    border: 3px solid #CC0000;
+    box-shadow: 5px 5px 0 #CC0000;
+    margin: 20px 20px 20px 20px; /* 上下のマージンと、中央寄せのテクニック */
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.info-card h3 {
+    color: #CC0000;
+    border-bottom: 2px solid #FFCC00;
+    padding-bottom: 5px;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-card li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+
+/* --- 5. ボタン共通スタイル --- */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #CC0000;
+    color: #FFCC00; /* 文字は黄色 */
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #CC0000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #FFCC00;
+    color: #CC0000; /* ホバーで色を反転 */
+    border-color: #CC0000;
+}
+
+.return-button {
+    background-color: #FFCC00;
+    color: #CC0000;
+    border: 2px solid #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.return-button:hover {
+    background-color: #FFF;
+    color: #FFF; /* ホバーで色を反転 */
+    border-color: #FFCC00;
+}
+
+/* --- 6. フォームセクション (RSVP) --- */
+#rsvp {
+    background-color: #333;
+    color: #FFF;
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+}
+
+.rsvp-section {
+    background-color: #333;
+    color: #FFF;
+    width: 100%;
+}
+
+.reservation-form label {
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 3px solid #FFCC00; /* 黄色の枠線 */
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.button-submit {
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #CC0000;
+    color: #FFCC00;
+    font-size: 1.2em;
+}
+
+/* --- 7. フッター --- */
+.footer-section {
+    background-color: #CC0000; /* 赤い背景 */
+    color: #FFF;
+    padding: 40px 20px;
+    text-align: center;
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 100%;
+    margin: 20px auto 0 auto;
+    box-sizing: border-box;
+}
+
+.footer-title {
+    font-family: 'Luckiest Guy', sans-serif;
+    color: #FFCC00; /* 黄色のタイトル */
+    font-size: 1.5em;
+    margin-top: 20px;
+    transform: skewX(10deg);
+}
+
+.contact-info {
+    font-family: monospace; /* ライブ告知風に等幅フォント */
+    line-height: 1.6;
+}
+
+/* ======= RESPONSIVE FINE-TUNE ======= */
+@media (max-width: 600px) {
+    #rsvp {
+        background-color: #333;
+        color: #FFF;
+        padding: 60px 20px;
+        text-align: center;
+        /* border-radius: 20px 20px 0 0; */
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+
+    }
+
+    .title-main { 
+        font-size: 3rem; 
+    }
+    .title-sub {
+        font-size: 1.2rem;
+    }
+    .title-date { 
+        font-size: 1.5rem; 
+    }
+    .section-title { 
+        font-size: 2rem; 
+    }
+    .gig-info-section { 
+        flex-direction: column; 
+    }
+    .info-card { 
+        width: 100%; 
+    }
+    .info-card li { 
+        font-size: 1rem; 
+    }
+    .reservation-form {
+        gap: 16px;
+    }
+    
+    .reservation-form label {
+        font-size: 0.95rem;
+    }
+    
+    .reservation-form input,
+    .reservation-form select,
+    .reservation-form textarea {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    .button-submit {
+        font-size: 1rem;
+        padding: 12px;
+        border-radius: 10px;
+    }
+}

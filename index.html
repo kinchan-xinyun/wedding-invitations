@@ -1,147 +1,30 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XINYUN & HARUYA | WEDDING GIG 2026</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Wedding No Life</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="intro-screen">
+    <h1 class="title-intro">No Wedding <br>No life</h1>
+  </div>
 
-    <header class="hero-section">
-        <div class="slideshow-container">
-            <div class="mySlides fade"><img src="photo1.jpg" alt="A & P Photo 1" style="width:100%"></div>
-            <div class="mySlides fade"><img src="photo2.jpg" alt="A & P Photo 2" style="width:100%"></div>
-        </div>
+  <div class="slide-container">
+    <div class="top-slide"><img src="photo1.jpg" alt="Top Image"></div>
+    <div class="bottom-slide"><img src="photo2.jpg" alt="Bottom Image"></div>
+  </div>
+  
+  <!-- 上から降りてくる背景 -->
+  <div class="overlay"></div>
 
-        <div class="hero-title-box">
-            <p class="title-sub">XINYUN & HARUYA presents</p>
-            <h1 class="title-main">WEDDING GIG 2026</h1>
-            <p class="title-date">2026.10.26 (MON)</p>
-            <br>
-            <a href="#shared-message-title" class="button scroll-link">詳細・チケット情報 ↓</a> 
-        </div>
-    </header>
+  <!-- 言語ボタン -->
+  <div class="lang-buttons">
+    <a href="jp.html" class="lang-btn">日本語</a>
+    <a href="cn.html" class="lang-btn">中文</a>
+  </div>
 
-    <h2 id="shared-message-title" class="shared-section-title">Message from XINYUN & HARUYA</h2>
-    
-    <main class="bilingual-container">
-        
-        <section class="side-panel ja-panel">
-            <p class="message-text">
-                この度、私たちXINYUNとHARUYAは結婚することになりました！<br>
-                人生という名の壮大なツアーの新たなステージに立つことになり、<br>
-                日頃から応援してくださる皆様に、感謝の気持ちを込めた<br>
-                一夜限りの <s>スペシャル・ライブ</s> 結婚披露宴 をお届けします。<br>
-                一緒に最高の一日をロックしましょう！
-            </p>
-        </section>
-
-        <section class="side-panel en-panel">
-            <p class="message-text">
-                We, XINYUN and HARUYA, are getting married! <br>
-                As we step onto a new stage of the grand tour called 'life,' we'd like to present a special one-night-only show (our wedding reception) filled with gratitude for everyone who has supported us.<br>
-                Let's rock this best day together!
-            </p>
-        </section>
-    </main>
-    
-    <div class="gig-info-section">
-
-    <h2 class="shared-section-title">GIG INFORMATION</h2>
-
-    <div class="bilingual-container">
-        
-        <section class="side-panel ja-panel">
-            <div class="info-container"> <div class="info-card date-card">
-                <h3>日時</h3>
-                <p class="main-info">2026.10.26 (月)</p>
-                <ul>
-                    <li>**11:30**   受付開始</li>
-                    <li>**12:00**   挙式</li>
-                    <li>**13:00**   披露宴開始</li>
-                </ul>
-            </div>
-
-            <div class="info-card venue-card">
-                <h3>会場</h3>
-                <p class="main-info">シェラトンホテル東京 〇〇ホール</p>
-                <p class="sub-info">
-                    東京都港区台場1-9-1
-                </p>
-                <p class="access-note">
-                    アクセス: ゆりかもめ「台場駅」より徒歩約5分
-                </p>
-            </div>
-        </section>
-
-
-        <section class="side-panel en-panel">
-            <div class="info-container"> <div class="info-card date-card">
-                <h3>DATE & TIME</h3>
-                <p class="main-info">Monday, October 26, 2026</p>
-                <ul>
-                    <li>**11:30**   Reception Opens</li>
-                    <li>**12:00**   Ceremony</li>
-                    <li>**13:00**   Reception Starts</li>
-                </ul>
-            </div>
-
-            <div class="info-card venue-card">
-                <h3>VENUE</h3>
-                <p class="main-info">Sheraton Hotel Tokyo, XX Hall</p>
-                <p class="sub-info">
-                    1-9-1 Daiba, Minato City, Tokyo
-                </p>
-                <p class="access-note">
-                    ACCESS: Approx. 5-min walk from "Daiba Station"
-                </p>
-            </div>
-        </section>
-        
-        </div> 
-    </div>
-
-    <section id="rsvp" class="content-section rsvp-section full-width-section">
-        <h2 class="section-title">TICKET RESERVATION / ご出欠のご連絡</h2>
-        <p class="deadline">Deadline: 2026年9月30日 (水) / Wednesday, September 30, 2026</p>
-    
-        <form id="rsvp-form" class="reservation-form">
-          <label for="name">お名前 / Your Name</label>
-          <input type="text" id="name" required>
-    
-          <label for="attendance">ご出欠 / Attendance</label>
-          <select id="attendance" required>
-            <option value="">選択してください / Please select</option>
-            <option value="参加 / Attend">参加 / Attend</option>
-            <option value="欠席 / Decline">欠席 / Decline</option>
-          </select>
-    
-          <label for="message">メッセージ (任意) / Message (Optional)</label>
-          <textarea id="message"></textarea>
-    
-          <button type="submit" class="button button-submit">
-            チケットを予約する (回答送信) / Book Your Ticket (Submit RSVP)
-          </button>
-        </form>
-      </section>
-    
-    <footer class="footer-section full-width-section">
-        <h3 class="footer-title">IMPORTANT NOTES / その他</h3>
-        <p class="footer-text">
-            ご祝儀やご供花につきましては、謹んでご辞退申し上げます。平服でお気軽にお越しください。<br>
-            We respectfully decline any monetary gifts or flowers. Please feel free to come in casual attire.
-        </p>
-        
-        <h3 class="footer-title">CONTACT (TOUR STAFF) / 連絡先</h3>
-        <p class="contact-info">
-            担当 / Staff：[担当者名]<br>
-            TEL：[電話番号]<br>
-            MAIL：[メールアドレス]
-        </p>
-        <p>© 2026 XINYUN & HARUYA Wedding Gig</p>
-    </footer>
-    
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
