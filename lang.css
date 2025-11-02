@@ -254,11 +254,21 @@ h1 {
     border: 5px solid #CC0000; /* 赤い太枠 */
     box-shadow: 0 0 30px rgba(204, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
     animation: titleFloat 3s ease-in-out infinite;
+    max-width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    width: fit-content;
+    max-width: calc(100% - 40px);
 }
 
 @keyframes titleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    0%, 100% { 
+        transform: translateX(-50%) translateY(0);
+    }
+    50% { 
+        transform: translateX(-50%) translateY(-5px);
+    }
 }
 
 .title-sub {
@@ -454,6 +464,9 @@ h1 {
     gap: 60px;
     flex-wrap: wrap;
     margin: 0 auto;
+    max-width: 1000px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .profile-card {
@@ -462,7 +475,9 @@ h1 {
     border-radius: 20px;
     padding: 30px 20px;
     height: 60vh;
-    width: 40vw;
+    width: calc(50% - 30px);
+    max-width: 450px;
+    box-sizing: border-box;
     box-shadow: 4px 4px 0 #CC0000, 0 8px 24px rgba(204, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -803,13 +818,11 @@ h1 {
 .timeline::before {
     content: "";
     position: absolute;
-    left: 50%;
+    left: 150px;
     top: 0;
-    transform: translateX(-50%);
     width: 4px;
     height: 100%;
     background-color: #CC0000;
-    left: 160px;
 }
 
 /* 各項目 */
@@ -824,12 +837,13 @@ h1 {
 .timeline-item::before {
     content: "";
     position: absolute;
-    left: 151px;
+    left: 143px;
     top: 35px;
     width: 18px;
     height: 18px;
     background-color: #CC0000;
     border-radius: 50%;
+    z-index: 1;
 }
 
 /* 時間 */
@@ -853,7 +867,7 @@ h1 {
     text-align: left;
     box-shadow: 3px 3px 8px rgba(204, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.05);
     position: relative;
-    margin-left: 130px;
+    margin-left: 120px;
     transition: all 0.3s ease;
 }
 
@@ -1484,78 +1498,542 @@ textarea {
     backface-visibility: hidden;
 }
 
-/* ======= RESPONSIVE FINE-TUNE ======= */
+/* ===== iPhone対応 ===== */
 @media (max-width: 600px) {
+    /* iOS Safari向けの最適化 */
+    html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        touch-action: manipulation;
+    }
+
+    /* 固定ヘッダーの調整 */
+    .top-bar {
+        height: 60px;
+    }
+
+    .menu-header {
+        top: 12px;
+        right: 12px;
+    }
+
+    .hamburger {
+        width: 36px;
+        height: 28px;
+    }
+
+    .hamburger .bar {
+        height: 2.5px;
+        margin: 5px 0;
+    }
+
+    .menu-panel {
+        top: 55px;
+        right: 12px;
+        width: 180px;
+        font-size: 0.9rem;
+    }
+
+    /* ヒーローセクション */
+    .hero-section {
+        height: 50vh;
+        margin-block-start: 60px;
+    }
+
+    .hero-title-box {
+        padding: 10px 8px;
+        border-width: 3px;
+        max-width: calc(100% - 5px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        animation: titleFloatMobile 3s ease-in-out infinite;
+        box-sizing: border-box;
+    }
+
+    @keyframes titleFloatMobile {
+        0%, 100% { 
+            transform: translateX(-50%) translateY(0);
+        }
+        50% { 
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+    .title-main { 
+        font-size: 2rem;
+        line-height: 1.1;
+        margin: 2px 3px;
+        word-break: break-word;
+        transform: skewX(5deg);
+        white-space: normal;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        letter-spacing: -0.01em;
+    }
+    
+    .title-sub {
+        font-size: 0.9rem;
+        margin: 0 0 3px 0;
+        white-space: nowrap;
+    }
+    
+    .title-date { 
+        font-size: 1rem;
+        padding: 4px 10px;
+        margin-top: 6px;
+        white-space: nowrap;
+    }
+
+    /* スライダー画像 */
+    .top-track img, .bottom-track img {
+        height: 25vh;
+        margin-right: 3px;
+    }
+
+    /* セクションタイトル */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        padding-bottom: 8px;
+    }
+
+    .shared-section-title {
+        font-size: 1.8rem;
+        margin: 30px 15px 15px 15px;
+        letter-spacing: 2px;
+    }
+
+    .profile-title {
+        font-size: 1.8rem;
+        margin: 15px 15px 15px 15px;
+        letter-spacing: 2px;
+    }
+
+    /* コンテンツセクション */
+    .content-section {
+        padding: 40px 15px;
+    }
+
+    .bilingual-container {
+        margin: 0 15px 30px 15px;
+        padding: 30px 15px;
+    }
+
+    .message-text {
+        font-size: 1rem;
+        line-height: 1.7;
+        padding: 0 10px;
+    }
+
+    /* プロフィールセクション */
+    .profile-section {
+        padding: 40px 15px;
+        width: 93%;
+    }
+
+    .profile-container {
+        gap: 30px;
+    }
+
+    .profile-card {
+        width: 85%;
+        height: auto;
+        min-height: 400px;
+        padding: 20px 15px;
+        margin: 0 auto;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        border-width: 3px;
+        margin-bottom: 12px;
+    }
+
+    .profile-name {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+    
+    .profile-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* カウントダウン */
+    .countdown-section {
+        padding: 60px 15px 50px;
+    }
+
+    .countdown-heading {
+        font-size: 2rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .countdown-date {
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+
+    .countdown-timer {
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .countdown-timer div {
+        height: 70px;
+        padding: 12px 16px;
+        min-width: 70px;
+        border-radius: 12px;
+    }
+
+    .countdown-timer span {
+        font-size: 2rem;
+    }
+
+    .countdown-timer small {
+        font-size: 0.75rem;
+    }
+
+    .countdown-message {
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    /* スケジュール */
+    .schedule-section {
+        padding: 50px 15px;
+    }
+
+    .schedule-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+
+    .schedule-sub {
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .timeline {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .timeline::before {
+        left: 75px;
+    }
+
+    .timeline-item {
+        margin-bottom: 40px;
+    }
+
+    .timeline-item::before {
+        left: 59px;
+        top: 30px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .time {
+        width: 70px;
+        font-size: 0.95rem;
+        margin-top: 20px;
+        left: 10px;
+    }
+
+    .content {
+        width: calc(100% - 95px);
+        margin-left: 95px;
+        padding: 12px 15px;
+        border-left-width: 4px;
+    }
+
+    .content h3 {
+        font-size: 1.2rem;
+    }
+
+    .content h3 span {
+        font-size: 0.85rem;
+    }
+
+    .content p {
+        font-size: 0.85rem;
+    }
+
+    /* ロケーション */
+    .location-section {
+        padding: 50px 15px;
+    }
+
+    .location-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+
+    .location-sub {
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .location-card {
+        padding: 20px 15px;
+        border-left-width: 4px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .label {
+        min-width: auto;
+        width: fit-content;
+        margin-bottom: 6px;
+        margin-right: 0;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .value {
+        font-size: 0.9rem;
+        padding-left: 0;
+    }
+
+    /* RSVP */
     #rsvp {
         background-color: #333;
         color: #FFF;
-        padding: 60px 20px;
+        padding: 50px 15px;
         text-align: center;
         max-width: 100%;
         margin: 0 auto;
         box-sizing: border-box;
-
     }
 
-    .title-main { 
-        font-size: 3rem; 
-    }
-    .title-sub {
-        font-size: 1.2rem;
-    }
-    .title-date { 
-        font-size: 1.5rem; 
-    }
-    .section-title { 
-        font-size: 2rem; 
-    }
-
-    .profile-title {
+    .rsvp-title {
         font-size: 2rem;
-    }
-    .profile-section {
-        padding: 30px 20px;
-        width: 95%;
-    }
-    .profile-name {
-        font-size: 1.5rem;
-    }
-    
-    .profile-text {
-        font-size: 1rem;
-    }
-    .profile-card {
-        width: 60%;
-        height: 60%;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        padding-bottom: 8px;
     }
 
-    .profile-img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid #FFCC00;
+    .rsvp-form {
+        padding: 20px 15px;
+        border-width: 2px;
+        border-radius: 10px;
+    }
+
+    .note {
+        font-size: 13px;
         margin-bottom: 15px;
     }
 
-    .reservation-form {
-        gap: 16px;
+    .guest {
+        margin-bottom: 15px;
     }
-    
-    .reservation-form label {
+
+    .guest-header {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .guest-content {
+        padding: 12px;
+    }
+
+    .field-row {
+        margin-bottom: 12px;
+    }
+
+    label {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+
+    input, textarea, select {
+        padding: 10px;
+        font-size: 16px; /* iOS Safariでズームを防ぐ */
+        border-width: 2px;
+    }
+
+    .field-group {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .same-address {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .add-guest {
+        padding: 10px 20px;
+        font-size: 13px;
+        margin: 20px auto;
+    }
+
+    .submit-btn {
+        padding: 12px 30px;
+        font-size: 15px;
+        margin: 20px auto 0;
+        border-radius: 8px;
+    }
+
+    .terms {
+        font-size: 12px;
+    }
+
+    /* フッター */
+    .footer-section {
+        padding: 50px 15px;
+    }
+
+    .footer-title {
+        font-size: 1.5rem;
+        margin-top: 15px;
+    }
+
+    .contact-info {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* ボタン */
+    .button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    .return-button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    /* カウントダウン日付 */
+    .wedding-date {
+        font-size: 1.2rem;
+        padding: 4px 12px;
+    }
+}
+
+/* iPhone SE（小さい画面）対応 */
+@media (max-width: 375px) {
+    .hero-title-box {
+        padding: 8px 6px;
+        max-width: calc(100% - 16px);
+    }
+
+    .title-main {
+        font-size: 1.6rem;
+        margin: 2px 3px;
+        transform: skewX(3deg);
+        letter-spacing: -0.02em;
+    }
+
+    .title-sub {
+        font-size: 0.8rem;
+    }
+
+    .title-date {
+        font-size: 0.9rem;
+        padding: 3px 8px;
+    }
+
+    .section-title,
+    .shared-section-title,
+    .profile-title,
+    .schedule-title,
+    .location-title,
+    .rsvp-title {
+        font-size: 1.5rem;
+    }
+
+    .profile-card {
+        width: 90%;
+        min-height: 350px;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .countdown-heading {
+        font-size: 1.6rem;
+    }
+
+    .countdown-date {
+        font-size: 2.5rem;
+    }
+
+    .countdown-timer div {
+        min-width: 60px;
+        padding: 10px 12px;
+        height: 65px;
+    }
+
+    .countdown-timer span {
+        font-size: 1.7rem;
+    }
+}
+
+/* iPhone向け横向き対応 */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 500px) {
+    .hero-section {
+        height: 100vh;
+        margin-block-start: 60px;
+    }
+
+    .hero-title-box {
+        padding: 6px 8px;
+        max-width: calc(100% - 20px);
+    }
+
+    .title-main {
+        font-size: 1.5rem;
+        margin: 2px 3px;
+        transform: skewX(3deg);
+        letter-spacing: -0.02em;
+    }
+
+    .title-sub {
+        font-size: 0.85rem;
+    }
+
+    .title-date {
         font-size: 0.95rem;
+        padding: 3px 10px;
     }
-    
-    .reservation-form input,
-    .reservation-form select,
-    .reservation-form textarea {
-        font-size: 1rem;
-        padding: 12px;
+}
+
+/* iOS Safari向けの追加最適化 */
+@supports (-webkit-touch-callout: none) {
+    .profile-card,
+    .location-card,
+    .content,
+    .guest {
+        -webkit-tap-highlight-color: transparent;
     }
-    
-    .button-submit {
-        font-size: 1rem;
-        padding: 12px;
-        border-radius: 10px;
+
+    input,
+    textarea,
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 6px;
     }
 }
