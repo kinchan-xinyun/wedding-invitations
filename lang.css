@@ -12,6 +12,19 @@ body {
     background-color: #f8f8f8;
 }
 
+p {
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+.top-bar {
+    position: fixed;   /* ページ上に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(204, 0, 0, 0.5); /* タワレコ赤 */
+    z-index: 9999;
+}
+
 /* --- ハンバーガーの配置 --- */
 .menu-header {
     position: fixed;
@@ -40,7 +53,7 @@ body {
     width: 100%;
     height: 3px;
     margin: 6px 0;
-    background-color: #CC0000;
+    background-color: #FFCC00;
     border-radius: 3px;
     transition: 0.3s;
 }
@@ -155,12 +168,11 @@ h1 {
 
 /* 画像共通のスタイル */
 .top-track img, .bottom-track img {
-    width: 20vw; /* アスペクト比を維持 */
-    height: auto;
+    width: auto; /* アスペクト比を維持 */
+    height: 40vh;
     object-fit: cover; /* 画像がコンテナに収まるように調整 */
     margin-right: 5px; /* 画像間のスペース */
     /* トラッカーをデバッグするための枠線（完成したら削除してください） */
-    /* border: 1px solid red; */ 
 }
 
 .hero-section {
@@ -191,9 +203,9 @@ h1 {
 }
 
 .title-main {
-    font-size: 6em;
+    font-size: 10em;
     color: #CC0000;
-    margin: 5px 0;
+    margin: 5px 10px;
     line-height: 1.0;
     transform: skewX(10deg);
 }
@@ -217,7 +229,7 @@ h1 {
 }
 
 .section-title {
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 400;
     color: #CC0000;
     border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
@@ -228,7 +240,7 @@ h1 {
 
 /* --- 新しい共有セクションタイトル --- */
 .shared-section-title {
-    font-size: 2.5em;
+    font-size: 3em;
     color: #CC0000;
     border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
     padding-bottom: 10px;
@@ -250,13 +262,81 @@ h1 {
 
 /* --- 3. メッセージセクション --- */
 .message-text {
-    font-family: sans-serif; /* 少し読みやすいフォントにする */
     font-size: 1.1em;
     line-height: 1.8;
     text-align: center;
     max-width: 900px;
 }
 
+/* --- 4. プロフィールセクション --- */
+.profile-section {
+    width: 100%;
+    background: #fff8e1;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 5px solid #FFCC00;
+    border-bottom: 5px solid #CC0000;
+}
+
+.profile-title {
+    font-size: 3em;
+    color: #CC0000;
+    border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
+    padding-bottom: 10px;
+    margin-top: 20px; /* ヘッダーとの間隔 */
+    margin-bottom: 20px; /* 左右分割コンテナとの間隔 */
+    text-align: center; /* 中央寄せ */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background: #ffffff;
+    border: 3px solid #FFCC00;
+    border-radius: 20px;
+    padding: 30px 20px;
+    height: 60vh;
+    width: 40vw;
+    box-shadow: 4px 4px 0 #CC0000;
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 8px 0 #CC0000;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #FFCC00;
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #CC0000;
+    margin-bottom: 10px;
+}
+
+.profile-text {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #333;
+}
 
 /* カウントダウンセクション */
 .wedding-date {
@@ -282,7 +362,6 @@ h1 {
     background-color: #edece9;
     font-family: 'Luckiest Guy', sans-serif;
     overflow: hidden;
-    margin-block-end: 20px;
 }
 
 
@@ -295,7 +374,7 @@ h1 {
 
 .countdown-heading {
     font-family: 'Luckiest Guy', sans-serif;
-    font-size: 2.6rem;
+    font-size: 3em;
     color: #CC0000;
     border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
     letter-spacing: 3px;
@@ -303,6 +382,7 @@ h1 {
 }
 
 .countdown-date {
+    font-family: 'Luckiest Guy', sans-serif;
     font-size: 5rem;
     color: #111;
     letter-spacing: 2px;
@@ -356,7 +436,6 @@ h1 {
     letter-spacing: 0.5px;
     line-height: 1.8;
     margin-top: 12px;
-    font-family: 'Cormorant Garamond', serif;
 }
 
 .countdown-finish {
@@ -366,57 +445,188 @@ h1 {
     margin-top: 28px;
 }
 
-/* --- 4. GIG情報セクション --- */
-/* ★★★ GIG INFORMATIONセクション全体の背景 ★★★ */
-.gig-info-section {
-    margin-bottom: 20px;
-    background-color: #FFCC00; /* タワレコ風の黄色 */
-    padding-bottom: 60px; /* セクション下部にパディングを追加 */
+/* === タワレコ風スケジュール === */
+.schedule-section {
+    background-color: #FFCC00; /* タワレコの黄色 */
+    padding: 60px 20px;
+    color: #111;
+    text-align: center;
 }
 
-/* ★★★ GIG INFORMATIONセクション内のタイトル調整 ★★★ */
-/* 親要素に黄色が付いたため、タイトルの上下マージンと背景色を調整 */
-.gig-info-section .shared-section-title {
-    margin-top: 0; /* 親要素のpaddingに任せる */
-    padding-top: 60px; /* 親要素の上部から間隔を空ける */
-    background-color: transparent; /* タイトル自体に背景色は不要 */
-}
-
-/* GIG情報セクションのパネルは背景色なし（親の黄色が透ける）にする */
-.gig-info-section .ja-panel{
-    background-color: transparent; 
-    padding: 20px 30px 0 30px; /* 下のパディングを減らす */
-}
-
-.info-card {
-    background-color: #FFF; /* カードの背景を白に戻し、黄色の背景と対比させる */
-    padding: 20px;
-    /* ★★★ 修正ポイント2: 中央寄せに対応させるため width:100% と max-width を設定 ★★★ */
-    width: 100%; /* 親要素(info-container)の幅いっぱい */
-    max-width: 600px; /* カードの最大幅を制限 (調整可能) */
-    border: 3px solid #CC0000;
-    box-shadow: 5px 5px 0 #CC0000;
-    margin: 20px 20px 20px 20px; /* 上下のマージンと、中央寄せのテクニック */
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-.info-card h3 {
+.schedule-title {
     color: #CC0000;
-    border-bottom: 2px solid #FFCC00;
-    padding-bottom: 5px;
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
 }
 
-.info-card ul {
-    list-style: none;
-    padding: 0;
+.schedule-sub {
+    color: #800000;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
 }
 
-.info-card li {
-    font-size: 1.1em;
-    margin: 10px 0;
+/* タイムライン */
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    max-width: 700px;
 }
 
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: #CC0000;
+    left: 160px;
+}
+
+/* 各項目 */
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 151px;
+    top: 35px;
+    width: 18px;
+    height: 18px;
+    background-color: #CC0000;
+    border-radius: 50%;
+}
+
+/* 時間 */
+.time {
+    width: 100px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #CC0000;
+    margin-top: 25px;
+    /* margin-right: 40px; */
+}
+
+/* 内容を右に配置 */
+.content {
+    background: #fffef4;
+    border-left: 5px solid #CC0000;
+    border-radius: 8px;
+    padding: 15px 20px;
+    width: 60%;
+    text-align: left;
+    box-shadow: 3px 3px 8px rgba(204, 0, 0, 0.15);
+    position: relative;
+    margin-left: 130px;
+}
+
+.content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.content h3 span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #CC0000;
+    margin-left: 8px;
+}
+
+.content p {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* === LOCATION（会場情報） === */
+.location-section {
+    background-color: #FFCC00;
+    padding: 60px 20px;
+    text-align: center;
+    color: #111;
+}
+
+.location-title {
+    color: #CC0000;
+    font-size: 3em;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+}
+
+.location-sub {
+    color: #800000;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+}
+
+.location-card {
+    background: #fffef4;
+    border-left: 6px solid #CC0000;
+    border-radius: 12px;
+    box-shadow: 3px 3px 8px rgba(204, 0, 0, 0.15);
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.info-row .value{
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.label {
+    display: inline-block;
+    min-width: 80px;
+    background-color: #CC0000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 8px;
+    margin-right: 10px;
+}
+
+.value {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.value a {
+    color: #CC0000;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.map-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(204, 0, 0, 0.1);
+}
+  
+  
 
 /* --- 5. ボタン共通スタイル --- */
 .button {
@@ -464,11 +674,12 @@ h1 {
 #rsvp {
     margin: 0 auto;
     padding: 20px;
+    background-color: #333;
 }
 
 .rsvp-title {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 400;
     color: #CC0000;
     border-bottom: 5px dashed #FFCC00; /* 赤と黄色の破線 */
@@ -569,14 +780,26 @@ textarea {
     display: flex;
     gap: 10px;
 }
-
 .same-address {
-    margin-top: 5px;
-    font-size: 13px;
     display: flex;
     align-items: center;
-    gap: 4px;
-    color: #555;
+    justify-content: flex-start; /* 右端に寄せる */
+    gap: 6px; /* チェックボックスと文字の隙間 */
+    margin-top: 6px;
+    font-size: 13px;
+    color: #CC0000;
+}
+
+.same-address input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #CC0000; /* チェックマークを赤く */
+    cursor: pointer;
+}
+
+.same-address label {
+    margin: 0;
+    cursor: pointer;
 }
 
 /* add guest */
@@ -644,9 +867,8 @@ textarea {
 .footer-title {
     font-family: 'Luckiest Guy', sans-serif;
     color: #FFCC00; /* 黄色のタイトル */
-    font-size: 1.5em;
+    font-size: 2em;
     margin-top: 20px;
-    transform: skewX(10deg);
 }
 
 .contact-info {
@@ -701,7 +923,6 @@ textarea {
         color: #FFF;
         padding: 60px 20px;
         text-align: center;
-        /* border-radius: 20px 20px 0 0; */
         max-width: 100%;
         margin: 0 auto;
         box-sizing: border-box;
@@ -720,15 +941,35 @@ textarea {
     .section-title { 
         font-size: 2rem; 
     }
-    .gig-info-section { 
-        flex-direction: column; 
+
+    .profile-title {
+        font-size: 2rem;
     }
-    .info-card { 
-        width: 100%; 
+    .profile-section {
+        padding: 30px 20px;
+        width: 95%;
     }
-    .info-card li { 
-        font-size: 1rem; 
+    .profile-name {
+        font-size: 1.5rem;
     }
+    
+    .profile-text {
+        font-size: 1rem;
+    }
+    .profile-card {
+        width: 60%;
+        height: 60%;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #FFCC00;
+        margin-bottom: 15px;
+    }
+
     .reservation-form {
         gap: 16px;
     }

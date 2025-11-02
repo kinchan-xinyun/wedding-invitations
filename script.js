@@ -156,46 +156,53 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- Form Submission Handling (API Call) / フォーム送信時の処理 ---
-document.getElementById("rsvp-form").addEventListener("submit", async function(e) {
-    e.preventDefault();
+document.getElementById("guestForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
 
+  const guests = [];
+  document.querySelectorAll(".guest").forEach((guest) => {
     const data = {
-        name: document.getElementById("name").value,
-        attendance: document.getElementById("attendance").value,
-        message: document.getElementById("message").value
+      first_name: guest.querySelector('input[name="first_name[]"]')?.value || "",
+      last_name: guest.querySelector('input[name="last_name[]"]')?.value || "",
+      first_name_kana: guest.querySelector('input[name="first_name_kana[]"]')?.value || "",
+      last_name_kana: guest.querySelector('input[name="last_name_kana[]"]')?.value || "",
+      email: guest.querySelector('input[name="email[]"]')?.value || "",
+      address: guest.querySelector('input[name="address[]"]')?.value || "",
+      allergy: guest.querySelector('input[placeholder="アレルギー"]')?.value || "",
+      message: guest.querySelector('textarea')?.value || ""
     };
+    guests.push(data);
+  });
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyqAkS2OwXGyeNarkuOLXFQyz5gSMuHEdRAUqy1dBt8ZKlx3gfxtcfXIqmLD1ctlu-azQ/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwsw62EleW4hvYPL1Kr2Ju6I9fc-bSYyzzK1UYeR7DkjydE3ZER63rN6lF-WlTSkOm-Eg/exec";
 
-    // URLSearchParams を使って application/x-www-form-urlencoded で送る
-    const body = new URLSearchParams(data);
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({
+        guests: JSON.stringify(guests) // 複数ゲストをまとめて送信
+      })
+    });
 
-    try {
-        const response = await fetch(scriptURL, {
-            method: "POST",
-            body: body,
-            // Content-Type を指定しない（fetch が自動で適切に設定する）
-        });
-
-        // ネットワークが返したステータスをチェック
-        if (!response.ok) {
-            const text = await response.text();
-            console.error("非 200 応答:", response.status, text);
-            alert("サーバーエラーが発生しました。管理者に連絡してください。");
-            return;
-        }
-
-        const result = await response.json();
-
-        if (result.status === "success") {
-            alert("送信が完了しました！ありがとうございます。");
-            document.getElementById("rsvp-form").reset();
-        } else {
-            console.error("GAS エラー:", result);
-            alert("送信中にエラーが発生しました。");
-        }
-    } catch (error) {
-        console.error("通信例外:", error);
-        alert("通信エラーが発生しました。ブラウザのコンソールにエラーを表示しました。");
+    if (!response.ok) {
+      const text = await response.text();
+      console.error("非200応答:", response.status, text);
+      alert("サーバーエラーが発生しました。管理者に連絡してください。");
+      return;
     }
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert("送信が完了しました！ありがとうございます。");
+      document.getElementById("guestForm").reset();
+    } else {
+      console.error("GASエラー:", result);
+      alert("送信中にエラーが発生しました。");
+    }
+  } catch (error) {
+    console.error("通信例外:", error);
+    alert("通信エラーが発生しました。ブラウザのコンソールを確認してください。");
+  }
 });
+
