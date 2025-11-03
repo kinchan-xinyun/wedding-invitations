@@ -1,0 +1,187 @@
+.location-section {
+    background: 
+        radial-gradient(ellipse at 30% 40%, rgba(255, 204, 0, 0.4) 0%, transparent 45%),
+        radial-gradient(ellipse at 70% 60%, rgba(255, 230, 100, 0.35) 0%, transparent 45%),
+        linear-gradient(135deg, #ffd633 0%, #FFCC00 25%, #ffd633 50%, #FFCC00 75%, #ffd633 100%);
+    padding: 60px 20px;
+    text-align: center;
+    color: #111;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid #CC0000;
+    border-bottom: 3px solid #CC0000;
+}
+
+.location-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 3px,
+            rgba(255, 255, 255, 0.04) 3px,
+            rgba(255, 255, 255, 0.04) 6px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 3px,
+            rgba(204, 0, 0, 0.04) 3px,
+            rgba(204, 0, 0, 0.04) 6px
+        );
+    animation: musicFlow 10s linear infinite;
+    pointer-events: none;
+}
+
+.location-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: 
+        conic-gradient(
+            from 0deg at 50% 50%,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.05) 60deg,
+            transparent 120deg,
+            rgba(204, 0, 0, 0.03) 180deg,
+            transparent 240deg,
+            rgba(255, 214, 51, 0.04) 300deg,
+            transparent 360deg
+        );
+    transform: translate(-50%, -50%);
+    animation: musicRotate 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes musicFlow {
+    0% { 
+        transform: translateX(0) translateY(0);
+    }
+    100% { 
+        transform: translateX(20px) translateY(-20px);
+    }
+}
+
+@keyframes musicRotate {
+    0% { 
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% { 
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.location-title {
+    color: #CC0000;
+    font-size: 3em;
+    font-weight: 900;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 
+        2px 2px 0px rgba(255, 204, 0, 0.5),
+        4px 4px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.location-card {
+    background: linear-gradient(145deg, #fffef4, #fffef8);
+    border-left: 6px solid #CC0000;
+    border-radius: 12px;
+    box-shadow: 3px 3px 8px rgba(204, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 5px 5px 15px rgba(204, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.location-info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.location-label {
+    display: inline-block;
+    min-width: 80px;
+    background-color: #CC0000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 8px;
+    margin-right: 10px;
+}
+
+.location-value {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-break: break-word;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.location-value a {
+    color: #CC0000;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.location-map-wrapper {
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(204, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .location-section {
+        padding: 50px 15px;
+    }
+
+    .location-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+
+    .location-card {
+        padding: 20px 15px;
+        border-left-width: 4px;
+    }
+
+    .location-info-row {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+
+    .location-label {
+        min-width: auto;
+        width: fit-content;
+        margin-bottom: 6px;
+        margin-right: 0;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .location-value {
+        font-size: 0.9rem;
+        padding-left: 0;
+    }
+}

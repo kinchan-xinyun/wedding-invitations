@@ -1,0 +1,152 @@
+/* --- ハンバーガーの配置 --- */
+.top-bar {
+    width: 100%;
+    height: 8cqw;
+    background: linear-gradient(180deg, rgba(204, 0, 0, 0.85) 0%, rgba(204, 0, 0, 0.6) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+.menu-header {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    width: 40px;
+    height: 32px;
+    position: relative;
+    z-index: 10000;
+    background-color: #CC0000;
+    border-radius: 5px;
+    padding: 10px 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    &:hover {
+        background-color: #111;
+    }
+}
+
+.hamburger .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 6px 0;
+    background-color: #FFCC00;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.menu-toggle:checked + .hamburger .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle:checked + .hamburger .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked + .hamburger .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.menu-panel {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 2px 8px rgba(204, 0, 0, 0.1);
+    padding: 12px 0;
+    width: 200px;
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Luckiest Guy', sans-serif;
+}
+
+.menu-toggle:checked ~ .menu-panel {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.menu-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-panel li {
+    border-bottom: 1px solid #eee;
+}
+
+.menu-panel li:last-child {
+    border-bottom: none;
+}
+
+.menu-panel a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #333;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-panel a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #f6d365, #FFCC00);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.menu-panel a:hover::before {
+    width: 100%;
+}
+
+.menu-panel a:hover {
+    background: transparent;
+    color: #111;
+    transform: translateX(5px);
+}
+
+@media (max-width: 600px) {
+    .menu-header {
+        top: 12px;
+        right: 12px;
+    }
+
+    .hamburger {
+        width: 36px;
+        height: 28px;
+    }
+
+    .hamburger .bar {
+        height: 2.5px;
+        margin: 5px 0;
+    }
+
+    .menu-panel {
+        top: 55px;
+        right: 12px;
+        width: 180px;
+        font-size: 0.9rem;
+    }
+}
+

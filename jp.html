@@ -4,366 +4,404 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>No Wedding No Life - 日本語</title>
-  <link rel="stylesheet" href="lang.css" />
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/navigation.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/message.css" />
+  <link rel="stylesheet" href="styles/profile.css" />
+  <link rel="stylesheet" href="styles/countdown.css" />
+  <link rel="stylesheet" href="styles/schedule.css" />
+  <link rel="stylesheet" href="styles/location.css" />
+  <link rel="stylesheet" href="styles/rsvp.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ページ最上部に追加 -->
-    <div class="top-bar"></div> 
-    
-    <!-- ✅ ハンバーガーメニュー -->
-    <header class="menu-header">
-        <input id="menuToggle" class="menu-toggle" type="checkbox" />
-        <label class="hamburger" for="menuToggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-        </label>
-        <nav class="menu-panel">
-        <ul>
-            <li><a href="#shared-message-title" onclick="document.getElementById('menuToggle').checked=false;">Message</a></li>
-            <li><a href="#profile" onclick="document.getElementById('menuToggle').checked=false;">Profile</a></li>
-            <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">Countdown</a></li>
-            <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">Schedule</a></li>
-            <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">Location</a></li>
-            <li><a href="#rsvp" onclick="document.getElementById('menuToggle').checked=false;">Reservation</a></li>
-            <li><a href="#notes" onclick="document.getElementById('menuToggle').checked=false;">Notes</a></li>
-        </ul>
-        </nav>
-    </header>
-    
-    <header class="hero-section">
-        <!-- 写真がループで流れる背景 -->
-        <div class="slider-container">
-            <!-- 上の段：左→右 -->
-            <div class="top-track">
-            <img src="images/image_cafe.png" alt="">
-            <img src="images/image_doya.png" alt="">
-            <img src="images/image_elevator.png" alt="">
-            <img src="images/image_gpt.png" alt="">
-            <img src="images/image_last_xinyun.png" alt="">
-            <!-- ループ用に同じものを複製 -->
-            <img src="images/image_cafe.png" alt="">
-            <img src="images/image_doya.png" alt="">
-            <img src="images/image_elevator.png" alt="">
-            <img src="images/image_gpt.png" alt="">
-            <img src="images/image_last_xinyun.png" alt="">
-            </div>
-        
-            <!-- 下の段：右→左 -->
-            <div class="bottom-track">
-            <img src="images/image_hanabi.png" alt="">
-            <img src="images/image_haruya.png" alt="">
-            <img src="images/image_haruya_yokohama.png" alt="">
-            <img src="images/image_xinyun.png" alt="">
-            <img src="images/image_kinugawa.png" alt="">
-            <!-- 同じく複製 -->
-            <img src="images/image_hanabi.png" alt="">
-            <img src="images/image_haruya.png" alt="">
-            <img src="images/image_haruya_yokohama.png" alt="">
-            <img src="images/image_xinyun.png" alt="">
-            <img src="images/image_kinugawa.png" alt="">
-            </div>
-        </div>
-
-        <div class="hero-title-box">
-            <p class="title-sub">XINYUN & HARUYA presents</p>
-            <h1 class="title-main">WEDDING</h1>
-            <p class="title-date">2026.10.26 (MON)</p>
-        </div>
-    </header>
-
-    <h2 id="shared-message-title" class="shared-section-title fade-section">Message</h2>
-    
-    <main class="bilingual-container fade-section">
-        <section class="ja-panel">
-            <p class="message-text">
-                拝啓<br>
-                <br>
-                皆さまにはますますご清祥のこととお慶び申し上げます<br>
-                <br>
-                このたび私たちは<br>
-                <span class="wedding-date">2026 年 03 月 05 日</span><br>
-                に入籍いたしました<br>
-                <br>
-                日頃お世話になっているたいせつな皆さまをお招きし<br>
-                ご報告とごあいさつをかねまして<br>
-                ささやかな結婚式を挙げたいと思っております<br>
-                <br>
-                ご多用中恐縮ではありますが<br>
-                ぜひご出席くださいますよう心よりお待ちしております<br>
-                <br>
-                敬白
-            </p>
-        </section>
-    </main>
-
-    <section id="profile" class="profile-section fade-section">
-        <h2 class="profile-title">OUR PROFILE</h2>
-        <div class="profile-container">
-          <div class="profile-card">
-            <img src="images/image_haruya.png" alt="Groom" class="profile-img" />
-            <h3 class="profile-name">HARUYA</h3>
-            <p class="profile-text">
-                2001年3月5日　神奈川県生まれ　B型　研究員<br>
-            </p>
-          </div>
-          <div class="profile-card">
-            <img src="images/image_train_xinyun.png" alt="Bride" class="profile-img" />
-            <h3 class="profile-name">XINYUN</h3>
-            <p class="profile-text">
-                1997年9月20日　上海生まれ　A型　研究員<br>
-                年間300本以上のライブ・フェスに行ってます<br>
-                当日　皆様にお会いできることを楽しみにしています
-            </p>
-          </div>
-        </div>
-      </section>
-      
-
-    <!-- ✅ カウントダウンセクション -->
-    <section id="countdown-section" class="countdown-section fade-section">
-        <h2 class="countdown-heading">COUNTDOWN TO</h2>
-        <p class="countdown-date">2026.10.26</p>
-        <p class="countdown-message">
-            WE CAN'T WAIT TO SEE ALL OF OUR BELOVED FRIENDS<br>
-            AND RELATIVES AT THE WEDDING.
-        </p>
-    
-        <div id="countdown-timer" class="countdown-timer">
-        <div><span id="days">00</span><small>Days</small></div>
-        <div><span id="hours">00</span><small>Hours</small></div>
-        <div><span id="minutes">00</span><small>Minutes</small></div>
-        <div><span id="seconds">00</span><small>Seconds</small></div>
-        </div>
+  <!-- ページ最上部バー -->
+  <div class="top-bar"></div>
   
-    
-  
-    <p id="countdown-finish" class="countdown-finish"></p>
-  </section>
-    
-    <section id="schedule-section" class="schedule-section fade-section">
-        <h2 class="schedule-title">SCHEDULE</h2>
-    
-        <div class="timeline">
-        <div class="timeline-item">
-            <div class="time">10:00</div>
-            <div class="content">
-            <h3>受付開始 <span>START</span></h3>
-            <p>当日10時迄にお越しくださいますようお願い申し上げます。</p>
-            </div>
-        </div>
-    
-        <div class="timeline-item">
-            <div class="time">11:30</div>
-            <div class="content">
-            <h3>挙式 <span>CEREMONY</span></h3>
-            <p>心温まる式にご参加ください。</p>
-            </div>
-        </div>
-    
-        <div class="timeline-item">
-            <div class="time">12:00</div>
-            <div class="content">
-            <h3>集合写真 <span>PHOTO</span></h3>
-            <p>退場後、家族写真撮影になります。</p>
-            </div>
-        </div>
-    
-        <div class="timeline-item">
-            <div class="time">12:30</div>
-            <div class="content">
-            <h3>披露宴 <span>RECEPTION</span></h3>
-            <p>楽しいひとときをご一緒に。</p>
-            </div>
-        </div>
-    
-        <div class="timeline-item">
-            <div class="time">14:45</div>
-            <div class="content">
-            <h3>お見送り <span>THANK YOU</span></h3>
-            <p>本日はありがとうございました！</p>
-            </div>
-        </div>
-        </div>
+  <!-- ============================================
+  NAVIGATION
+  ============================================ -->
+  <header class="menu-header">
+    <input id="menuToggle" class="menu-toggle" type="checkbox" />
+    <label class="hamburger" for="menuToggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+    <nav class="menu-panel">
+      <ul>
+        <li><a href="#message-section" onclick="document.getElementById('menuToggle').checked=false;">Message</a></li>
+        <li><a href="#profile-section" onclick="document.getElementById('menuToggle').checked=false;">Profile</a></li>
+        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">Countdown</a></li>
+        <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">Schedule</a></li>
+        <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">Location</a></li>
+        <li><a href="#rsvp-section" onclick="document.getElementById('menuToggle').checked=false;">Reservation</a></li>
+        <li><a href="#footer-section" onclick="document.getElementById('menuToggle').checked=false;">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================================
+  HERO
+  ============================================ -->
+  <header class="hero-section">
+    <div class="slider-container">
+      <div class="top-track">
+        <img src="images/image_cafe.png" alt="">
+        <img src="images/image_doya.png" alt="">
+        <img src="images/image_elevator.png" alt="">
+        <img src="images/image_gpt.png" alt="">
+        <img src="images/image_last_xinyun.png" alt="">
+        <img src="images/image_cafe.png" alt="">
+        <img src="images/image_doya.png" alt="">
+        <img src="images/image_elevator.png" alt="">
+        <img src="images/image_gpt.png" alt="">
+        <img src="images/image_last_xinyun.png" alt="">
+      </div>
+      <div class="bottom-track">
+        <img src="images/image_hanabi.png" alt="">
+        <img src="images/image_haruya.png" alt="">
+        <img src="images/image_haruya_yokohama.png" alt="">
+        <img src="images/image_xinyun.png" alt="">
+        <img src="images/image_kinugawa.png" alt="">
+        <img src="images/image_hanabi.png" alt="">
+        <img src="images/image_haruya.png" alt="">
+        <img src="images/image_haruya_yokohama.png" alt="">
+        <img src="images/image_xinyun.png" alt="">
+        <img src="images/image_kinugawa.png" alt="">
+      </div>
+    </div>
+    <div class="hero-title-box">
+      <p class="title-sub">XINYUN & HARUYA presents</p>
+      <h1 class="title-main">WEDDING</h1>
+      <p class="title-date">2026.10.26 (MON)</p>
+    </div>
+  </header>
+
+  <!-- ============================================
+       MESSAGE
+       ============================================ -->
+  <h2 id="shared-message-title" class="shared-section-title fade-section">Message</h2>
+  <main id="message-section" class="message-container fade-section">
+    <section class="message-panel">
+      <p class="message-text">
+        拝啓<br><br>
+        皆さまにはますますご清祥のこととお慶び申し上げます<br><br>
+        このたび私たちは<br>
+        <span class="message-date">2026 年 03 月 05 日</span><br>
+        に入籍いたしました<br><br>
+        日頃お世話になっているたいせつな皆さまをお招きし<br>
+        ご報告とごあいさつをかねまして<br>
+        ささやかな結婚式を挙げたいと思っております<br><br>
+        ご多用中恐縮ではありますが<br>
+        ぜひご出席くださいますよう心よりお待ちしております<br><br>
+        敬白
+      </p>
     </section>
+  </main>
 
-    <section id="location-section" class="location-section fade-section">
-        <h2 class="location-title">LOCATION</h2>
-      
-        <div class="location-card">
-          <div class="info-row">
-            <span class="label">会場</span>
-            <span class="value">GARDEN WEDDING</span>
-          </div>
-      
-          <div class="info-row">
-            <span class="label">会場名</span>
-            <span class="value">ガーデンチャペル</span>
-          </div>
-      
-          <div class="info-row">
-            <span class="label">URL</span>
-            <span class="value">
-              <a href="https://brapla.com/invitation" target="_blank">
-                https://brapla.com/invitation
-              </a>
-            </span>
-          </div>
-      
-          <div class="info-row">
-            <span class="label">住所</span>
-            <span class="value">福岡県北九州市八幡西区幸神</span>
-          </div>
-      
-          <div class="info-row">
-            <span class="label">TEL</span>
-            <span class="value">03-1234-5678</span>
-          </div>
-      
-          <div class="map-wrapper">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.9613987487795!2d139.7671250152589!3d35.68123618019333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf0d52b8a4d%3A0x2e8c3d6edb2e69d3!2z5pel5pys44CB44CSMTAwLTAwMTUg5p2x5Lqs6YO95paw5a6_5Yy66KW_5Zyw77yS5LiB55uu77yR77yQ77yR!5e0!3m2!1sja!2sjp!4v1695891785792!5m2!1sja!2sjp" 
-              width="100%" 
-              height="250" 
-              style="border:0; border-radius: 10px;"
-              allowfullscreen=""
-              loading="lazy">
-            </iframe>
-          </div>
-        </div>
-      </section>
-      
-
-    <section id="rsvp" class="rsvp-section fade-section">
-        <h2 class="rsvp-title">RESERVATION</h2>
-
-        <p class="rsvp-message">
-            お手数ではございますが<br />
-            下記お日にち迄にご出欠のご回答賜りますようお願い申し上げます。<br />
-            また期日までのご回答が難しい場合は<br />
-            一度「保留」でのご回答をお願いいたします。
+  <!-- ============================================
+       PROFILE
+       ============================================ -->
+  <section id="profile-section" class="profile-section fade-section">
+    <h2 class="profile-title">OUR PROFILE</h2>
+    <div class="profile-container">
+      <div class="profile-card">
+        <img src="images/image_haruya.png" alt="Groom" class="profile-img" />
+        <h3 class="profile-name">HARUYA</h3>
+        <p class="profile-text">
+          2001年3月5日　神奈川県生まれ<br>
+          B型　研究員<br>
         </p>
-    
-        <div class="rsvp-deadline">
-            <div class="date-block">
-                <span class="num">12</span>
-                <span class="label">month</span>
-            </div>
-            <div class="separator">|</div>
-            <div class="date-block">
-                <span class="num">02</span>
-                <span class="label">day</span>
-            </div>
-            <div class="separator">|</div>
-            <div class="date-block">
-                <span class="num">2025</span>
-                <span class="label">year</span>
-            </div>
-        </div>
-
-        <!-- 出欠選択 -->
-        <div class="attendance-row">
-            <div class="attendance-buttons">
-                <div class="attend-option" data-choice="attend">
-                    <div class="circle"></div>
-                    <div class="text">
-                        <p class="jp">ご出席</p>
-                        <p class="en">Attend</p>
-                    </div>
-                </div>
-                <div class="attend-option" data-choice="absent">
-                    <div class="circle"></div>
-                    <div class="text">
-                        <p class="jp">ご欠席</p>
-                        <p class="en">Decline</p>
-                    </div>
-                </div>
-                <div class="attend-option" data-choice="keep">
-                    <div class="circle"></div>
-                    <div class="text">
-                        <p class="jp keep">保留</p>
-                        <p class="en">Keep</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <input type="hidden" name="attendance[]" />
-        </div>
-      
-        <form id="guestForm" class="rsvp-form">
-          <p class="note"><span>*</span>は必須項目です</p>
-      
-          <div class="guest open">
-            <div class="guest-header">
-              <span class="guest-title">Guest 1（送信者）</span>
-            </div>
-            <div class="guest-content">
-              <button type="button" class="remove-guest" style="display:none;">削除</button>
-      
-              <div class="field-row">
-                <label>名前*</label>
-                <div class="field-group">
-                  <input type="text" name="first_name[]" placeholder="姓" required />
-                  <input type="text" name="last_name[]" placeholder="名" required />
-                </div>
-              </div>
-      
-              <div class="field-row">
-                <label>かな</label>
-                <div class="field-group">
-                  <input type="text" name="first_name_kana[]" placeholder="せい" />
-                  <input type="text" name="last_name_kana[]" placeholder="めい" />
-                </div>
-              </div>
-      
-              <div class="field-row">
-                <label>メールアドレス*</label>
-                <input type="email" name="email[]" placeholder="例：sample@email.com" required>
-              </div>
-      
-              <div class="field-row">
-                <label>住所*</label>
-                <input type="text" name="address[]" placeholder="例：東京都渋谷区〜" required>
-              </div>
-      
-              <div class="field-row">
-                <label>アレルギー</label>
-                <input type="text" name="allergy[]" placeholder="アレルギー" />
-              </div>
-      
-              <div class="field-row">
-                <label>メッセージ</label>
-                <textarea name="message[]" placeholder="メッセージを入力"></textarea>
-              </div>
-            </div>
-          </div>
-      
-          <div class="add-guest" id="addGuestBtn">
-            <span class="plus">＋</span> お連れ様を追加する
-          </div>
-      
-          <p class="terms">利用規約をお読みの上、ご登録ください。</p>
-          <button type="submit" class="submit-btn">回答</button>
-          <p class="note"><br>キンちゃんの技術不足により通信時間がかかります🙇‍♀️</p>
-        </form>
-      </section>
-    
-    <footer class="footer-section full-width-section fade-section">
-        <h3 class="footer-title">CONTACT (TOUR STAFF)</h3>
-        <p class="contact-info">
-            担当：[担当者名]<br>
-            TEL：[電話番号]<br>
-            MAIL：[メールアドレス]
+      </div>
+      <div class="profile-card">
+        <img src="images/image_train_xinyun.png" alt="Bride" class="profile-img" />
+        <h3 class="profile-name">XINYUN</h3>
+        <p class="profile-text">
+          1997年9月20日　上海生まれ<br>
+          A型　研究員<br>
+          年間30本以上のライブに行ってます<br>
+          実はキーボードを作るのも趣味です<br>
+          当日　皆様にお会いできることを楽しみにしています
         </p>
-        <p>© 2026 XINYUN</p>
-        <button type="submit" class="return-button">
-            <a href="index.html">BACK</a>
-        </button>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       COUNTDOWN
+       ============================================ -->
+    <section id="countdown-section" class="countdown-section fade-section">
+    <!-- バンド名／イベントタイトルを強めに表示 -->
+    <h2 class="countdown-heading">Countdown</h2>
 
 
-    <script src="script.js"></script>
+
+    <div class="countdown-date">
+        <span class="date-text">2026.10.26</span>
+    </div>
+
+    <!-- カウントダウンタイマー（days/hours/minutes/seconds） -->
+    <div id="countdown-timer" class="countdown-timer" aria-live="polite">
+      <div>
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+      <div>
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+      <div>
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+      <div>
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
+    </div>
+
+    <div class="countdown-message" id="message">
+      音が鳴れば、心が叫ぶ。会場で待ってる。<br>
+      もうすぐだ — 覚悟しろ、最高の夜が始まる。<br>
+    </div>
+
+    <!-- カウントダウン終了時のメッセージを出力 -->
+    <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
+  </section>
+
+
+  <!-- ============================================
+       SCHEDULE
+       ============================================ -->
+  <section id="schedule-section" class="schedule-section fade-section">
+    <h2 class="schedule-title">SCHEDULE</h2>
+    <div class="schedule-timeline">
+      <div class="schedule-item">
+        <div class="schedule-time">10:00</div>
+        <div class="schedule-content">
+          <h3>受付開始 <span>START</span></h3>
+          <p>当日10時迄にお越しくださいますようお願い申し上げます。</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">11:30</div>
+        <div class="schedule-content">
+          <h3>挙式 <span>CEREMONY</span></h3>
+          <p>心温まる式にご参加ください。</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">12:00</div>
+        <div class="schedule-content">
+          <h3>集合写真 <span>PHOTO</span></h3>
+          <p>退場後、家族写真撮影になります。</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">12:30</div>
+        <div class="schedule-content">
+          <h3>披露宴 <span>RECEPTION</span></h3>
+          <p>楽しいひとときをご一緒に。</p>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="schedule-time">14:45</div>
+        <div class="schedule-content">
+          <h3>お見送り <span>THANK YOU</span></h3>
+          <p>本日はありがとうございました！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LOCATION
+       ============================================ -->
+  <section id="location-section" class="location-section fade-section">
+    <h2 class="location-title">LOCATION</h2>
+    <div class="location-card">
+      <div class="location-info-row">
+        <span class="location-label">会場</span>
+        <span class="location-value">GARDEN WEDDING</span>
+      </div>
+      <div class="location-info-row">
+        <span class="location-label">会場名</span>
+        <span class="location-value">ガーデンチャペル</span>
+      </div>
+      <div class="location-info-row">
+        <span class="location-label">URL</span>
+        <span class="location-value">
+          <a href="https://brapla.com/invitation" target="_blank">https://brapla.com/invitation</a>
+        </span>
+      </div>
+      <div class="location-info-row">
+        <span class="location-label">住所</span>
+        <span class="location-value">福岡県北九州市八幡西区幸神</span>
+      </div>
+      <div class="location-info-row">
+        <span class="location-label">TEL</span>
+        <span class="location-value">03-1234-5678</span>
+      </div>
+      <div class="location-map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.9613987487795!2d139.7671250152589!3d35.68123618019333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf0d52b8a4d%3A0x2e8c3d6edb2e69d3!2z5pel5pys44CB44CSMTAwLTAwMTUg5p2x5Lqs6YO95paw5a6_5Yy66KW_5Zyw77yS5LiB55uu77yR77yQ77yR!5e0!3m2!1sja!2sjp!4v1695891785792!5m2!1sja!2sjp" 
+          width="100%" 
+          height="250" 
+          style="border:0; border-radius: 10px;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+    RSVP
+    ============================================ -->
+  <section id="rsvp-section" class="rsvp-section fade-section">
+    <h2 class="rsvp-title">RESERVATION</h2>
+    <p class="rsvp-message">
+      お手数ではございますが<br />
+      下記お日にち迄にご出欠のご回答賜りますようお願い申し上げます。<br />
+      また期日までのご回答が難しい場合は<br />
+      一度「保留」でのご回答をお願いいたします。
+    </p>
+    <div class="rsvp-deadline">
+      <div class="rsvp-date-block">
+        <span class="rsvp-num">12</span>
+        <span class="rsvp-label">month</span>
+      </div>
+      <div class="rsvp-separator">|</div>
+      <div class="rsvp-date-block">
+        <span class="rsvp-num">02</span>
+        <span class="rsvp-label">day</span>
+      </div>
+      <div class="rsvp-separator">|</div>
+      <div class="rsvp-date-block">
+        <span class="rsvp-num">2025</span>
+        <span class="rsvp-label">year</span>
+      </div>
+    </div>
+
+    <div class="rsvp-attendance-row">
+      <div class="rsvp-attendance-buttons">
+        <div class="rsvp-attend-option" data-choice="attend">
+          <div class="rsvp-circle"></div>
+          <div class="rsvp-text">
+            <p class="rsvp-jp">ご出席</p>
+            <p class="rsvp-en">Attend</p>
+          </div>
+        </div>
+        <div class="rsvp-attend-option" data-choice="absent">
+          <div class="rsvp-circle"></div>
+          <div class="rsvp-text">
+            <p class="rsvp-jp">ご欠席</p>
+            <p class="rsvp-en">Decline</p>
+          </div>
+        </div>
+        <div class="rsvp-attend-option" data-choice="keep">
+          <div class="rsvp-circle"></div>
+          <div class="rsvp-text">
+            <p class="rsvp-jp">保留</p>
+            <p class="rsvp-en">Keep</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input type="hidden" name="attendance[]" />
+
+    <form id="rsvp-form" class="rsvp-form">
+      <p class="rsvp-note"><span>*</span>は必須項目です</p>
+
+      <div class="rsvp-guest rsvp-open">
+        <div class="rsvp-guest-header">
+          <span class="rsvp-guest-title">Guest 1（送信者）</span>
+        </div>
+        <div class="rsvp-guest-content">
+          <button type="button" class="rsvp-remove-guest" style="display:none;">削除</button>
+          <div class="rsvp-field-row">
+            <label>名前*</label>
+            <div class="rsvp-field-group">
+              <input type="text" name="first_name[]" placeholder="姓" required />
+              <input type="text" name="last_name[]" placeholder="名" required />
+            </div>
+          </div>
+          <div class="rsvp-field-row">
+            <label>かな</label>
+            <div class="rsvp-field-group">
+              <input type="text" name="first_name_kana[]" placeholder="せい" />
+              <input type="text" name="last_name_kana[]" placeholder="めい" />
+            </div>
+          </div>
+          <div class="rsvp-field-row">
+            <label>メールアドレス*</label>
+            <input type="email" name="email[]" placeholder="例：sample@email.com" required>
+          </div>
+          <div class="rsvp-field-row">
+            <label>郵便番号*</label>
+            <div class="field-group">
+              <input type="text" name="postal_code[]" placeholder="例：100-0001" />
+              <button type="button" class="rsvp-postal-code-btn" style="padding: 12px 16px; background: linear-gradient(135deg, #FFCC00 0%, #ffd633 100%); color: #CC0000; border: 2px solid #CC0000; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; font-family: 'Zen Maru Gothic', sans-serif;">住所自動入力</button>
+            </div>
+          </div>
+          <div class="rsvp-field-row">
+            <label>住所*</label>
+            <input type="text" name="address[]" placeholder="例：東京都渋谷区〜" required>
+          </div>
+          <div class="rsvp-field-row">
+            <label>アレルギー</label>
+            <input type="text" name="allergy[]" placeholder="アレルギー" />
+          </div>
+          <div class="rsvp-field-row">
+            <label>メッセージ</label>
+            <textarea name="message[]" placeholder="メッセージを入力"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="rsvp-add-guest" id="rsvp-add-guest-btn">
+        <span class="rsvp-plus">＋</span> お連れ様を追加する
+      </div>
+
+      <p class="rsvp-terms">利用規約をお読みの上、ご登録ください。</p>
+      <button type="submit" class="rsvp-submit-btn">回答</button>
+      <p class="rsvp-note"><br>キンちゃんの技術不足により通信時間がかかります🙇‍♀️</p>
+    </form>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer id="footer-section" class="footer-section fade-section">
+    <h3 class="footer-title">CONTACT (TOUR STAFF)</h3>
+    <p class="footer-contact-info">
+      担当：[担当者名]<br>
+      TEL：[電話番号]<br>
+      MAIL：[メールアドレス]
+    </p>
+    <p>© 2026 XINYUN</p>
+    <button type="submit" class="footer-return-button">
+      <a href="index.html">BACK</a>
+    </button>
+  </footer>
+
+  <!-- ============================================
+    scripts
+  ============================================ -->
+  <script src="scripts/global.js"></script>
+  <script src="scripts/navigation.js"></script>
+  <script src="scripts/hero.js"></script>
+  <script src="scripts/message.js"></script>
+  <script src="scripts/profile.js"></script>
+  <script src="scripts/countdown.js"></script>
+  <script src="scripts/schedule.js"></script>
+  <script src="scripts/location.js"></script>
+  <script src="scripts/rsvp.js"></script>
+  <script src="scripts/footer.js"></script>
 </body>
 </html>
