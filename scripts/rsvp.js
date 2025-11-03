@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       console.log('送信ペイロード:', payload);
 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbx5C_iftyQTRLfRFXNz_NUAnmx72y5UKUddtXh5ylrhesF6GqKuRBqYdBGH1Wq-GeOS3g/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwloLi5vVoXQjwphtVUsuCHi1tBjb4qhw-IgH7m0uR8B0rFdTyI4GJV57lb96Ds1fb9Ig/exec';
 
       const response = await fetch(scriptURL, {
         method: 'POST',
