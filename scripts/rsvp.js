@@ -286,7 +286,7 @@ function attachPostalListener(button) {
     }
 
     if (!/^\d{3}-\d{4}$|^\d{7}$/.test(postalCode)) {
-      alert('郵便番号は「123-4567」または「1234567」の形式で入力してください');
+      alert('郵便番号は「123-4567」または「1234567」の形式で入力してください。\nもしくは、お手数おかけしますが、ご自身で住所をご入力ください。');
       return;
     }
 
@@ -294,14 +294,12 @@ function attachPostalListener(button) {
 
     try {
       button.disabled = true;
-      button.textContent = '検索中...';
 
       const address = await searchPostalCode(postalCode);
 
       if (address && address.trim() !== '') {
         addressInput.value = address;
         addressInput.focus();
-        button.textContent = '完了';
 
         setTimeout(() => {
           button.textContent = originalText;
@@ -310,13 +308,13 @@ function attachPostalListener(button) {
       } else {
         button.textContent = originalText;
         button.disabled = false;
-        alert('該当する住所が見つかりませんでした。\n郵便番号をご確認ください。');
+        alert('該当する住所が見つかりませんでした。\nお手数おかけしますが、ご自身で住所をご入力ください。');
       }
     } catch (error) {
       console.error('エラー:', error);
       button.textContent = originalText;
       button.disabled = false;
-      alert('住所の取得に失敗しました。\nもう一度お試しください。');
+      alert('住所の取得に失敗しました。\nお手数おかけしますが、ご自身で住所をご入力ください。');
     }
   });
 }
