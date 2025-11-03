@@ -1,125 +1,58 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>No Wedding No Life - 日本語</title>
-  
-  <!-- フォント -->
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- 共通スタイル -->
-  <link rel="stylesheet" href="styles/global.css" />
-  <link rel="stylesheet" href="styles/navigation.css" />
-  <link rel="stylesheet" href="styles/hero.css" />
-  <link rel="stylesheet" href="styles/message.css" />
-  <link rel="stylesheet" href="styles/profile.css" />
-  <link rel="stylesheet" href="styles/countdown.css" />
-  <link rel="stylesheet" href="styles/schedule.css" />
-  <link rel="stylesheet" href="styles/location.css" />
-  <link rel="stylesheet" href="styles/rsvp.css" />
-  <link rel="stylesheet" href="styles/footer.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Wedding No Life</title>
+  <link rel="stylesheet" href="intro/intro_style.css" />
 </head>
 <body>
-  <!-- ページ最上部バー -->
-  <div class="top-bar"></div>
-  
-  <!-- ナビゲーション -->
-  <div id="navigation-section"></div>
-  
-  <!-- ヒーロー -->
-  <div id="hero-section"></div>
-  
-  <!-- Message セクション -->
-  <div id="message-section"></div>
-  
-  <!-- Profile セクション -->
-  <div id="profile-section"></div>
-  
-  <!-- Countdown セクション -->
-  <div id="countdown-section"></div>
-  
-  <!-- Schedule セクション -->
-  <div id="schedule-section"></div>
-  
-  <!-- Location セクション -->
-  <div id="location-section"></div>
-  
-  <!-- RSVP セクション -->
-  <div id="rsvp-section"></div>
-  
-  <!-- Footer セクション -->
-  <div id="footer-section"></div>
+  <div class="intro-screen">
+    <h1 class="title-intro">No Wedding <br>No life</h1>
+  </div>
 
-  <!-- 共通スクリプト（最初に読み込む） -->
-  <script src="scripts/global.js"></script>
+  <!-- 写真がループで流れる背景 -->
+<div class="photo-background">
+    <!-- 上の段：左→右 -->
+    <div class="photo-row top">
+      <img src="images/image_cafe.png" alt="">
+      <img src="images/image_doya.png" alt="">
+      <img src="images/image_elevator.png" alt="">
+      <img src="images/image_gpt.png" alt="">
+      <img src="images/image_last_xinyun.png" alt="">
+      <!-- ループ用に同じものを複製 -->
+      <img src="images/image_cafe.png" alt="">
+      <img src="images/image_doya.png" alt="">
+      <img src="images/image_elevator.png" alt="">
+      <img src="images/image_gpt.png" alt="">
+      <img src="images/image_last_xinyun.png" alt="">
+    </div>
+  
+    <!-- 下の段：右→左 -->
+    <div class="photo-row bottom">
+      <img src="images/image_hanabi.png" alt="">
+      <img src="images/image_haruya.png" alt="">
+      <img src="images/image_haruya_yokohama.png" alt="">
+      <img src="images/image_xinyun.png" alt="">
+      <img src="images/image_kinugawa.png" alt="">
+      <!-- 同じく複製 -->
+      <img src="images/image_hanabi.png" alt="">
+      <img src="images/image_haruya.png" alt="">
+      <img src="images/image_haruya_yokohama.png" alt="">
+      <img src="images/image_xinyun.png" alt="">
+      <img src="images/image_kinugawa.png" alt="">
+    </div>
+  </div>
+  
+  <!-- 上から降りてくる背景 -->
+  <div class="overlay"></div>
 
-  <!-- 動的読み込みスクリプト -->
-  <script>
-    // コンポーネント読み込み関数
-    async function loadComponents() {
-      const components = [
-        'navigation',
-        'hero',
-        'message',
-        'profile',
-        'countdown',
-        'schedule',
-        'location',
-        'rsvp',
-        'footer'
-      ];
+  <!-- 言語ボタン -->
+  <div class="lang-buttons">
+    <a href="jp.html" class="lang-btn">日本語</a>
+    <a href="cn.html" class="lang-btn">中文</a>
+  </div>
 
-      for (const component of components) {
-        try {
-          const response = await fetch(`components/${component}.html`);
-          if (!response.ok) {
-            throw new Error(`Failed to load ${component}.html: ${response.status}`);
-          }
-          
-          const html = await response.text();
-          const sectionId = `${component}-section`;
-          const element = document.getElementById(sectionId);
-          
-          if (element) {
-            element.innerHTML = html;
-            console.log(`✓ Loaded ${component}`);
-          } else {
-            console.warn(`Element not found: ${sectionId}`);
-          }
-        } catch (error) {
-          console.error(`✗ Error loading ${component}:`, error);
-        }
-      }
-
-      // コンポーネント読み込み後にスクリプトを実行
-      loadComponentScripts();
-    }
-
-    // コンポーネント固有のスクリプトを読み込む
-    async function loadComponentScripts() {
-      const scripts = [
-        'navigation',
-        'hero',
-        'message',
-        'profile',
-        'countdown',
-        'schedule',
-        'location',
-        'rsvp',
-        'footer'
-      ];
-
-      for (const script of scripts) {
-        const scriptEl = document.createElement('script');
-        scriptEl.src = `scripts/${script}.js`;
-        scriptEl.defer = true;
-        document.body.appendChild(scriptEl);
-      }
-    }
-
-    // ページ読み込み時にコンポーネントを読み込む
-    document.addEventListener('DOMContentLoaded', loadComponents);
-  </script>
+  <script src="intro/intro_animation.js"></script>
 </body>
 </html>
