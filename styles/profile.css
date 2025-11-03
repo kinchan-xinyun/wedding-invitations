@@ -60,7 +60,7 @@
     border: 5px solid #000;
     border-radius: 8px;
     padding: 30px 20px;
-    height: 70vh;
+    height: 80vh;
     width: calc(50% - 20px); /* ギャップに合わせて調整 */
     box-sizing: border-box;
     /* タワレコ風のツートンカラーの影を強調 */
@@ -100,12 +100,12 @@
 }
 
 .profile-name {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 2em; /* より大きく */
+    font-family: "Oooh Baby", cursive;
+    font-style: normal;
+    font-size: 3em; /* より大きく */
     font-weight: 900;
     color: #E53935; /* 赤 */
     margin-bottom: 10px;
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 

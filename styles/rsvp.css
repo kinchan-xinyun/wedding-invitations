@@ -445,6 +445,7 @@
     
     /* マージンは必要に応じて親要素で調整 */
     margin-top: 10px; /* ヘッダー内に配置される想定でリセット */
+    font-family: "Yusei Magic", sans-serif;
 }
 
 .rsvp-remove-guest:hover {
@@ -494,6 +495,10 @@
     .rsvp-circle {
         width: 80px;
         height: 80px;
+    }
+
+    .rsvp-circle-text {
+        font-size: 0.9rem;
     }
 
     .rsvp-jp {
