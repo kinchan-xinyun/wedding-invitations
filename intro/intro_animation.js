@@ -29,7 +29,7 @@ function initTypewriter() {
   
       const startNextLine = () => {
         const nextElement = typewriterLines[1];
-        const nextText = nextElement.textContent || "No life"; // HTMLから取得
+        const nextText = nextElement.textContent || "No life."; // HTMLから取得
         nextElement.textContent = "";
         let nextIndex = 0;
   
