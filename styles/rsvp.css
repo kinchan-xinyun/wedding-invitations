@@ -43,7 +43,7 @@
     padding: 30px 40px;
     max-width: 750px;
     text-align: center;
-    font-family: sans-serif;
+    font-family: "Yusei Magic", sans-serif;
     color: #FFFFFF; /* 白文字で可読性を確保 */
     /* メッセージボックスの背景をわずかに濃い黒に */
     background: #222222;
@@ -62,16 +62,14 @@
     align-items: center;
     gap: 30px;
     margin: 50px auto 60px;
-    padding: 30px 50px;
-    max-width: 650px;
+    padding: 30px 20px;
+    max-width: 500px;
     /* 背景を赤で強調 */
     background: #E53935;
     border-radius: 12px;
     /* 黄色/金の太いボーダー */
     border: 4px solid #FFC107;
-    /* 黒背景に合わせて影を黒で統一 */
-    box-shadow: 6px 6px 0px #000000; 
-    font-family: 'Arial Black', sans-serif;
+    font-family: "Luckiest Guy", "Arial Black", "Impact", sans-serif;
     letter-spacing: 0.1em;
     position: relative;
     z-index: 1;
@@ -92,7 +90,7 @@
     text-shadow: 2px 2px 0px #000;
     letter-spacing: 2px;
     margin-bottom: 5px;
-    font-family: 'Arial Black', sans-serif;
+    font-family: "Luckiest Guy", "Arial Black", "Impact", sans-serif;
     line-height: 1;
 }
 
@@ -155,6 +153,16 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0; /* 縮小させない */
+}
+
+.rsvp-circle-text {
+    font-family: "Caveat Brush", cursive;
+    font-style: normal;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #E53935;
+    line-height: 1.2;
+    margin: 0;
 }
 
 .rsvp-text {
@@ -277,6 +285,7 @@
     padding: 10px 20px; 
     font-size: 1.2em;
     line-height: 1.5;
+    font-family: "Yusei Magic", sans-serif;
 }
 
 /* フォームフィールドのラベルと入力欄 */
@@ -288,6 +297,7 @@
     font-size: 15px;
     letter-spacing: 0.3px;
     margin-top: 10px;
+    font-family: "Yusei Magic", sans-serif;
 }
 
 .rsvp-field-row input,
@@ -299,7 +309,7 @@
     font-size: 15px;
     box-sizing: border-box;
     background: #ffffff;
-    font-family: sans-serif;
+    font-family: "Yusei Magic", sans-serif;
     color: #333;
 }
 
@@ -361,6 +371,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "Yusei Magic", sans-serif;
 }
 .rsvp-add-guest:hover {
     background: #E53935;
@@ -389,6 +400,7 @@
     padding: 10px 30px;
     font-size: 16px;
     font-weight: 900;
+    font-family: "Yusei Magic", sans-serif;
 }
 
 .rsvp-submit-btn:hover {

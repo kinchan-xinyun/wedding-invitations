@@ -146,7 +146,7 @@
     color: #fff; /* 白に変更 */
     letter-spacing: 1px;
     margin-top: 80px; 
-    font-family: sans-serif;
+    font-family: "Yusei Magic", sans-serif;
     z-index: 1;
     position: relative;
     text-shadow: none;
@@ -155,7 +155,7 @@
 .countdown-finish {
     font-size: 2rem;
     color: #E53935; /* 赤 */
-    font-family: 'Impact', sans-serif;
+    font-family: "Yusei Magic", sans-serif;
     margin-top: 40px;
     z-index: 1;
     position: relative;
