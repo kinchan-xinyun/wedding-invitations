@@ -1,54 +1,48 @@
+/* ======== タワレコ風 メッセージコンテナ (グラデーションなし) ======== */
+#shared-message-title {
+    font-size: 4em;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    font-weight: 900;
+    color: #E53935; /* 赤 */
+    letter-spacing: 4px; /* より強調 */
+    text-transform: uppercase;
+    /* タワレコ風のツートンカラーの影 */
+    text-shadow: 
+        4px 4px 0px #FFC107, /* 黄色/金 */
+        8px 8px 0px #000000; /* 黒 */
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
 .message-container {
     display: flex;
     flex-wrap: wrap;
     margin: 20px auto;
     justify-content: center;
-    padding: 40px 30px;
-    background: linear-gradient(135deg, #fdfcfa 0%, #f9f6f0 100%);
-    border: 2px solid #8b7355;
+    padding: 50px 40px; /* パディングを増やす */
+    /* 背景グラデーションを削除し、シンプルな白の単色に */
+    background: #FFFFFF;
+    /* シンプルな黒の太いボーダー */
+    border: 5px solid #000000;
+    /* シンプルな影に変更 */
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        10px 10px 0px #FFC107, /* 黄色/金 */
+        0 15px 35px rgba(0, 0, 0, 0.2);
     position: relative;
-    max-width: 70%;
-    width: 100%;
+    max-width: 750px; /* 最大幅を調整 */
+    width: 90%;
     box-sizing: border-box;
+    margin-bottom: 80px;
 }
 
-.message-container::before {
-    content: '';
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    border: 1px solid rgba(139, 115, 85, 0.2);
-    pointer-events: none;
-}
-
+/* 複雑な内側のボーダーや背景パターンを全て削除 */
+.message-container::before,
 .message-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 115, 85, 0.02) 2px,
-            rgba(139, 115, 85, 0.02) 4px
-        ),
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(139, 115, 85, 0.02) 2px,
-            rgba(139, 115, 85, 0.02) 4px
-        );
-    pointer-events: none;
+    content: none;
 }
 
 .message-panel {
@@ -58,91 +52,68 @@
 }
 
 .message-text {
-    font-size: 1.1em;
-    line-height: 2;
+    font-size: 1.15em;
+    line-height: 1.8;
     text-align: center;
     max-width: 100%;
     position: relative;
     z-index: 1;
-    color: #3d3d3d;
-    letter-spacing: 0.08em;
-    font-weight: 300;
+    color: #333333;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    font-family: sans-serif;
 }
 
 .message-date {
     font-size: 1.2em;
-    color: #8b4513;
-    background-color: transparent;
-    padding: 8px 20px;
+    color: #E53935; /* 赤 */
+    background-color: #FFC107; /* 黄色/金 */
+    padding: 10px 25px; /* パディングを調整 */
     display: inline-block;
-    margin-block-start: 15px;
+    margin-block-start: 25px;
     margin-block-end: 15px;
     width: fit-content;
-    font-family: 'Hiragino Mincho ProN', serif;
-    border: 2px solid #8b4513;
-    border-radius: 2px;
-    position: relative;
-}
-
-.message-date::before {
-    content: '◆ ';
-    margin-right: 8px;
-    color: #cc0000;
-}
-
-.message-date::after {
-    content: ' ◆';
-    margin-left: 8px;
-    color: #cc0000;
-}
-
-
-#shared-message-title {
-    font-size: 3em;
-    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    font-family: 'Arial Black', 'Impact', sans-serif; /* シンプルで力強いフォント */
     font-weight: 900;
-    color: #CC0000;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-shadow: 
-        2px 2px 0px rgba(255, 204, 0, 0.4),
-        4px 4px 6px rgba(0, 0, 0, 0.3);
-    padding-bottom: 10px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    text-align: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    /* ボーダーをシンプルに */
+    border: 3px solid #000000;
+    border-radius: 4px;
     position: relative;
-    z-index: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0px #000;
 }
 
+/* 複雑な装飾記号を削除し、シンプルに */
+.message-date::before,
+.message-date::after {
+    content: none;
+}
+
+
+/* ======== モバイル調整 ======== */
 @media (max-width: 600px) {
     .message-container {
         margin: 20px auto;
-        padding: 40px 25px;
-        max-width: 95%;
+        padding: 30px 30px;
+        border-width: 4px;
     }
+    
 
     .message-text {
         font-size: 1rem;
-        line-height: 2;
-        letter-spacing: 0.08em;
+        line-height: 1.7;
     }
 
     #shared-message-title {
-        font-size: 1.8rem;
-        letter-spacing: 4px;
+        font-size: 3rem;
+        letter-spacing: 3px;
         margin: 20px 0 20px 0;
-    }
-
-    #shared-message-title::before,
-    #shared-message-title::after {
-        font-size: 0.5em;
     }
 
     .message-date {
         font-size: 1rem;
-        padding: 6px 15px;
+        padding: 8px 18px;
+        border-width: 2px;
     }
 }

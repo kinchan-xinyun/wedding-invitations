@@ -1,114 +1,61 @@
+/* タワレコ風 - グラデーションと複雑な装飾を削除 */
 .location-section {
-    background: 
-        radial-gradient(ellipse at 30% 40%, rgba(255, 204, 0, 0.4) 0%, transparent 45%),
-        radial-gradient(ellipse at 70% 60%, rgba(255, 230, 100, 0.35) 0%, transparent 45%),
-        linear-gradient(135deg, #ffd633 0%, #FFCC00 25%, #ffd633 50%, #FFCC00 75%, #ffd633 100%);
-    padding: 60px 20px;
+    /* グラデーションと複雑な背景色を削除し、シンプルな白っぽい色に */
+    background: #FFFDE7;
+    padding: 80px 20px;
     text-align: center;
-    color: #111;
+    color: #333;
     position: relative;
     overflow: hidden;
-    border-top: 3px solid #CC0000;
-    border-bottom: 3px solid #CC0000;
+    /* タワレコのキーカラーである赤と黄色（金）で上下を強調 */
+    border-top: 8px solid #E53935; /* 強調された赤 */
+    border-bottom: 8px solid #FFC107; /* 濃い黄色（金） */
 }
 
-.location-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(255, 255, 255, 0.04) 3px,
-            rgba(255, 255, 255, 0.04) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(204, 0, 0, 0.04) 3px,
-            rgba(204, 0, 0, 0.04) 6px
-        );
-    animation: musicFlow 10s linear infinite;
-    pointer-events: none;
-}
-
+/* 複雑な背景エフェクト（::before, ::after, @keyframes）を全て削除 */
+.location-section::before,
 .location-section::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150%;
-    height: 150%;
-    background: 
-        conic-gradient(
-            from 0deg at 50% 50%,
-            transparent 0deg,
-            rgba(255, 255, 255, 0.05) 60deg,
-            transparent 120deg,
-            rgba(204, 0, 0, 0.03) 180deg,
-            transparent 240deg,
-            rgba(255, 214, 51, 0.04) 300deg,
-            transparent 360deg
-        );
-    transform: translate(-50%, -50%);
-    animation: musicRotate 15s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes musicFlow {
-    0% { 
-        transform: translateX(0) translateY(0);
-    }
-    100% { 
-        transform: translateX(20px) translateY(-20px);
-    }
-}
-
-@keyframes musicRotate {
-    0% { 
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% { 
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+    content: none;
 }
 
 .location-title {
-    color: #CC0000;
-    font-size: 3em;
-    font-weight: 900;
+    font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
-    letter-spacing: 2px;
+    font-weight: 900;
+    color: #E53935; /* 赤 */
+    letter-spacing: 4px; /* より強調 */
     text-transform: uppercase;
+    /* タワレコ風のツートンカラーの影 */
     text-shadow: 
-        2px 2px 0px rgba(255, 204, 0, 0.5),
-        4px 4px 8px rgba(0, 0, 0, 0.4);
+        4px 4px 0px #FFC107, /* 黄色/金 */
+        8px 8px 0px #000000; /* 黒 */
+    padding-bottom: 10px;
+    margin-top: 40px;
     margin-bottom: 30px;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
 .location-card {
-    background: linear-gradient(145deg, #fffef4, #fffef8);
-    border-left: 6px solid #CC0000;
-    border-radius: 12px;
-    box-shadow: 3px 3px 8px rgba(204, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* グラデーションを削除し、シンプルな白背景に */
+    background: #FFFFFF;
+    /* 左のボーダーはタワレコカラーの赤で太く */
+    border-left: 8px solid #E53935;
+    border-radius: 8px; /* 角をシンプルに */
+    /* シンプルな影に変更 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     padding: 30px;
     max-width: 1000px;
     margin: 0 auto;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: none; /* ホバーアニメーションを削除 */
 }
 
 .location-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 5px 5px 15px rgba(204, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* ホバーアニメーションと複雑な影を削除し、シンプルな強調のみ */
+    transform: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .location-info-row {
@@ -118,27 +65,30 @@
 }
 
 .location-label {
+    /* タワレコカラー（赤）を使い、強調 */
     display: inline-block;
     min-width: 80px;
-    background-color: #CC0000;
+    background-color: #E53935; /* 赤 */
     color: #fff;
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.9rem; /* やや大きく */
     text-align: center;
-    border-radius: 5px;
+    border-radius: 4px; /* シンプルな角丸 */
     padding: 5px 8px;
-    margin-right: 10px;
+    margin-right: 15px; /* マージンを少し広く */
+    /* ラベルに黄色いボーダーを追加し、タワレコ感を出す */
+    border: 2px solid #FFC107;
 }
 
 .location-value {
-    font-size: 0.95rem;
+    font-size: 1rem; /* 少し大きく、読みやすく */
     line-height: 1.6;
     word-break: break-word;
-    font-family: 'Zen Maru Gothic', sans-serif;
+    font-family: sans-serif; /* シンプルなフォントに */
 }
 
 .location-value a {
-    color: #CC0000;
+    color: #E53935; /* 赤 */
     font-weight: 700;
     text-decoration: underline;
 }
@@ -146,24 +96,28 @@
 .location-map-wrapper {
     margin-top: 20px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(204, 0, 0, 0.1);
+    border-radius: 8px;
+    /* シンプルな影に変更 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 地図の枠にも赤のボーダーを追加 */
+    border: 2px solid #E53935;
 }
 
+/* ---- Responsive ---- */
 @media (max-width: 600px) {
     .location-section {
         padding: 50px 15px;
     }
 
     .location-title {
-        font-size: 2rem;
-        margin-bottom: 25px;
-        letter-spacing: 1px;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
     }
 
     .location-card {
         padding: 20px 15px;
-        border-left-width: 4px;
+        border-left-width: 6px;
     }
 
     .location-info-row {
@@ -176,12 +130,12 @@
         width: fit-content;
         margin-bottom: 6px;
         margin-right: 0;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         padding: 4px 8px;
     }
 
     .location-value {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         padding-left: 0;
     }
 }

@@ -1,4 +1,4 @@
-/* スライダーコンテナ */
+/* スライダーコンテナ (変更なし - 画像配置用) */
 .slider-container {
     position: absolute;
     top: 0;
@@ -33,59 +33,73 @@
     align-items: center;
 }
 
+/* --- タイトルボックス --- */
 .hero-title-box {
     position: absolute;
     z-index: 5;
     text-align: center;
     padding: 20px;
-    background: linear-gradient(145deg, #FFCC00 0%, #ffd633 100%);
-    border: 5px solid #CC0000;
-    box-shadow: 0 0 30px rgba(204, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
-    animation: titleFloat 3s ease-in-out infinite;
+    
+    /* 背景色をシンプルな黄色/金に */
+    background: #FFC107;
+    
+    /* 太い黒のボーダー */
+    border: 5px solid #000000;
+    
+    /* 複雑な影を削除し、力強い赤のオフセットシャドウに */
+    box-shadow: 10px 10px 0px #E53935;
+    
+    /* 浮遊アニメーションを削除 */
+    animation: none; 
+    
     left: 50%;
+    /* 変形もリセット */
     transform: translateX(-50%);
     box-sizing: border-box;
     width: fit-content;
     max-width: calc(100% - 40px);
 }
 
-@keyframes titleFloat {
-    0%, 100% { 
-        transform: translateX(-50%) translateY(0);
-    }
-    50% { 
-        transform: translateX(-50%) translateY(-5px);
-    }
-}
 
 .title-sub {
-    font-family: 'Luckiest Guy', sans-serif;
+    /* フォントをタワレコ風の力強いサンセリフ体に統一 */
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-size: 1.5em;
-    color: #CC0000;
+    color: #000000;
     margin: 0 0 5px 0;
-    transform: skewX(10deg);
+    transform: none;
+    letter-spacing: 2px;
+    font-weight: 700; /* 太字を強調 */
 }
 
 .title-main {
     font-size: 10em;
     color: #CC0000;
+    /* メインタイトルはさらにインパクトのあるフォントに */
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    /* 左に傾ける */
+    transform: skewX(10deg);
     margin: 5px 10px;
     line-height: 1.0;
-    transform: skewX(10deg);
-    text-shadow: 2px 2px 0px rgba(255, 204, 0, 0.4), 4px 4px 6px rgba(0, 0, 0, 0.3);
+    text-shadow: 4px 4px 0px #000000;
 }
 
 .title-date {
     font-size: 2em;
-    color: #f8f8f8;
-    background-color: #CC0000;
+    color: #FFFFFF;
+    background-color: #000000;
     padding: 5px 15px;
     display: inline-block;
     margin-top: 10px;
     width: fit-content;
+    /* サブタイトルと同じ力強いフォントに */
+    font-family:  'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    letter-spacing: 1px;
+    border-bottom: 5px solid #E53935;
+    font-weight: 700;
 }
 
-/* アニメーション */
+/* アニメーション (スライダー) - 維持 */
 @keyframes slide-to-right {
     0% {
         transform: translateX(0);
@@ -129,32 +143,23 @@
         padding: 10px 8px;
         border-width: 3px;
         max-width: calc(100% - 5px);
-        animation: titleFloatMobile 3s ease-in-out infinite;
-    }
-
-    @keyframes titleFloatMobile {
-        0%, 100% { 
-            transform: translateX(-50%) translateY(0);
-        }
-        50% { 
-            transform: translateX(-50%) translateY(-5px);
-        }
+        transform: translateX(-50%);
     }
 
     .title-main { 
-        font-size: 2.5rem;
-        line-height: 1.1;
+        font-size: 3.0rem; /* より大きく */
+        line-height: 1.0;
         margin: 2px 3px;
-        transform: skewX(5deg);
+        transform: none;
     }
     
     .title-sub {
-        font-size: 0.9rem;
+        font-size: 1.0rem;
         margin: 0 0 3px 0;
     }
     
     .title-date { 
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 4px 10px;
         margin-top: 6px;
     }
@@ -164,4 +169,3 @@
         margin-right: 3px;
     }
 }
-

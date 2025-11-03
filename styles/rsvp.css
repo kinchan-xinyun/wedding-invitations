@@ -1,47 +1,36 @@
-/* RSVPセクション */
+/* ======== タワレコ風 RSVPセクション (黒背景・グラデーションなし) ======== */
 .rsvp-section {
     margin: 0 auto;
     padding: 60px 20px;
-    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    /* 背景をシンプルな黒に近い単色に変更 */
+    background: #111111;
     position: relative;
     overflow: hidden;
-    border-top: 3px solid #CC0000;
+    /* 上のボーダーはタワレコの赤で強調 */
+    border-top: 8px solid #E53935;
+    border-bottom: 8px solid #FFC107;
 }
 
+/* 複雑な背景エフェクト（::before）は削除 */
 .rsvp-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 20px,
-            rgba(255, 204, 0, 0.03) 20px,
-            rgba(255, 204, 0, 0.03) 40px
-        );
-    pointer-events: none;
+    content: none;
 }
 
 .rsvp-title {
     text-align: center;
-    font-size: 3.5em;
+    font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-weight: 900;
-    color: #FFCC00;
+    color: #FFC107; /* 黄色/金で目立たせる */
+    /* タワレコ風のツートンカラーの影を適用 */
     text-shadow: 
-        4px 4px 0px rgba(204, 0, 0, 0.9),
-        6px 6px 12px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(255, 204, 0, 0.5),
-        0 0 60px rgba(255, 204, 0, 0.3);
+        4px 4px 0px #E53935, /* 赤 */
+        8px 8px 0px #f6f0f0; /* 白 */
     letter-spacing: 4px;
     text-transform: uppercase;
     padding: 20px 0;
     margin: 0 auto 50px;
-    transform: skewX(-2deg) scale(1);
+    transform: none; 
     position: relative;
     z-index: 1;
     max-width: 800px;
@@ -49,18 +38,19 @@
 
 .rsvp-message {
     font-size: 1.1rem;
-    line-height: 2.2;
-    margin: 60px auto 50px;
-    padding: 35px 40px;
+    line-height: 2;
+    margin: 40px auto 40px;
+    padding: 30px 40px;
     max-width: 750px;
     text-align: center;
-    font-family: 'Zen Maru Gothic', sans-serif;
-    color: #ffffff;
-    background: linear-gradient(135deg, rgba(255, 204, 0, 0.15) 0%, rgba(204, 0, 0, 0.1) 100%);
-    border-left: 4px solid #FFCC00;
-    border-right: 4px solid #FFCC00;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    font-family: sans-serif;
+    color: #FFFFFF; /* 白文字で可読性を確保 */
+    /* メッセージボックスの背景をわずかに濃い黒に */
+    background: #222222;
+    /* ボーダーを黄色/金に変更 */
+    border: 3px solid #FFC107;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
     letter-spacing: 0.5px;
     position: relative;
     z-index: 1;
@@ -72,12 +62,15 @@
     align-items: center;
     gap: 30px;
     margin: 50px auto 60px;
-    padding: 40px 50px;
+    padding: 30px 50px;
     max-width: 650px;
-    background: linear-gradient(135deg, rgba(255, 204, 0, 0.2) 0%, rgba(204, 0, 0, 0.15) 100%);
-    border-radius: 20px;
-    border: 2px solid rgba(255, 204, 0, 0.4);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* 背景を赤で強調 */
+    background: #E53935;
+    border-radius: 12px;
+    /* 黄色/金の太いボーダー */
+    border: 4px solid #FFC107;
+    /* 黒背景に合わせて影を黒で統一 */
+    box-shadow: 6px 6px 0px #000000; 
     font-family: 'Arial Black', sans-serif;
     letter-spacing: 0.1em;
     position: relative;
@@ -87,45 +80,43 @@
 .rsvp-date-block {
     text-align: center;
     position: relative;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 .rsvp-num {
     display: block;
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 900;
-    color: #FFCC00;
-    text-shadow: 
-        2px 2px 0px rgba(204, 0, 0, 0.8),
-        4px 4px 8px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 204, 0, 0.6);
+    color: #FFC107; /* 黄色/金 */
+    /* シンプルな赤の影 */
+    text-shadow: 2px 2px 0px #000;
     letter-spacing: 2px;
-    margin-bottom: 8px;
-    font-family: 'Luckiest Guy', 'Arial Black', sans-serif;
+    margin-bottom: 5px;
+    font-family: 'Arial Black', sans-serif;
     line-height: 1;
 }
 
 .rsvp-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    color: #ffffff;
-    font-weight: 600;
+    color: #FFFFFF; /* 白 */
+    font-weight: 700;
     letter-spacing: 1.5px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    opacity: 0.95;
+    text-shadow: none;
+    opacity: 1;
 }
 
 .rsvp-separator {
     font-weight: 900;
-    color: #FFCC00;
-    font-size: 2rem;
-    text-shadow: 
-        1px 1px 0px rgba(204, 0, 0, 0.8),
-        0 0 15px rgba(255, 204, 0, 0.5);
-    transform: translateY(-8px);
-    opacity: 0.9;
+    color: #FFC107; /* 黄色/金 */
+    font-size: 2.2rem;
+    text-shadow: none;
+    transform: none;
+    opacity: 1;
     letter-spacing: 2px;
 }
+
+/* --- 出欠確認ボタン --- */
 
 .rsvp-attendance-row {
     margin: 40px 0 45px;
@@ -153,17 +144,17 @@
 }
 
 .rsvp-circle {
-    width: 150px;
-    height: 150px;
-    border: 3px dashed #ff3333;
+    width: 120px;
+    height: 120px;
+    border: 4px solid #E53935; 
     border-radius: 50%;
-    margin: 0 auto 8px;
+    margin: 0; /* flex配置のためマージンをリセット */
     position: relative;
     transition: 0.3s ease;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* 縮小させない */
 }
 
 .rsvp-text {
@@ -171,17 +162,17 @@
 }
 
 .rsvp-jp {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #ff3333;
-    transition: color 0.3s ease;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #FFC107;
+    line-height: 1.2;
     margin: 0;
 }
 
 .rsvp-en {
-    font-size: 1.5rem;
-    color: #ff3333;
-    letter-spacing: 0.03em;
+    font-size: 1.2rem;
+    color: #FFFFFF; /* 英文は白文字 */
+    text-transform: uppercase;
     margin: 0;
 }
 
@@ -221,277 +212,237 @@
     transform: scale(1.05);
 }
 
-@keyframes stamp {
-    0% {
-        transform: scale(0.7);
-        opacity: 0.6;
-    }
-    50% {
-        transform: scale(1.15);
-    }
-    70% {
-        transform: scale(0.95);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes stampIcon {
-    0% {
-        transform: translate(-50%, -50%) scale(0) rotate(-30deg);
-        opacity: 0;
-    }
-    60% {
-        transform: translate(-50%, -50%) scale(1.2) rotate(5deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1) rotate(-10deg);
-        opacity: 1;
-    }
-}
 /* アニメーション完了後の状態を保持 */
 .rsvp-attend-option.selected .stamp-icon {
     animation-fill-mode: forwards !important;
 }
 
+/* 選択時のスタイル変更 */
+.rsvp-attend-option.selected .rsvp-circle {
+    background: #E53935;
+    border: 4px solid #FFC107;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+}
+
+.rsvp-attend-option.selected .rsvp-jp {
+    color: #FFFFFF;
+    font-weight: 900;
+}
+
+.rsvp-attend-option.selected .rsvp-en {
+    color: #FFC107;
+    font-weight: 900;
+}
+
+/* --- フォーム --- */
 .rsvp-form {
     margin: 0 auto; 
-    max-width: 920px;
+    max-width: 750px;
     text-align: left;
-    background: linear-gradient(145deg, #fffef8, #fff8e1);
-    padding: 40px 35px;
-    border-radius: 16px;
-    border: 4px solid #CC0000;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.2), 
-        inset 0 2px 4px rgba(255, 255, 255, 0.6),
-        0 0 0 1px rgba(255, 204, 0, 0.3);
+    /* フォームは白背景で可読性を維持 */
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 8px;
+    /* ボーダーをタワレコの赤で強調 */
+    border: 4px solid #E53935;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2); /* 白い影 */
     position: relative;
     z-index: 1;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease-out;
     overflow: hidden;
-}
-
-.rsvp-form::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #FFCC00, #CC0000, #FFCC00);
-    background-size: 200% 100%;
-    animation: borderGradient 3s linear infinite;
-}
-
-@keyframes borderGradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 200% 50%;
-    }
-}
-
-.rsvp-form:hover {
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.25), 
-        inset 0 2px 4px rgba(255, 255, 255, 0.6),
-        0 0 20px rgba(255, 204, 0, 0.2);
-    transform: translateY(-2px);
-    border-color: #ff3333;
+    background: #FFFFFF;
+    border: 4px solid #E53935;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    /* ... */
 }
 
 .rsvp-note {
-    color: #CC0000;
+    color: #E53935;
+}
+
+.rsvp-note-xinyun {
+    color: #E53935;
     font-size: 14px;
-    margin-bottom: 25px;
-    font-weight: 600;
-    letter-spacing: 0.2px;
+    margin-top: -30px;
     text-align: center;
-    padding: 10px;
-    background: linear-gradient(135deg, rgba(255, 204, 0, 0.1), rgba(204, 0, 0, 0.05));
-    border-radius: 8px;
-    border-left: 3px solid #CC0000;
 }
 
-.rsvp-guest {
-    border: 3px dashed #FFCC00;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    background: linear-gradient(145deg, #fffef8, #fffef6);
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-}
-
-.rsvp-guest.rsvp-open .rsvp-guest-content {
-    display: block;
-}
-
-.rsvp-guest-content {
-    display: none;
-    padding: 20px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 254, 248, 0.3));
-}
-
+/* GUEST 1 (送信者) ヘッダー */
 .rsvp-guest-header {
-    background: linear-gradient(135deg, #FFCC00 0%, #ffd633 100%);
-    color: #CC0000;
-    padding: 16px 20px;
-    font-weight: 700;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.5px;
+    background: #FFC107; /* 黄色/金 */
+    color: #E53935; /* 赤の文字 */
+    font-weight: 900;
+    /* ... (その他スタイル維持) ... */
+    /* 元画像に合わせるため、paddingやフォントサイズを微調整 */
+    padding: 10px 20px; 
+    font-size: 1.2em;
+    line-height: 1.5;
 }
 
-.rsvp-guest-header:hover {
-    background: linear-gradient(135deg, #ffe066 0%, #FFCC00 100%);
-    transform: translateX(3px);
-}
-
-.rsvp-remove-guest {
-    background: #CC0000;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-}
-
-.rsvp-remove-guest:hover {
-    background: #a50000;
-}
-
-.rsvp-field-row {
-    margin-bottom: 20px;
-}
-
+/* フォームフィールドのラベルと入力欄 */
 .rsvp-field-row label {
     display: block;
     font-weight: 700;
-    color: #CC0000;
-    margin-bottom: 8px;
+    color: #E53935; /* 赤 */
+    margin-bottom: 5px; /* マージンを調整 */
     font-size: 15px;
     letter-spacing: 0.3px;
-}
-
-.rsvp-field-group {
-    display: flex;
-    gap: 10px;
+    margin-top: 10px;
 }
 
 .rsvp-field-row input,
 .rsvp-field-row textarea {
     width: 100%;
-    padding: 12px 14px;
-    border: 2px solid #FFCC00;
-    border-radius: 8px;
+    padding: 10px 12px; /* パディングを調整 */
+    border: 2px solid #000000;
+    border-radius: 4px; /* 角を少し鋭く */
     font-size: 15px;
     box-sizing: border-box;
     background: #ffffff;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: 'Zen Maru Gothic', sans-serif;
+    font-family: sans-serif;
     color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.rsvp-field-row input:focus,
-.rsvp-field-row textarea:focus {
-    outline: none;
-    border-color: #CC0000;
-    box-shadow: 
-        0 0 0 4px rgba(204, 0, 0, 0.12),
-        0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    background: #fffef8;
+/* 姓/名、ローマ字のSei/Mei の横並び調整 */
+.rsvp-field-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px; /* 行間にスペース */
 }
 
-.rsvp-field-row textarea {
-    resize: vertical;
+/* 横並びの入力欄の幅を均等に調整 */
+.rsvp-field-group input {
+    width: calc(50% - 5px); 
 }
 
+
+/* 住所自動入力ボタン */
 .rsvp-postal-code-btn {
-    padding: 12px 16px;
-    background: linear-gradient(135deg, #FFCC00 0%, #ffd633 100%);
-    color: #CC0000;
-    border: 2px solid #CC0000;
-    border-radius: 8px;
+    padding: 8px 14px; /* サイズを調整 */
+    background: #FFC107; /* 黄色/金 */
+    color: #E53935; /* 赤 */
+    border: 2px solid #E53935;
+    border-radius: 4px;
     font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
+    margin-top: 3px; /* 郵便番号入力欄のすぐ隣に来るように調整 */
 }
 
+/* 郵便番号入力欄とボタンの調整 */
+.postal-code-row {
+    display: flex;
+    align-items: flex-end; /* ボタンと入力欄の下端を揃える */
+    gap: 10px;
+}
+.postal-code-row input {
+    width: 120px; /* 郵便番号の幅を固定 */
+    flex-grow: 0;
+}
+.postal-code-row .rsvp-postal-code-btn {
+    flex-grow: 0;
+    white-space: nowrap;
+}
+
+
+/* お連れ様を追加するボタン */
 .rsvp-add-guest {
+    /* 元画像の「+ お連れ様を追加する」部分のスタイルを再現 */
+    background: #FFC107;
+    color: #000000; /* 文字色は黒 */
+    border: 3px solid #000000;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 10px 20px;
+    /* --- ここを修正 --- */
+    margin: 25px auto; /* 上下に25px、左右をautoにして中央寄せ */
+    /* --- 修正ここまで --- */
+    width: fit-content;
+    box-shadow: 2px 2px 0px #E53935; /* 赤の影 */
+    /* 中央寄せのため display: flex; を追加（HTML側がインライン要素の場合に備えて） */
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    background-color: #FFCC00;
-    color: #CC0000;
-    padding: 12px 25px;
-    border-radius: 10px;
-    border: 2px solid #CC0000;
-    font-weight: 700;
-    font-size: 14px;
-    gap: 6px;
-    margin: 25px auto;
-    transition: all 0.15s;
 }
-
 .rsvp-add-guest:hover {
-    background: linear-gradient(135deg, #CC0000 0%, #a00000 100%);
-    color: #FFD400;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 12px rgba(204, 0, 0, 0.3);
+    background: #E53935;
+    color: #FFC107;
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 0px #FFC107;
 }
 
-.rsvp-plus {
-    font-size: 1.5em;
-}
 
+/* フォームフッター（利用規約、回答ボタン、通信時間メッセージ） */
 .rsvp-terms {
+    color: #666; /* 以前の黒文字から変更 */
+    margin: 25px 0 20px; /* マージンを調整 */
+    padding: 0;
     text-align: center;
-    font-size: 13.5px;
-    color: #666;
-    margin: 25px 0 20px;
-    padding: 12px;
-    font-family: 'Zen Maru Gothic', sans-serif;
-    letter-spacing: 0.3px;
 }
 
 .rsvp-submit-btn {
-    display: block;
-    margin: 25px auto 0;
-    background: linear-gradient(135deg, #CC0000 0%, #a00000 100%);
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    padding: 14px 40px;
-    border-radius: 8px;
-    cursor: pointer;
+    /* 「回答」ボタン */
+    /* 以前から margin: 0 auto; は適用されていますが、display: block; に変更し確実に中央寄せ */
+    display: block; 
+    margin: 10px auto 20px; /* 上10px、下20px、左右autoで中央寄せ */
+    background: #E53935;
+    border: 3px solid #000;
+    box-shadow: 4px 4px 0px #FFC107;
+    padding: 10px 30px;
     font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(204, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
+    font-weight: 900;
 }
 
 .rsvp-submit-btn:hover {
-    background: linear-gradient(135deg, #ff3333 0%, #CC0000 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0px #FFC107;
+}
+
+/* 通信時間メッセージのブロック */
+.loading-message-block {
+    /* 元画像の黄色い帯の再現 */
+    display: block;
+    background: #FFC107;
+    color: #E53935;
+    border: 2px solid #E53935;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.rsvp-remove-guest {
+    /* ゲスト削除ボタンのスタイルをタワレコ風に修正 */
+    
+    /* 背景色は目立つ赤に */
+    background: #E53935; 
+    /* 文字色は白に */
+    color: white;
+    
+    /* フォーム内の他のボタンと同様に黒のボーダーを追加 */
+    border: 2px solid #000000; 
+    
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.0em;
+    font-weight: 700; /* 太字に */
+    
+    /* 影をつけて立体感を強調 */
+    box-shadow: 2px 2px 0px #FFC107; /* 黄色/金のオフセットシャドウ */
+    transition: all 0.15s ease-out;
+    
+    /* マージンは必要に応じて親要素で調整 */
+    margin-top: 10px; /* ヘッダー内に配置される想定でリセット */
+}
+
+.rsvp-remove-guest:hover {
+    /* ホバーで色を反転させ、ボタンが押される動きを表現 */
+    background: #FFC107; /* 背景を黄色/金に */
+    color: #E53935; /* 文字色を赤に */
+    
+    /* 押されたような効果のため、影の位置を調整 */
+    box-shadow: 1px 1px 0px #000000;
+    transform: translate(1px, 1px);
 }
 
 @media (max-width: 600px) {
@@ -500,21 +451,11 @@
     }
 
     .rsvp-title {
-        font-size: 2rem;
-        letter-spacing: 2px;
-        margin-bottom: 30px;
-    }
-
-    .rsvp-message {
-        font-size: 0.95rem;
-        padding: 25px 20px;
-        margin: 40px auto 35px;
+        font-size: 3rem;
     }
 
     .rsvp-deadline {
-        gap: 5px;
-        padding: 30px 25px;
-        flex-wrap: wrap;
+        box-shadow: 4px 4px 0px #000000;
     }
 
     .rsvp-num {
@@ -522,27 +463,32 @@
     }
 
     .rsvp-separator {
-        font-size: 1rem;
-        transform: translateY(-5px);
+        margin-left: -10px;
+        font-size: 1.5rem;
+    }
+
+    .rsvp-date-block {
+        padding: 0 0;
     }
 
     .rsvp-attendance-buttons {
-        gap: 20px;
+        gap: 30px;
     }
+
+    .rsvp-label {
+        font-size: 0.8rem;
+    }
+
     .rsvp-circle {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
     }
+
     .rsvp-jp {
         font-size: 1rem;
     }
     .rsvp-en {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
-    .rsvp-form {
-        padding: 20px 15px;
-        border-width: 2px;
-    }
 }
-

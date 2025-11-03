@@ -9,12 +9,13 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
 }
 
 /* ===== INTRO ===== */
 .intro-screen {
-    background: linear-gradient(135deg, #FFCC00 0%, #FFD700 50%, #FFCC00 100%);
+    /* 背景を黄色の単色に変更 */
+    background: #FFC107;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -22,48 +23,36 @@ html, body {
     justify-content: center;
     z-index: 3;
     position: relative;
-    animation: fadeOut 1s ease-in-out 2.5s forwards;
+    /* アニメーション時間は維持 */
+    animation: fadeOut 1s ease-in-out 2.5s forwards; 
     overflow: hidden;
 }
 
+/* 脈動する光彩アニメーションを削除 */
 .intro-screen::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    animation: pulse 2s ease-in-out infinite;
+    content: none;
 }
 
 .title-intro {
+    font-size: 9em;
     color: #CC0000;
-    font-size: 8rem;
-    text-align: center;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    margin: 5px 10px;
+    text-shadow: 4px 4px 0px #000000;
     font-weight: 900;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin: 5px 0;
-    line-height: 1.0;
     transform: skewX(10deg);
-    text-shadow: 
-        3px 3px 0px rgba(0, 0, 0, 0.3),
-        6px 6px 10px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(204, 0, 0, 0.3);
-    animation: titleGlow 2s ease-in-out infinite alternate;
-    position: relative;
-    z-index: 1;
 }
 
-/* ===== タイプライターアニメーション ===== */
+/* ===== タイプライターアニメーション ===== (維持) */
 .typewriter-line {
     display: inline-block;
     min-height: 1em;
 }
 
 
-/* ===== SLIDES ===== */
+/* ===== SLIDES / 背景スライダー ===== (維持) */
 .slide-container {
     position: fixed;
     width: 100%;
@@ -74,7 +63,6 @@ html, body {
     z-index: 1;
 }
   
-/* ===== 背景スライダー全体 ===== */
 .photo-background {
     position: fixed;
     top: 0;
@@ -83,12 +71,11 @@ html, body {
     height: 100%;
     overflow: hidden;
     z-index: 0;
-  }
+}
   
-/* ===== 上段・下段のスライダーコンテナ ===== */
 .photo-row {
     display: flex;
-    width: 200%; /* 2倍にしてループ再生用 */
+    width: 200%;
     height: 50%;
     position: absolute;
 }
@@ -103,7 +90,6 @@ html, body {
     animation: slideLeft 40s linear infinite;
 }
 
-/* ===== 画像共通設定 ===== */
 .photo-row img {
     width: 50vw;
     height: 100%;
@@ -117,22 +103,9 @@ html, body {
     filter: brightness(1.1) contrast(1.2);
 }
 
+/* 背景上の薄い光彩効果を削除 */
 .photo-background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 204, 0, 0.1) 0%,
-        transparent 20%,
-        transparent 80%,
-        rgba(255, 204, 0, 0.1) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
+    content: none;
 }
 
 /* ===== OVERLAY (上から降りてくる薄い黄色) ===== */
@@ -142,16 +115,16 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 204, 0, 0.95) 0%,
-        rgba(255, 204, 0, 0.85) 50%,
-        rgba(255, 204, 0, 0.75) 100%
-    );
-    backdrop-filter: blur(2px);
+    
+    /* 背景をシンプルな赤に変更 */
+    background: rgba(229, 57, 53, 0.5);
+    
+    /* ブラーと影を削除 */
+    backdrop-filter: none;
+    box-shadow: none;
+    
     z-index: 2;
     animation: overlayDown 1.5s cubic-bezier(0.4, 0, 0.2, 1) 4.0s forwards;
-    box-shadow: 0 0 100px rgba(255, 204, 0, 0.5);
 }
 
 /* ===== LANGUAGE BUTTONS ===== */
@@ -172,42 +145,50 @@ html, body {
 
 .lang-btn {
     text-decoration: none;
-    color: #CC0000;
-    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
-    border: 3px solid #CC0000;
+    color: #000000; /* 文字色を黒に */
+    
+    /* 背景を黄色の単色に */
+    background: #FFC107;
+    
+    /* ボーダーを太い黒に */
+    border: 4px solid #000000;
+    
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 900;
     padding: 16px 70px;
-    border-radius: 50px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px; /* 角をシャープに */
+    transition: all 0.2s ease-out;
     position: relative;
     overflow: hidden;
-    box-shadow: 
-        0 4px 15px rgba(204, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    
+    /* 影をシンプルで目立つ黒/赤のオフセットシャドウに */
+    box-shadow: 6px 6px 0px #E53935;
+    
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .lang-btn:hover {
-    background: linear-gradient(135deg, #CC0000 0%, #B30000 100%);
-    color: #FFCC00;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 
-        0 8px 25px rgba(204, 0, 0, 0.4),
-        0 0 20px rgba(255, 204, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border-color: #B30000;
+    /* ホバーで背景色を赤、文字色を黄色/金に反転 */
+    background: #E53935; 
+    color: #FFC107;
+    
+    /* 押されたような動き */
+    transform: translate(-2px, -2px); 
+    
+    /* シャドウを強く、位置をずらす */
+    box-shadow: 8px 8px 0px #000000;
+    
+    /* ボーダーの色を黒のまま維持 */
+    border-color: #000000;
 }
 
 .lang-btn:active {
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 
-        0 4px 15px rgba(204, 0, 0, 0.3),
-        0 0 15px rgba(255, 204, 0, 0.2);
+    transform: translate(0, 0);
+    box-shadow: 4px 4px 0px #000000;
 }
   
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMATIONS ===== (維持) */
 @keyframes fadeOut {
     to {
         opacity: 0;
@@ -215,34 +196,6 @@ html, body {
     }
 }
 
-@keyframes titleGlow {
-    0% {
-        text-shadow: 
-            3px 3px 0px rgba(0, 0, 0, 0.3),
-            6px 6px 10px rgba(0, 0, 0, 0.5),
-            0 0 30px rgba(204, 0, 0, 0.3);
-    }
-    100% {
-        text-shadow: 
-            3px 3px 0px rgba(0, 0, 0, 0.3),
-            6px 6px 10px rgba(0, 0, 0, 0.5),
-            0 0 50px rgba(204, 0, 0, 0.6),
-            0 0 80px rgba(204, 0, 0, 0.4);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.1);
-    }
-}
-
-/* ===== アニメーション ===== */
 @keyframes slideRight {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
@@ -276,7 +229,7 @@ html, body {
 /* ===== iPhone対応 ===== */
 @media (max-width: 600px) {
     .title-intro {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* モバイルでもより大きく */
         letter-spacing: 0.08em;
     }
     
@@ -290,6 +243,6 @@ html, body {
     }
     
     .overlay {
-        backdrop-filter: blur(1px);
+        backdrop-filter: none;
     }
 }

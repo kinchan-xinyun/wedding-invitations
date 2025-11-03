@@ -1,28 +1,27 @@
-/* ベースとなる要素 */
+/* ======== タワレコ風 INVITATIONセクション (グラデーションなし) ======== */
 .invitation-wrapper {
-    width: 100%;
     margin: 0 auto;
     text-align: center;
-    /* 背景色を落ち着いたアイボリーに */
-    background: #F8F7F0;
+    /* 背景色をシンプルな白っぽい色に */
+    background: #FFFDE7; /* わずかに黄色がかった白 */
     padding: 80px 20px;
-    /* 上下の線をバーガンディと細めのゴールドに */
-    border-top: 5px solid #881122;
-    border-bottom: 5px solid #C8A461;
-    /* 影を上品な内側に */
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.05);
+    /* 上下の線をタワレコカラーの赤と黄色で強調 */
+    border-top: 8px solid #E53935; /* 赤 */
+    border-bottom: 8px solid #FFC107; /* 黄色/金 */
+    /* 影を削除してシンプルに */
+    box-shadow: none;
 }
 
 .invitation-card {
-    /* 背景をアイボリーのわずかなグラデーションに */
-    background: linear-gradient(160deg, #FFFFFF 0%, #F8F7F0 100%);
-    /* ボーダーを細く、バーガンディ色に */
-    border: 1px solid #881122;
+    /* 背景グラデーションを削除し、シンプルな白の単色に */
+    background: #FFFFFF;
+    /* ボーダーを太く、黒色に */
+    border: 4px solid #000000;
     border-radius: 6px;
-    /* 影を繊細に */
+    /* タワレコ風のツートンカラーの影を強調 */
     box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.1),
-        inset 0 0 10px rgba(255, 255, 255, 0.5);
+        8px 8px 0px #FFC107, /* 黄色/金 */
+        12px 12px 0px #E53935; /* 赤 */
     position: relative;
     max-width: 600px;
     margin: 0 auto;
@@ -32,91 +31,97 @@
 
 /* タイトル */
 .invitation-title {
-    color: #CC0000;
-    font-size: 3em;
-    font-weight: 900;
+    font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
-    letter-spacing: 2px;
+    font-weight: 900;
+    color: #E53935; /* 赤 */
+    letter-spacing: 4px; /* より強調 */
     text-transform: uppercase;
+    /* タワレコ風のツートンカラーの影 */
     text-shadow: 
-        2px 2px 0px rgba(255, 204, 0, 0.5),
-        4px 4px 8px rgba(0, 0, 0, 0.4);
+        4px 4px 0px #FFC107, /* 黄色/金 */
+        8px 8px 0px #000000; /* 黒 */
+    padding-bottom: 10px;
+    margin-top: 40px;
     margin-bottom: 30px;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
 /* サブタイトル */
 .invitation-subtitle {
-    /* エレガントなサンセリフ体に（Google Fontsで'Lato'などを推奨） */
-    font-family: 'Lato', 'Arial', sans-serif;
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: #555;
+    font-family: 'Impact', sans-serif; /* 力強いフォントに変更 */
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #000; /* 黒に変更 */
     margin-bottom: 40px;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 /* 区切り線 */
 .divider {
-    /* 細く上品なゴールドの線に */
-    height: 1px;
-    background: #C8A461;
-    width: 40%;
+    /* シンプルな黒の太い線に変更 */
+    height: 3px;
+    background: #000000;
+    width: 60%; /* 幅を広げる */
     margin: 30px auto;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 /* 本文 */
 .invitation-content {
-    /* 日本語フォントは落ち着いたものに（'Zen Kaku Gothic New'などを推奨） */
-    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-family: sans-serif; /* シンプルなフォントに */
     color: #333;
     line-height: 1.8;
     text-align: center;
 }
 
 .invitation-text {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 18px;
 }
 
 /* 時間・強調部分 */
 .time-highlight {
-    /* 太字のサンセリフ体 */
-    font-family: 'Lato', 'Arial Black', sans-serif;
-    font-size: 32px;
-    color: #FFF;
-    /* 背景色をバーガンディに */
-    background: #CC0000;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    font-size: 36px;
+    color: #000; /* 文字色を黒に */
+    /* 背景色を黄色/金に */
+    background: #FFC107;
     padding: 12px 30px;
     border-radius: 4px;
     display: inline-block;
-    letter-spacing: 3px;
-    /* 影を立体的に、上品なものに */
-    box-shadow: 0 4px 0 #CC0000, 0 0 10px rgba(204, 0, 0, 0.3);
+    letter-spacing: 4px;
+    /* 立体的な影をシンプルな黒のアウトラインに変更 */
+    box-shadow: 
+        4px 4px 0px #000000; /* 黒の太い影 */
     margin: 30px 0;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 /* リクエスト文 */
 .invitation-request {
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    color: #CC0000;
+    font-family: 'Impact', sans-serif;
+    font-size: 18px;
+    color: #E53935; /* 赤 */
     margin-top: 35px;
-    letter-spacing: 1.5px;
-    font-weight: 700;
+    letter-spacing: 2px;
+    font-weight: 900;
     text-transform: uppercase;
 }
 
-/* 装飾 - 控えめに変更 */
+/* 装飾 - 削除またはシンプル化 */
 .flower-decoration {
-    /* 色をゴールドに */
-    color: #C8A461;
-    font-size: 18px;
-    letter-spacing: 15px; /* スペースを広げてエレガントに */
+    /* シンプルな黒の区切り線に変更 */
+    color: #000000;
+    font-size: 1.5em; 
+    letter-spacing: 5px; 
     margin: 40px 0;
-    opacity: 0.8;
+    opacity: 1;
+    content: '--- * ---'; /* シンプルな区切り記号に変更の例 (HTML側で設定) */
 }
 
 /* フッター */
@@ -140,29 +145,30 @@
 }
 /* モバイル対応 */
 @media (max-width: 600px) {
-    .invitation-card {
-        width: 70%; 
-        /* 中央揃えを保証 */
-        margin: 0 auto; 
-        /* パディングをさらに調整し、はみ出しを防ぐ */
-        padding: 40px 20px; /* 左右のパディングを減らしました */
-    }
-
     .invitation-wrapper {
-        /* ラッパーのパディングも少し減らして余裕を持たせる */
         padding: 60px 10px;
     }
+    .invitation-card {
+        width: 80%; /* モバイルでは幅を広く使う */
+        margin: 0 auto; 
+        padding: 40px 20px;
+    }
     
-    /* 他のモバイル設定は維持 */
     .invitation-title {
-        font-size: 36px;
+        font-size: 3rem;
         letter-spacing: 3px;
     }
     .invitation-subtitle {
-        font-size: 14px;
+        font-size: 16px;
+        letter-spacing: 2px;
     }
     .time-highlight {
-        font-size: 26px;
+        font-size: 28px;
         padding: 10px 20px;
+        letter-spacing: 3px;
+        box-shadow: 3px 3px 0px #000000;
+    }
+    .invitation-request {
+        font-size: 16px;
     }
 }
