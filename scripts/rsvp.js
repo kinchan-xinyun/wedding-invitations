@@ -197,8 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
     option.addEventListener('click', () => {
       if (selectedOption === option) return;
 
-      // 前の選択を削除
-      options.forEach((o) => o.classList.remove('selected'));
+      // 前の選択のスタンプをアニメーション削除
+      if (selectedOption) {
+        const prevStampImg = selectedOption.querySelector('.stamp-icon');
+        if (prevStampImg) {
+          prevStampImg.style.transform = 'translate(-50%, -50%) scale(0) rotate(10deg)';
+          prevStampImg.style.opacity = '0';
+        }
+        selectedOption.classList.remove('selected');
+      }
 
       // 新しい選択を追加
       option.classList.add('selected');
