@@ -45,12 +45,6 @@ html, body {
     transform: skewX(10deg);
 }
 
-/* ===== タイプライターアニメーション ===== (維持) */
-.typewriter-line {
-    display: inline-block;
-    min-height: 1em;
-}
-
 
 /* ===== SLIDES / 背景スライダー ===== (維持) */
 .slide-container {

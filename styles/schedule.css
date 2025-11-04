@@ -12,12 +12,6 @@
     border-bottom: 8px solid #FFC107; /* 濃い黄色（金） */
 }
 
-/* 複雑な背景エフェクト（::before, ::after, @keyframes）を全て削除 */
-.schedule-section::before,
-.schedule-section::after {
-    content: none;
-}
-
 .schedule-title {
     font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
@@ -35,6 +29,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.15em;
 }
 
 .schedule-timeline {
@@ -154,7 +149,6 @@
     .schedule-title {
         font-size: 3rem;
         margin-bottom: 30px;
-        letter-spacing: 2px;
     }
 
     .schedule-timeline::before {

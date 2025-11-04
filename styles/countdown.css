@@ -41,6 +41,7 @@
     position: relative;
     z-index: 1;
     max-width: 800px;
+    letter-spacing: 0.15em;
 }
 
 /* 日付ボックス（シンプルに強調） */
@@ -92,7 +93,6 @@
     padding-top: 0;
     padding-bottom: 0;
 }
-
 
 /* カウントダウンタイマー（デジタル＋タワレコ風） */
 .countdown-timer {

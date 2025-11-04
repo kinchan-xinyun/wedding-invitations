@@ -64,6 +64,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.15em;
 }
 
 /* サブタイトル */
@@ -175,7 +176,6 @@
     
     .invitation-title {
         font-size: 3rem;
-        letter-spacing: 3px;
     }
     .invitation-subtitle {
         font-size: 16px;

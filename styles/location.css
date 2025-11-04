@@ -12,12 +12,6 @@
     border-bottom: 8px solid #FFC107; /* 濃い黄色（金） */
 }
 
-/* 複雑な背景エフェクト（::before, ::after, @keyframes）を全て削除 */
-.location-section::before,
-.location-section::after {
-    content: none;
-}
-
 .location-title {
     font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
@@ -35,6 +29,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.15em;
 }
 
 .location-card {
@@ -112,7 +107,6 @@
     .location-title {
         font-size: 2.5rem;
         margin-bottom: 30px;
-        letter-spacing: 2px;
     }
 
     .location-card {

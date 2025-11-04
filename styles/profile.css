@@ -11,15 +11,6 @@
     overflow: hidden;
 }
 
-/* 複雑な背景エフェクト（::before, ::after, @keyframes）を全て削除 */
-.profile-section::before,
-.profile-section::after {
-    content: none;
-}
-
-@keyframes rotate {
-    /* アニメーション削除 */
-}
 
 .profile-title {
     font-size: 4em;
@@ -38,6 +29,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.15em;
 }
 
 .profile-container {
@@ -71,11 +63,6 @@
     transition: all 0.2s ease-out; /* アニメーションをシンプルに */
     position: relative;
     overflow: hidden;
-}
-
-/* フラッシュエフェクト（グラデーション）を削除 */
-.profile-card::before {
-    content: none;
 }
 
 /* 糸の縫い目を表現 */

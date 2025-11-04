@@ -4,6 +4,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const targetDate = new Date("2026-10-26T00:00:00+09:00"); // 日本時間
 
+  // ========== タイプライター効果 ==========
+  function typewriterEffect() {
+    const dateTextEl = document.querySelector(".countdown-date .date-text");
+    if (!dateTextEl) {
+      console.log("要素が見つかりません");
+      return;
+    }
+
+    const text = dateTextEl.textContent.trim();
+    dateTextEl.textContent = ""; // 初期化
+    dateTextEl.style.opacity = "1";
+
+    let index = 0;
+    function typeChar() {
+      if (index < text.length) {
+        dateTextEl.textContent += text[index];
+        index++;
+        setTimeout(typeChar, 100); // 100ms ごとに一文字追加
+      }
+    }
+    typeChar();
+  }
+
+  // IntersectionObserver でスクロール時にタイプライター効果を実行
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          typewriterEffect();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  const countdownDate = document.querySelector(".countdown-date");
+  if (countdownDate) {
+    observer.observe(countdownDate);
+  }
+
   function updateCountdown() {
     const now = new Date();
     const diff = targetDate - now;
