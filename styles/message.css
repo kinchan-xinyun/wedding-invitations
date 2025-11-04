@@ -36,7 +36,6 @@
     max-width: 750px; /* 最大幅を調整 */
     width: 90%;
     box-sizing: border-box;
-    margin-bottom: 80px;
 }
 
 /* 複雑な内側のボーダーや背景パターンを全て削除 */
@@ -44,6 +43,24 @@
 .message-container::after {
     content: none;
 }
+
+/* 糸の縫い目を表現 */
+.message-container {
+    position: relative;
+}
+
+.message-container::before {
+    content: '';
+    position: absolute;
+    top: 10px; /* 枠線から少し内側 */
+    left: 10px; /* 枠線から少し内側 */
+    right: 10px; /* 枠線から少し内側 */
+    bottom: 10px; /* 枠線から少し内側 */
+    border: 2px dashed #666; /* ダッシュのボーダーで縫い目を表現 */
+    pointer-events: none; /* クリックイベントをブロックしないように */
+    z-index: 2; /* コンテンツの上に表示 */
+}
+
 
 .message-panel {
     position: relative;
@@ -82,12 +99,6 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     box-shadow: 2px 2px 0px #000;
-}
-
-/* 複雑な装飾記号を削除し、シンプルに */
-.message-date::before,
-.message-date::after {
-    content: none;
 }
 
 

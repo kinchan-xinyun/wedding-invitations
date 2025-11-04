@@ -29,6 +29,23 @@
     animation: popIn 0.6s ease-out;
 }
 
+/* 糸の縫い目を表現 */
+.invitation-card {
+    position: relative;
+}
+
+.invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 10px; /* 枠線から少し内側 */
+    left: 10px; /* 枠線から少し内側 */
+    right: 10px; /* 枠線から少し内側 */
+    bottom: 10px; /* 枠線から少し内側 */
+    border: 2px dashed #666; /* ダッシュのボーダーで縫い目を表現 */
+    pointer-events: none; /* クリックイベントをブロックしないように */
+    z-index: 2; /* コンテンツの上に表示 */
+}
+
 /* タイトル */
 .invitation-title {
     font-size: 4em;
@@ -87,10 +104,12 @@
 .time-highlight {
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-size: 36px;
+    text-align: center;
     color: #000; /* 文字色を黒に */
     /* 背景色を黄色/金に */
     background: #FFC107;
-    padding: 12px 30px;
+    padding-left: 30px;
+    padding-right: 20px;
     border-radius: 4px;
     display: inline-block;
     letter-spacing: 4px;

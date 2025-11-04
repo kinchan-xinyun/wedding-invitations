@@ -78,6 +78,23 @@
     content: none;
 }
 
+/* 糸の縫い目を表現 */
+.profile-card {
+    position: relative;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 10px; /* 枠線から少し内側 */
+    left: 10px; /* 枠線から少し内側 */
+    right: 10px; /* 枠線から少し内側 */
+    bottom: 10px; /* 枠線から少し内側 */
+    border: 2px dashed #666; /* ダッシュのボーダーで縫い目を表現 */
+    pointer-events: none; /* クリックイベントをブロックしないように */
+    z-index: 2; /* コンテンツの上に表示 */
+}
+
 .profile-card:hover {
     /* シンプルなホバーエフェクト */
     transform: translate(-4px, -4px); 
@@ -101,12 +118,19 @@
 
 .profile-name {
     font-family: "Oooh Baby", cursive;
-    font-style: normal;
-    font-size: 3em; /* より大きく */
-    font-weight: 900;
+    font-size: 3.6em; /* 少し大きく */
+    font-weight: 900; /* さらに太く（可能な限り） */
     color: #E53935; /* 赤 */
     margin-bottom: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+
+    /* 疑似的に太く見せる効果 */
+    -webkit-text-stroke: 1px #E53935; /* 外枠を同色で太らせる */
+    text-shadow:
+        0.8px 0.8px 0 #E53935,
+        -0.8px 0.8px 0 #E53935,
+        0.8px -0.8px 0 #E53935,
+        -0.8px -0.8px 0 #E53935; /* 影を重ねて太字風に */
 }
 
 .profile-text {
@@ -145,7 +169,7 @@
     }
 
     .profile-name {
-        font-size: 1.6rem;
+        font-size: 3rem;
     }
     
     .profile-text {
