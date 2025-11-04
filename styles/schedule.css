@@ -92,6 +92,7 @@
     color: #E53935; /* 赤 */
     margin-top: 25px;
     text-shadow: none;
+    font-family: "Bruno Ace", sans-serif;
 }
 
 /* コンテンツボックスもシンプルに、グラデーションと複雑な影を削除 */

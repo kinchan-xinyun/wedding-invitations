@@ -129,6 +129,8 @@
     color: #FFC107; /* 黄色/金 */
     letter-spacing: 1px;
     text-shadow: none; /* シンプルにするため削除 */
+    font-family: "Bruno Ace", sans-serif;
+
 }
 
 .countdown-timer small {
@@ -138,6 +140,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 4px;
+    font-family: 'Yusei Magic', sans-serif;
 }
 
 /* メッセージ部分（シンプルに） */

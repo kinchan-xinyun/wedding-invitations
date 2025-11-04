@@ -39,11 +39,6 @@
     box-sizing: border-box;
 }
 
-/* 複雑な内側のボーダーや背景パターンを全て削除 */
-.message-container::before,
-.message-container::after {
-    content: none;
-}
 
 /* 糸の縫い目を表現 */
 .message-container {
@@ -91,7 +86,7 @@
     margin-block-start: 25px;
     margin-block-end: 15px;
     width: fit-content;
-    font-family: 'Arial Black', 'Impact', sans-serif; /* シンプルで力強いフォント */
+    font-family: 'Yusei Magic', sans-serif;
     font-weight: 900;
     /* ボーダーをシンプルに */
     border: 3px solid #000000;
