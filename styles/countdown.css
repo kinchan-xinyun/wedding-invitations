@@ -6,8 +6,8 @@
     /* 背景をシンプルな濃い色（黒）の単色に変更 */
     background: #111111; 
     /* タワレコの赤と黄色のボーダーで強調 */
-    border-top: 8px solid #E53935; /* 赤 */
-    border-bottom: 8px solid #FFC107; /* 黄色/金 */
+    border-top: 8px solid var(--tawareco-red); /* 赤 */
+    border-bottom: 8px solid var(--tawareco-yellow); /* 黄色/金 */
     overflow: hidden;
     /* シンプルな影に変更 */
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
@@ -28,11 +28,11 @@
     font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-weight: 900;
-    color: #FFC107; /* 黄色/金で目立たせる */
+    color: var(--tawareco-yellow); /* 黄色/金で目立たせる */
     /* タワレコ風のツートンカラーの影を適用 */
     text-shadow: 
-        4px 4px 0px #E53935, /* 赤 */
-        8px 8px 0px #f6f0f0; /* 白 */
+        4px 4px 0px var(--tawareco-red), /* 赤 */
+        8px 8px 0px var(--tawareco-white); /* 白 */
     letter-spacing: 4px;
     text-transform: uppercase;
     padding: 20px 0;
@@ -63,11 +63,11 @@
     padding: 26px 40px;
     border-radius: 8px;
     /* 背景は単色に変更 */
-    background: #1C1C1C;
+    background: var(--tawareco-black);
     /* シンプルな影に変更 */
-    box-shadow: 8px 8px 0px #E53935, 12px 12px 0px #f6f0f0; /* 赤、白 */
+    box-shadow: 8px 8px 0px var(--tawareco-red), 12px 12px 0px var(--tawareco-white); /* 赤、白 */
     /* タワレコカラーの赤のボーダー */
-    border: 4px solid #E53935; 
+    border: 4px solid var(--tawareco-red); 
     position: relative;
     transition: none;
     font-size: 2.2rem; /* より大きく */
@@ -85,8 +85,8 @@
     font-family: "Oooh Baby", cursive;
     font-size: 5rem;
     line-height: 1;
-    color: #FFC107; /* 黄色/金 */
-    text-shadow: 3px 3px 0px #E53935; /* 赤の影 */
+    color: var(--tawareco-yellow); /* 黄色/金 */
+    text-shadow: 3px 3px 0px var(--tawareco-red); /* 赤の影 */
     opacity: 1; /* 常に見えるように */
     animation: none; /* アニメーション削除 */
     white-space: nowrap;
@@ -103,12 +103,14 @@
     margin-bottom: 50px;
     z-index: 1;
     position: relative;
+    max-width: 800px;
+    margin: 0 auto 50px;
 }
 
 .countdown-timer div {
     /* 背景とボーダーを単色に変更 */
-    background: #000000;
-    border: 3px solid #E53935; /* 赤の太いボーダー */
+    background: var(--tawareco-black);
+    border: 3px solid var(--tawareco-red); /* 赤の太いボーダー */
     border-radius: 6px;
     padding: 20px 24px;
     min-width: 90px;
@@ -119,14 +121,14 @@
 
 .countdown-timer div:hover {
     transform: none; /* アニメーション削除 */
-    border-color: #FFC107; /* ホバーで黄色/金に変化 */
+    border-color: var(--tawareco-yellow); /* ホバーで黄色/金に変化 */
     box-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
 }
 
 .countdown-timer span {
     display: block;
     font-size: 3.2rem;
-    color: #FFC107; /* 黄色/金 */
+    color: var(--tawareco-yellow); /* 黄色/金 */
     letter-spacing: 1px;
     text-shadow: none; /* シンプルにするため削除 */
     font-family: "Bruno Ace", sans-serif;
@@ -157,12 +159,12 @@
 
 .countdown-finish {
     font-size: 2rem;
-    color: #E53935; /* 赤 */
+    color: var(--tawareco-red); /* 赤 */
     font-family: "Yusei Magic", sans-serif;
     margin-top: 40px;
     z-index: 1;
     position: relative;
-    text-shadow: 2px 2px 0px #FFC107; /* 黄色の影 */
+    text-shadow: 2px 2px 0px var(--tawareco-yellow); /* 黄色の影 */
 }
 
 /* ======== モバイル調整 ======== */

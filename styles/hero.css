@@ -41,13 +41,13 @@
     padding: 20px;
     
     /* 背景色をシンプルな黄色/金に */
-    background: #FFC107;
+    background: var(--tawareco-yellow);
     
     /* 太い黒のボーダー */
-    border: 5px solid #000000;
+    border: 5px solid var(--tawareco-black);
     
     /* 複雑な影を削除し、力強い赤のオフセットシャドウに */
-    box-shadow: 10px 10px 0px #E53935;
+    box-shadow: 10px 10px 0px var(--tawareco-red);
     
     /* 浮遊アニメーションを削除 */
     animation: none; 
@@ -65,7 +65,7 @@
     /* フォントをタワレコ風の力強いサンセリフ体に統一 */
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-size: 1.5em;
-    color: #000000;
+    color: var(--tawareco-black);
     margin: 0 0 5px 0;
     transform: none;
     letter-spacing: 2px;
@@ -74,20 +74,23 @@
 
 .title-main {
     font-size: 10em;
-    color: #CC0000;
+    color: var(--tawareco-red);
     /* メインタイトルはさらにインパクトのあるフォントに */
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     /* 左に傾ける */
     transform: skewX(10deg);
     margin: 5px 10px;
     line-height: 1.0;
-    text-shadow: 4px 4px 0px #000000;
+    text-shadow: 4px 4px 0px var(--tawareco-black);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .title-date {
     font-size: 2em;
-    color: #FFFFFF;
-    background-color: #000000;
+    color: var(--tawareco-white);
+    background-color: var(--tawareco-black);
     padding: 5px 15px;
     display: inline-block;
     margin-top: 10px;
@@ -95,7 +98,7 @@
     /* サブタイトルと同じ力強いフォントに */
     font-family:  'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     letter-spacing: 1px;
-    border-bottom: 5px solid #E53935;
+    border-bottom: 5px solid var(--tawareco-red);
     font-weight: 700;
 }
 

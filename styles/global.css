@@ -1,3 +1,11 @@
+:root {
+    --tawareco-red: #E53935;
+    --tawareco-yellow: #FFC107;
+    --tawareco-black: #0f0f0f;
+    --tawareco-white: #FFFFFF;
+    --text-color: #000000;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -5,41 +13,9 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; 
-    letter-spacing: 0.03em;
     color: #333;
-    background: 
-        linear-gradient(135deg, #ffffff 0%, #fffef0 30%, #ffffff 60%, #fffef0 100%),
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 100px,
-            rgba(255, 204, 0, 0.02) 100px,
-            rgba(255, 204, 0, 0.02) 200px
-        );
     background-attachment: fixed;
     position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 204, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(204, 0, 0, 0.08) 0%, transparent 50%),
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 50px,
-            rgba(255, 204, 0, 0.01) 50px,
-            rgba(255, 204, 0, 0.01) 100px
-        );
-    pointer-events: none;
-    z-index: 0;
 }
 
 p {
@@ -47,24 +23,6 @@ p {
     font-style: normal;
 }
 
-h2 {
-    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-shadow: 
-        3px 3px 0px rgba(204, 0, 0, 0.3),
-        5px 5px 8px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 204, 0, 0.3);
-    -webkit-text-stroke: 1px rgba(204, 0, 0, 0.2);
-}
-
-h1 {
-    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
 
 /* スクロールフェードアニメーション */
 .fade-section {
@@ -80,117 +38,7 @@ h1 {
     filter: blur(0);
 }
 
-/* ===== ハンバーガーメニュー ===== */
-.menu-header {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 9999;
-}
 
-.menu-toggle {
-    display: none;
-}
-
-.hamburger {
-    display: inline-block;
-    cursor: pointer;
-    width: 40px;
-    height: 32px;
-    position: relative;
-    z-index: 10000;
-}
-
-.hamburger .bar {
-    display: block;
-    width: 100%;
-    height: 3px;
-    margin: 6px 0;
-    background-color: #FFCC00;
-    border-radius: 3px;
-    transition: 0.3s;
-}
-
-.menu-toggle:checked + .hamburger .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.menu-toggle:checked + .hamburger .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle:checked + .hamburger .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-.menu-panel {
-    position: fixed;
-    top: 60px;
-    right: 16px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2), 0 2px 8px rgba(204, 0, 0, 0.1);
-    padding: 12px 0;
-    width: 200px;
-    opacity: 0;
-    transform: scale(0.95) translateY(-10px);
-    pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: 'Luckiest Guy', sans-serif;
-}
-
-.menu-toggle:checked ~ .menu-panel {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    pointer-events: auto;
-}
-
-.menu-panel ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu-panel li {
-    border-bottom: 1px solid #eee;
-}
-
-.menu-panel li:last-child {
-    border-bottom: none;
-}
-
-.menu-panel a {
-    display: block;
-    padding: 10px 16px;
-    text-decoration: none;
-    color: #333;
-    transition: 0.2s;
-    position: relative;
-    overflow: hidden;
-}
-
-.menu-panel a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90deg, #f6d365, #FFCC00);
-    transition: width 0.3s ease;
-    z-index: -1;
-}
-
-.menu-panel a:hover::before {
-    width: 100%;
-}
-
-.menu-panel a:hover {
-    background: transparent;
-    color: #111;
-    transform: translateX(5px);
-}
 
 @media (max-width: 600px) {
     html {
@@ -202,27 +50,5 @@ h1 {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         touch-action: manipulation;
-    }
-
-    .menu-header {
-        top: 12px;
-        right: 12px;
-    }
-
-    .hamburger {
-        width: 36px;
-        height: 28px;
-    }
-
-    .hamburger .bar {
-        height: 2.5px;
-        margin: 5px 0;
-    }
-
-    .menu-panel {
-        top: 55px;
-        right: 12px;
-        width: 180px;
-        font-size: 0.9rem;
     }
 }

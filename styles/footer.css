@@ -1,15 +1,15 @@
 .footer-section {
     /* 背景をタワレコレッドの単色に変更 */
-    background: #E53935;
-    color: #FFF;
+    background: var(--tawareco-red);
+    color: var(--tawareco-white);
     padding: 60px 20px;
     text-align: center;
     max-width: 100%;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    border-bottom: 8px solid #FFC107;
-    border-top: 8px solid #E53935;
+    border-bottom: 8px solid var(--tawareco-yellow);
+    border-top: 8px solid var(--tawareco-red);
 }
 
 /* 複雑な光彩装飾を削除 */
@@ -20,7 +20,7 @@
 .footer-title {
     /* タワレコ風の力強いフォントに統一 */
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
-    color: #FFC107; /* 黄色/金 */
+    color: var(--tawareco-yellow); /* 黄色/金 */
     font-size: 2.5em; /* 少し大きく */
     margin-top: 20px;
     position: relative;
@@ -28,7 +28,7 @@
     text-transform: uppercase;
     
     /* 黒のオフセットシャドウで力強く */
-    text-shadow: 4px 4px 0px #000000;
+    text-shadow: 4px 4px 0px var(--tawareco-black);
 }
 
 .footer-contact-info {
@@ -36,22 +36,22 @@
     line-height: 1.6;
     position: relative;
     z-index: 1;
-    color: #FFFFFF; /* 白文字 */
+    color: var(--tawareco-white); /* 白文字 */
     font-size: 1.1em;
     margin: 20px auto;
 }
 
 .footer-return-button {
     /* 背景を黄色/金に */
-    background-color: #FFC107;
+    background-color: var(--tawareco-yellow);
     /* 文字色を黒に */
-    color: #000000;
+    color: var(--tawareco-black);
     
     /* ボーダーを太い黒に */
-    border: 3px solid #000000;
+    border: 3px solid var(--tawareco-black);
     
     /* 影を赤のオフセットシャドウに変更 */
-    box-shadow: 4px 4px 0px #FFF, 8px 8px 0px #000000;
+    box-shadow: 4px 4px 0px var(--tawareco-white), 8px 8px 0px var(--tawareco-black);
     
     cursor: pointer;
     display: inline-block;
@@ -70,13 +70,13 @@
 
 .footer-return-button:hover {
     /* ホバーで色を反転 */
-    background-color: #000000; /* 黒背景 */
-    color: #FFC107; /* 黄色/金文字 */
-    border-color: #FFC107; /* 赤ボーダー */
+    background-color: var(--tawareco-black); /* 黒背景 */
+    color: var(--tawareco-yellow); /* 黄色/金文字 */
+    border-color: var(--tawareco-yellow); /* 赤ボーダー */
     
     /* 押されたような動きとシャドウの変更 */
     transform: translate(-2px, -2px) ;
-    box-shadow: 8px 8px 0px #000000, 12px 12px 0px #FFC107;
+    box-shadow: 8px 8px 0px var(--tawareco-black), 12px 12px 0px var(--tawareco-yellow);
 }
 
 .footer-return-button a {

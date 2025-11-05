@@ -19,25 +19,25 @@
     z-index: 10000;
     
     /* 背景をタワレコカラーの黄色/金に */
-    background-color: #FFC107;
+    background-color: var(--tawareco-yellow);
     
     border-radius: 5px;
     padding: 10px 10px;
     
     /* 枠線を太い黒に変更 */
-    border: 3px solid #000000;
+    border: 3px solid var(--tawareco-black);
     
     /* 影を黒と赤のオフセットシャドウに */
-    box-shadow: 4px 4px 0px #E53935;
+    box-shadow: 4px 4px 0px var(--tawareco-red);
     
     transition: all 0.2s ease-out;
 }
 
 .hamburger:hover {
     /* ホバーで色を反転 */
-    background-color: #E53935; 
+    background-color: var(--tawareco-red); 
     /* 影と位置を調整して「押された」感を出す */
-    box-shadow: 2px 2px 0px #000000;
+    box-shadow: 2px 2px 0px var(--tawareco-black);
     transform: translate(2px, 2px);
 }
 
@@ -48,7 +48,7 @@
     margin: 5px 0; /* マージンを調整 */
     
     /* バーの色を黒に */
-    background-color: #000000;
+    background-color: var(--tawareco-black);
     
     border-radius: 3px;
     transition: 0.3s;
@@ -74,14 +74,14 @@
     right: 16px;
     
     /* 背景を白の単色に */
-    background: #FFFFFF;
+    background: var(--tawareco-white);
     /* ブラーを削除 */
     backdrop-filter: none;
     
     border-radius: 8px;
     
     /* 太い赤のボーダー */
-    border: 3px solid #E53935;
+    border: 3px solid var(--tawareco-red);
     
     /* 影をシンプルに */
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
@@ -111,7 +111,7 @@
 
 .menu-panel li {
     /* 区切り線を細い黒に */
-    border-bottom: 1px solid #000000;
+    border-bottom: 1px solid var(--tawareco-black);
 }
 
 .menu-panel li:last-child {
@@ -122,7 +122,7 @@
     display: block;
     padding: 10px 16px;
     text-decoration: none;
-    color: #000000; /* 文字色を黒に */
+    color: var(--text-color); /* 文字色を黒に */
     transition: 0.2s;
     position: relative;
     overflow: hidden;
@@ -138,8 +138,8 @@
 
 .menu-panel a:hover {
     /* ホバーで色を反転（赤背景に黄色文字） */
-    background: #E53935;
-    color: #FFC107;
+    background: var(--tawareco-red);
+    color: var(--tawareco-yellow);
     /* translateXを削除し、シンプルに */
     transform: none; 
 }

@@ -3,13 +3,13 @@
     font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-weight: 900;
-    color: #E53935; /* 赤 */
+    color: var(--tawareco-red); /* 赤 */
     letter-spacing: 4px; /* より強調 */
     text-transform: uppercase;
     /* タワレコ風のツートンカラーの影 */
     text-shadow: 
-        4px 4px 0px #FFC107, /* 黄色/金 */
-        8px 8px 0px #000000; /* 黒 */
+        4px 4px 0px var(--tawareco-yellow), /* 黄色/金 */
+        8px 8px 0px var(--tawareco-black); /* 黒 */
     padding-bottom: 10px;
     margin-top: 40px;
     margin-bottom: 30px;
@@ -26,12 +26,12 @@
     justify-content: center;
     padding: 50px 40px; /* パディングを増やす */
     /* 背景グラデーションを削除し、シンプルな白の単色に */
-    background: #FFFFFF;
+    background: var(--tawareco-white);
     /* シンプルな黒の太いボーダー */
-    border: 5px solid #000000;
+    border: 5px solid var(--tawareco-black);
     /* シンプルな影に変更 */
     box-shadow: 
-        10px 10px 0px #FFC107, /* 黄色/金 */
+        10px 10px 0px var(--tawareco-yellow), /* 黄色/金 */
         0 15px 35px rgba(0, 0, 0, 0.2);
     position: relative;
     max-width: 750px; /* 最大幅を調整 */
@@ -71,7 +71,7 @@
     max-width: 100%;
     position: relative;
     z-index: 1;
-    color: #333333;
+    color: var(--text-color);
     letter-spacing: 0.1em;
     font-weight: 400;
     font-family: "Yusei Magic", sans-serif;
@@ -79,8 +79,8 @@
 
 .message-date {
     font-size: 1.2em;
-    color: #E53935; /* 赤 */
-    background-color: #FFC107; /* 黄色/金 */
+    color: var(--tawareco-red); /* 赤 */
+    background-color: var(--tawareco-yellow); /* 黄色/金 */
     padding: 10px 25px; /* パディングを調整 */
     display: inline-block;
     margin-block-start: 25px;
@@ -89,12 +89,12 @@
     font-family: 'Yusei Magic', sans-serif;
     font-weight: 900;
     /* ボーダーをシンプルに */
-    border: 3px solid #000000;
+    border: 3px solid var(--tawareco-black);
     border-radius: 4px;
     position: relative;
     letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 2px 2px 0px #000;
+    box-shadow: 2px 2px 0px var(--tawareco-black);
 }
 
 
