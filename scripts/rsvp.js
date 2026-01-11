@@ -326,46 +326,99 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
-// プライバシーポリシー同意チェックボックス
+// プライバシーポリシー同意チェックボックス & 出席選択チェック
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
   const privacyConsent = document.getElementById('privacy-consent');
   const submitBtn = document.querySelector('.rsvp-submit-btn');
+  const attendanceOptions = document.querySelectorAll('.rsvp-attend-option');
+  let selectedAttendance = null;
 
   if (!privacyConsent || !submitBtn) {
     console.log('プライバシー同意チェックボックスまたは送信ボタンが見つかりません');
     return;
   }
 
-  // 初期状態：送信ボタンを無効化
-  submitBtn.disabled = true;
-  submitBtn.style.opacity = '0.5';
-  submitBtn.style.cursor = 'not-allowed';
+  // 送信ボタンの状態を更新する関数
+  function updateSubmitButton() {
+    const privacyChecked = privacyConsent.checked;
+    const attendanceSelected = selectedAttendance !== null;
 
-  // チェックボックスの状態変更時
-  privacyConsent.addEventListener('change', function() {
-    if (this.checked) {
-      // チェックされた場合：送信ボタンを有効化
+    if (privacyChecked && attendanceSelected) {
+      // 両方の条件を満たした場合：送信ボタンを有効化
       submitBtn.disabled = false;
       submitBtn.style.opacity = '1';
       submitBtn.style.cursor = 'pointer';
+    } else {
+      // どちらかが満たされていない場合：送信ボタンを無効化
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.5';
+      submitBtn.style.cursor = 'not-allowed';
+    }
+  }
+
+  // 初期状態：送信ボタンを無効化
+  updateSubmitButton();
+
+  // プライバシー同意チェックボックスの状態変更時
+  privacyConsent.addEventListener('change', function() {
+    if (this.checked) {
       // sessionStorageに同意情報を保存
       sessionStorage.setItem('privacyConsent', 'true');
       console.log('個人情報の取り扱いに同意されました');
     } else {
-      // チェックが外された場合：送信ボタンを無効化
-      submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.5';
-      submitBtn.style.cursor = 'not-allowed';
       sessionStorage.removeItem('privacyConsent');
     }
+    updateSubmitButton();
+  });
+
+  // 出席選択ボタンがクリックされた時
+  attendanceOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      selectedAttendance = option.dataset.choice;
+      console.log('出欠選択:', selectedAttendance);
+      updateSubmitButton();
+    });
   });
 
   // ページ読み込み時にsessionStorageから同意状態を復元
   if (sessionStorage.getItem('privacyConsent') === 'true') {
     privacyConsent.checked = true;
-    submitBtn.disabled = false;
-    submitBtn.style.opacity = '1';
-    submitBtn.style.cursor = 'pointer';
+  }
+  
+  // 既に出席選択されているかチェック（selectedクラスがある場合）
+  const alreadySelected = document.querySelector('.rsvp-attend-option.selected');
+  if (alreadySelected) {
+    selectedAttendance = alreadySelected.dataset.choice;
+  }
+
+  updateSubmitButton();
+
+  // フォーム送信時の最終チェック
+  const form = document.getElementById('rsvp-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      if (!privacyConsent.checked) {
+        e.preventDefault();
+        alert('個人情報の取り扱いに同意してください。');
+        return false;
+      }
+
+      if (!selectedAttendance) {
+        e.preventDefault();
+        alert('出席・欠席・保留のいずれかを選択してください。');
+        return false;
+      }
+
+      // 隠れたinputに値が設定されているか確認
+      const hiddenInput = document.querySelector("input[name='attendance[]']");
+      if (!hiddenInput || !hiddenInput.value) {
+        e.preventDefault();
+        alert('出席・欠席・保留のいずれかを選択してください。');
+        return false;
+      }
+
+      console.log('フォーム送信OK - プライバシー同意:', privacyConsent.checked, '出欠選択:', selectedAttendance);
+    });
   }
 });
