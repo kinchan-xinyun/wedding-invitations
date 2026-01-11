@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/rsvp.css" />
   <link rel="stylesheet" href="styles/footer.css" />
   <link rel="stylesheet" href="styles/request.css" />
+  <link rel="stylesheet" href="styles/privacy-modal.css" />
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
@@ -396,9 +397,16 @@
         <span class="rsvp-plus">＋</span> お連れ様を追加する
       </div>
 
-      <p class="rsvp-terms">利用規約をお読みの上、ご登録ください。</p>
-      <button type="submit" class="rsvp-submit-btn">回答</button>
-      <p class="rsvp-note-xinyun"><br>キンちゃんの技術不足により通信時間がかかります🙇‍♀️</p>
+      <div class="rsvp-privacy-consent">
+        <label class="privacy-consent-label">
+          <input type="checkbox" id="privacy-consent" required>
+          <span>
+            <a href="privace.html" target="_blank">個人情報の取り扱い</a>について、全ての内容を確認し、同意します。
+            <small style="color: #666; display: block; margin-top: 5px;">※同意いただけない場合、出欠確認フォームをご利用いただけません。</small>
+          </span>
+        </label>
+      </div>
+      <button type="submit" class="rsvp-submit-btn" disabled>回答</button>
     </form>
   </section>
 
@@ -431,6 +439,159 @@
   <script src="scripts/location.js"></script>
   <script src="scripts/request.js"></script>
   <script src="scripts/rsvp.js"></script>
+  <script type="module" src="scripts/rsvp_firebase.js"></script>
+  <script src="scripts/privacy-modal.js"></script>
   <script src="scripts/footer.js"></script>
+
+  <!-- プライバシーポリシー モーダル -->
+  <div id="privacy-modal-overlay" class="privacy-modal-overlay"></div>
+  <div id="privacy-modal" class="privacy-modal">
+    <div class="privacy-modal-header">
+      <h2>📋 個人情報の取り扱いについて</h2>
+      <button id="privacy-modal-close" class="privacy-modal-close">×</button>
+    </div>
+    <div class="privacy-modal-body">
+      <div class="highlight">
+        <p><strong>当サイトでは、結婚式の出欠確認のために必要最小限の個人情報を収集いたします。</strong></p>
+        <p>ご入力いただく前に、以下の内容をご確認いただき、ご同意の上でご回答ください。</p>
+      </div>
+
+      <div class="section">
+        <h3>1. 個人情報の管理者</h3>
+        <p>氏名: [新郎名] ・ [新婦名]<br>
+        連絡先: [メールアドレス]</p>
+      </div>
+
+      <div class="section">
+        <h3>2. 個人情報の収集目的</h3>
+        <p>収集した個人情報は、以下の目的にのみ使用いたします。</p>
+        <ul>
+          <li>結婚式・披露宴への出欠確認</li>
+          <li>当日の座席配置および受付業務</li>
+          <li>お食事の手配（アレルギー対応含む）</li>
+          <li>引出物・ご案内状の送付</li>
+          <li>結婚式に関する事前連絡</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. 収集する個人情報の項目</h3>
+        <table>
+          <tr>
+            <th>項目</th>
+            <th>詳細</th>
+          </tr>
+          <tr>
+            <td>氏名</td>
+            <td>フルネーム（漢字・ふりがな）</td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td>連絡用</td>
+          </tr>
+          <tr>
+            <td>郵便番号・住所</td>
+            <td>引出物・案内状送付用</td>
+          </tr>
+          <tr>
+            <td>アレルギー情報</td>
+            <td>お食事の手配用（任意）</td>
+          </tr>
+          <tr>
+            <td>メッセージ</td>
+            <td>ご意見・ご要望（任意）</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>4. 個人情報の管理方法</h3>
+        <ul>
+          <li><strong>保存場所:</strong> Google Firebase（米国Google社提供のクラウドサービス）</li>
+          <li><strong>セキュリティ:</strong> 通信は全てSSL/TLS暗号化で保護されています</li>
+          <li><strong>アクセス制限:</strong> 招待コードによる認証を実施し、ご本人様以外はアクセスできません</li>
+          <li><strong>管理者:</strong> 新郎新婦のみがデータにアクセス可能です</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>5. 第三者への提供</h3>
+        <p>収集した個人情報は、以下の場合を除き、第三者に提供することはございません。</p>
+        <ul>
+          <li><strong>結婚式場・提携業者への提供</strong>
+            <ul>
+              <li>式場（お食事手配、座席配置のため）</li>
+              <li>印刷業者（席札、引出物カード作成のため）</li>
+              <li>配送業者（引出物送付のため）</li>
+            </ul>
+          </li>
+          <li>法令に基づく開示請求があった場合</li>
+          <li>ご本人様の同意を得た場合</li>
+        </ul>
+        <p style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 15px 0;">※式場・業者への提供は必要最小限の情報に限定し、契約により守秘義務を課しております。</p>
+      </div>
+
+      <div class="section">
+        <h3>6. 個人情報の保管期間</h3>
+        <ul>
+          <li><strong>保管期間:</strong> 結婚式終了後、3ヶ月間</li>
+          <li><strong>削除予定日:</strong> [結婚式日] の3ヶ月後（[削除予定日]）</li>
+          <li>上記期日をもって、全てのデータを完全に削除いたします</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>7. ご本人の権利</h3>
+        <p>ご入力いただいた個人情報について、以下の権利を有します。</p>
+        <ul>
+          <li><strong>開示請求:</strong> ご自身の情報の開示を請求できます</li>
+          <li><strong>訂正請求:</strong> 誤った情報の訂正を請求できます</li>
+          <li><strong>削除請求:</strong> 情報の削除を請求できます（出欠確認に支障が出る可能性があります）</li>
+          <li><strong>利用停止請求:</strong> 情報の利用停止を請求できます</li>
+        </ul>
+        <p>これらの請求は、下記のお問い合わせ先までご連絡ください。</p>
+      </div>
+
+      <div class="section">
+        <h3>8. Cookie・トラッキング技術</h3>
+        <p>当サイトでは、以下の技術を使用しています。</p>
+        <ul>
+          <li><strong>セッションストレージ:</strong> 招待コード認証状態の保持（ブラウザを閉じると削除されます）</li>
+          <li><strong>Firebase Analytics:</strong> サイトの利用状況分析（個人を特定する情報は収集しません）</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>9. 個人情報保護法の遵守</h3>
+        <p>当サイトは、個人情報の保護に関する法律（個人情報保護法）を遵守し、適切に個人情報を取り扱います。</p>
+      </div>
+
+      <div class="section">
+        <h3>10. お問い合わせ窓口</h3>
+        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 20px;">
+          <p><strong>個人情報に関するお問い合わせ先:</strong></p>
+          <p>管理責任者: [新郎名] ・ [新婦名]</p>
+          <p>メールアドレス: [メールアドレス]</p>
+          <p>受付時間: 平日 10:00～18:00</p>
+        </div>
+      </div>
+
+      <p style="text-align: right; color: #666; font-size: 14px; margin-top: 30px;">制定日: 2026年1月11日<br>最終更新日: 2026年1月11日</p>
+
+      <div class="privacy-modal-consent-box">
+        <label class="privacy-modal-consent-label">
+          <input type="checkbox" id="privacy-modal-consent">
+          <span>
+            上記の個人情報の取り扱いについて、全ての内容を確認し、同意します。
+            <small style="color: #666; display: block; margin-top: 5px;">※同意いただけない場合、出欠確認フォームをご利用いただけません。</small>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="privacy-modal-footer">
+      <button id="privacy-agree-btn" class="privacy-modal-btn privacy-modal-btn-agree" disabled>同意して閉じる</button>
+      <button id="privacy-cancel-btn" class="privacy-modal-btn privacy-modal-btn-cancel">キャンセル</button>
+    </div>
+  </div>
 </body>
 </html>

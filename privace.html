@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人情報の取り扱いについて</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'メイリオ', Meiryo, sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background: linear-gradient(135deg, #fdfbfb 0%, #f8f4f0 100%);
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #e8b4b8;
+    }
+    
+    h2 {
+      font-size: 20px;
+      color: #34495e;
+      margin: 30px 0 15px;
+      padding-left: 15px;
+      border-left: 4px solid #e8b4b8;
+    }
+    
+    p, li {
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+    }
+    
+    .highlight {
+      background: #fff3cd;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #ffc107;
+      margin: 20px 0;
+    }
+    
+    .highlight strong {
+      color: #856404;
+    }
+    
+    ul {
+      padding-left: 25px;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+    }
+    
+    .consent-box {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 8px;
+      margin-top: 40px;
+      border: 2px solid #e8b4b8;
+    }
+    
+    .consent-box label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    .consent-box input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    
+    .contact-info {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    
+    .contact-info p {
+      margin-bottom: 8px;
+    }
+    
+    .date {
+      text-align: right;
+      color: #666;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    table th,
+    table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    
+    table th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #495057;
+      width: 30%;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 個人情報の取り扱いについて</h1>
+    
+    <div class="highlight">
+      <p><strong>当サイトでは、結婚式の出欠確認のために必要最小限の個人情報を収集いたします。</strong></p>
+      <p>ご入力いただく前に、以下の内容をご確認いただき、ご同意の上でご回答ください。</p>
+    </div>
+
+    <div class="section">
+      <h2>1. 個人情報の管理者</h2>
+      <p>氏名: [新郎名] ・ [新婦名]<br>
+      連絡先: [メールアドレス]</p>
+    </div>
+
+    <div class="section">
+      <h2>2. 個人情報の収集目的</h2>
+      <p>収集した個人情報は、以下の目的にのみ使用いたします。</p>
+      <ul>
+        <li>結婚式・披露宴への出欠確認</li>
+        <li>当日の座席配置および受付業務</li>
+        <li>お食事の手配（アレルギー対応含む）</li>
+        <li>引出物・ご案内状の送付</li>
+        <li>結婚式に関する事前連絡</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>3. 収集する個人情報の項目</h2>
+      <table>
+        <tr>
+          <th>項目</th>
+          <th>詳細</th>
+        </tr>
+        <tr>
+          <td>氏名</td>
+          <td>フルネーム（漢字・ふりがな）</td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td>連絡用</td>
+        </tr>
+        <tr>
+          <td>郵便番号・住所</td>
+          <td>引出物・案内状送付用</td>
+        </tr>
+        <tr>
+          <td>アレルギー情報</td>
+          <td>お食事の手配用（任意）</td>
+        </tr>
+        <tr>
+          <td>メッセージ</td>
+          <td>ご意見・ご要望（任意）</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>4. 個人情報の管理方法</h2>
+      <ul>
+        <li><strong>保存場所:</strong> Google Firebase（米国Google社提供のクラウドサービス）</li>
+        <li><strong>セキュリティ:</strong> 通信は全てSSL/TLS暗号化で保護されています</li>
+        <li><strong>アクセス制限:</strong> 招待コードによる認証を実施し、ご本人様以外はアクセスできません</li>
+        <li><strong>管理者:</strong> 新郎新婦のみがデータにアクセス可能です</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. 第三者への提供</h2>
+      <p>収集した個人情報は、以下の場合を除き、第三者に提供することはございません。</p>
+      <ul>
+        <li><strong>結婚式場・提携業者への提供</strong>
+          <ul>
+            <li>式場（お食事手配、座席配置のため）</li>
+            <li>印刷業者（席札、引出物カード作成のため）</li>
+            <li>配送業者（引出物送付のため）</li>
+          </ul>
+        </li>
+        <li>法令に基づく開示請求があった場合</li>
+        <li>ご本人様の同意を得た場合</li>
+      </ul>
+      <p class="highlight">※式場・業者への提供は必要最小限の情報に限定し、契約により守秘義務を課しております。</p>
+    </div>
+
+    <div class="section">
+      <h2>6. 個人情報の保管期間</h2>
+      <ul>
+        <li><strong>保管期間:</strong> 結婚式終了後、3ヶ月間</li>
+        <li><strong>削除予定日:</strong> [結婚式日] の3ヶ月後（[削除予定日]）</li>
+        <li>上記期日をもって、全てのデータを完全に削除いたします</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. ご本人の権利</h2>
+      <p>ご入力いただいた個人情報について、以下の権利を有します。</p>
+      <ul>
+        <li><strong>開示請求:</strong> ご自身の情報の開示を請求できます</li>
+        <li><strong>訂正請求:</strong> 誤った情報の訂正を請求できます</li>
+        <li><strong>削除請求:</strong> 情報の削除を請求できます（出欠確認に支障が出る可能性があります）</li>
+        <li><strong>利用停止請求:</strong> 情報の利用停止を請求できます</li>
+      </ul>
+      <p>これらの請求は、下記のお問い合わせ先までご連絡ください。</p>
+    </div>
+
+    <div class="section">
+      <h2>8. Cookie・トラッキング技術</h2>
+      <p>当サイトでは、以下の技術を使用しています。</p>
+      <ul>
+        <li><strong>セッションストレージ:</strong> 招待コード認証状態の保持（ブラウザを閉じると削除されます）</li>
+        <li><strong>Firebase Analytics:</strong> サイトの利用状況分析（個人を特定する情報は収集しません）</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>9. 個人情報保護法の遵守</h2>
+      <p>当サイトは、個人情報の保護に関する法律（個人情報保護法）を遵守し、適切に個人情報を取り扱います。</p>
+    </div>
+
+    <div class="section">
+      <h2>10. お問い合わせ窓口</h2>
+      <div class="contact-info">
+        <p><strong>個人情報に関するお問い合わせ先:</strong></p>
+        <p>管理責任者: [新郎名] ・ [新婦名]</p>
+        <p>メールアドレス: [メールアドレス]</p>
+        <p>受付時間: 平日 10:00～18:00</p>
+      </div>
+    </div>
+
+    <p class="date">制定日: 2026年1月11日<br>最終更新日: 2026年1月11日</p>
+  </div>
+
+  <script>
+    // ページ読み込み時にsessionStorageから同意状態を復元
+    window.addEventListener('DOMContentLoaded', function() {
+      const checkbox = document.getElementById('privacy-consent');
+      if (checkbox && sessionStorage.getItem('privacyConsent') === 'true') {
+        checkbox.checked = true;
+      }
+    });
+
+    // フォーム連携用（実際のRSVPページに組み込む場合）
+    document.getElementById('privacy-consent')?.addEventListener('change', function() {
+      if (this.checked) {
+        console.log('個人情報の取り扱いに同意されました');
+        // sessionStorageに同意情報を保存
+        sessionStorage.setItem('privacyConsent', 'true');
+        
+        // 確認メッセージを表示
+        alert('同意いただきありがとうございます。\nこのウィンドウを閉じて、元のページに戻ってください。');
+      } else {
+        sessionStorage.removeItem('privacyConsent');
+      }
+    });
+  </script>
+</body>
+</html>

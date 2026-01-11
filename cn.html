@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles/rsvp.css" />
   <link rel="stylesheet" href="styles/footer.css" />
   <link rel="stylesheet" href="styles/request.css" />
+  <link rel="stylesheet" href="styles/privacy-modal.css" />
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
 </head>
@@ -354,9 +355,16 @@
         <span class="rsvp-plus">＋</span> 添加同行人员
       </div>
 
-      <p class="rsvp-terms">请阅读利用条款后，进行注册。</p>
-      <button type="submit" class="rsvp-submit-btn">回复</button>
-      <p class="rsvp-note-xinyun"><br>由于 Kin-chan 的技术不足，通信可能需要一些时间 🙇‍♀️</p>
+      <div class="rsvp-privacy-consent">
+        <label class="privacy-consent-label">
+          <input type="checkbox" id="privacy-consent" required>
+          <span>
+            关于<a href="privace.html" target="_blank">个人信息的处理</a>，已确认并同意全部内容。
+            <small style="color: #666; display: block; margin-top: 5px;">※如果不同意，将无法使用出席确认表单。</small>
+          </span>
+        </label>
+      </div>
+      <button type="submit" class="rsvp-submit-btn" disabled>回复</button>
     </form>
   </section>
 
@@ -383,6 +391,159 @@
   <script src="scripts/location.js"></script>
   <script src="scripts/request.js"></script>
   <script src="scripts/rsvp.js"></script>
+  <script type="module" src="scripts/rsvp_firebase.js"></script>
+  <script src="scripts/privacy-modal.js"></script>
   <script src="scripts/footer.js"></script>
+
+  <!-- 隐私政策 模态窗口 -->
+  <div id="privacy-modal-overlay" class="privacy-modal-overlay"></div>
+  <div id="privacy-modal" class="privacy-modal">
+    <div class="privacy-modal-header">
+      <h2>📋 个人信息的处理</h2>
+      <button id="privacy-modal-close" class="privacy-modal-close">×</button>
+    </div>
+    <div class="privacy-modal-body">
+      <div class="highlight">
+        <p><strong>本网站为确认婚礼出席情况，将收集必要的最小限度个人信息。</strong></p>
+        <p>在输入信息之前，请确认以下内容并表示同意后再进行回复。</p>
+      </div>
+
+      <div class="section">
+        <h3>1. 个人信息管理者</h3>
+        <p>姓名: [新郎姓名] ・ [新娘姓名]<br>
+        联系方式: [电子邮箱地址]</p>
+      </div>
+
+      <div class="section">
+        <h3>2. 个人信息收集目的</h3>
+        <p>收集的个人信息仅用于以下目的：</p>
+        <ul>
+          <li>婚礼·婚宴出席确认</li>
+          <li>当天座位安排及接待业务</li>
+          <li>餐饮安排（包括过敏对应）</li>
+          <li>礼品·邀请函寄送</li>
+          <li>婚礼相关事前联络</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>3. 收集的个人信息项目</h3>
+        <table>
+          <tr>
+            <th>项目</th>
+            <th>详细</th>
+          </tr>
+          <tr>
+            <td>姓名</td>
+            <td>全名（汉字·拼音）</td>
+          </tr>
+          <tr>
+            <td>电子邮箱地址</td>
+            <td>联络用</td>
+          </tr>
+          <tr>
+            <td>邮政编码·地址</td>
+            <td>礼品·邀请函寄送用</td>
+          </tr>
+          <tr>
+            <td>过敏信息</td>
+            <td>餐饮安排用（选填）</td>
+          </tr>
+          <tr>
+            <td>留言</td>
+            <td>意见·要求（选填）</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section">
+        <h3>4. 个人信息管理方法</h3>
+        <ul>
+          <li><strong>保存位置:</strong> Google Firebase（美国Google公司提供的云服务）</li>
+          <li><strong>安全性:</strong> 所有通信均通过SSL/TLS加密保护</li>
+          <li><strong>访问限制:</strong> 通过邀请码进行认证，本人以外无法访问</li>
+          <li><strong>管理者:</strong> 仅新郎新娘可以访问数据</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>5. 向第三方提供</h3>
+        <p>收集的个人信息除以下情况外，不会向第三方提供：</p>
+        <ul>
+          <li><strong>向婚礼场馆·合作商提供</strong>
+            <ul>
+              <li>婚礼场馆（用于餐饮安排、座位配置）</li>
+              <li>印刷业者（用于制作席位卡、礼品卡）</li>
+              <li>配送业者（用于礼品寄送）</li>
+            </ul>
+          </li>
+          <li>基于法律规定的披露请求</li>
+          <li>获得本人同意的情况</li>
+        </ul>
+        <p style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 15px 0;">※向场馆·业者提供的信息仅限必要最小限度，并通过合同规定保密义务。</p>
+      </div>
+
+      <div class="section">
+        <h3>6. 个人信息保管期限</h3>
+        <ul>
+          <li><strong>保管期限:</strong> 婚礼结束后3个月</li>
+          <li><strong>删除预定日:</strong> [婚礼日期] 的3个月后（[删除预定日]）</li>
+          <li>届时将完全删除所有数据</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>7. 本人的权利</h3>
+        <p>关于您输入的个人信息，享有以下权利：</p>
+        <ul>
+          <li><strong>披露请求:</strong> 可以请求披露自己的信息</li>
+          <li><strong>更正请求:</strong> 可以请求更正错误信息</li>
+          <li><strong>删除请求:</strong> 可以请求删除信息（可能影响出席确认）</li>
+          <li><strong>停止使用请求:</strong> 可以请求停止使用信息</li>
+        </ul>
+        <p>这些请求请联系下方咨询窗口。</p>
+      </div>
+
+      <div class="section">
+        <h3>8. Cookie·跟踪技术</h3>
+        <p>本网站使用以下技术：</p>
+        <ul>
+          <li><strong>会话存储:</strong> 保持邀请码认证状态（关闭浏览器后删除）</li>
+          <li><strong>Firebase Analytics:</strong> 网站使用情况分析（不收集能够识别个人的信息）</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>9. 个人信息保护法的遵守</h3>
+        <p>本网站遵守《个人信息保护相关法律》（个人信息保护法），妥善处理个人信息。</p>
+      </div>
+
+      <div class="section">
+        <h3>10. 咨询窗口</h3>
+        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 20px;">
+          <p><strong>个人信息相关咨询窗口:</strong></p>
+          <p>管理负责人: [新郎姓名] ・ [新娘姓名]</p>
+          <p>电子邮箱地址: [电子邮箱地址]</p>
+          <p>受理时间: 工作日 10:00～18:00</p>
+        </div>
+      </div>
+
+      <p style="text-align: right; color: #666; font-size: 14px; margin-top: 30px;">制定日: 2026年1月11日<br>最后更新日: 2026年1月11日</p>
+
+      <div class="privacy-modal-consent-box">
+        <label class="privacy-modal-consent-label">
+          <input type="checkbox" id="privacy-modal-consent">
+          <span>
+            关于上述个人信息的处理，已确认全部内容并表示同意。
+            <small style="color: #666; display: block; margin-top: 5px;">※如果不同意，将无法使用出席确认表单。</small>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="privacy-modal-footer">
+      <button id="privacy-agree-btn" class="privacy-modal-btn privacy-modal-btn-agree" disabled>同意并关闭</button>
+      <button id="privacy-cancel-btn" class="privacy-modal-btn privacy-modal-btn-cancel">取消</button>
+    </div>
+  </div>
 </body>
 </html>

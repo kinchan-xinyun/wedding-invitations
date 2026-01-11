@@ -326,84 +326,46 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
-// フォーム送信
+// プライバシーポリシー同意チェックボックス
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('#rsvp-form');
+  const privacyConsent = document.getElementById('privacy-consent');
+  const submitBtn = document.querySelector('.rsvp-submit-btn');
 
-  if (!form) {
-    console.error('フォーム (#rsvp-form) が見つかりません');
+  if (!privacyConsent || !submitBtn) {
+    console.log('プライバシー同意チェックボックスまたは送信ボタンが見つかりません');
     return;
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    console.log('フォーム送信開始');
+  // 初期状態：送信ボタンを無効化
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.5';
+  submitBtn.style.cursor = 'not-allowed';
 
-    try {
-      // ゲストデータ収集
-      const guests = [];
-      const guestElements = form.querySelectorAll('.rsvp-guest');
-
-      console.log('ゲスト数:', guestElements.length);
-
-      guestElements.forEach((guestEl, index) => {
-        const firstName = guestEl.querySelector('input[name="first_name[]"]')?.value?.trim() || '';
-        const lastName = guestEl.querySelector('input[name="last_name[]"]')?.value?.trim() || '';
-        const email = guestEl.querySelector('input[name="email[]"]')?.value?.trim() || '';
-        const address = guestEl.querySelector('input[name="address[]"]')?.value?.trim() || '';
-
-        if (!firstName || !lastName || !email || !address) {
-          alert(`Guest ${index + 1}: 名前、メール、住所は必須です`);
-          throw new Error(`Guest ${index + 1}: 必須項目が不足`);
-        }
-
-        const guest = {
-          guest_no: index + 1,
-          first_name: firstName,
-          last_name: lastName,
-          first_name_kana: guestEl.querySelector('input[name="first_name_kana[]"]')?.value?.trim() || '',
-          last_name_kana: guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '',
-          email: email,
-          postal_code: guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '',
-          address: address,
-          allergy: guestEl.querySelector('input[name="allergy[]"]')?.value?.trim() || '',
-          message: guestEl.querySelector('textarea[name="message[]"]')?.value?.trim() || ''
-        };
-
-        guests.push(guest);
-      });
-
-      // 出席状況
-      const selectedOption = document.querySelector('.rsvp-attend-option.selected');
-      const attendance = selectedOption?.dataset.choice || 'unknown';
-
-      const payload = {
-        timestamp: new Date().toLocaleString('ja-JP'),
-        attendance: attendance,
-        guests: JSON.stringify(guests)
-      };
-
-      console.log('送信ペイロード:', payload);
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwloLi5vVoXQjwphtVUsuCHi1tBjb4qhw-IgH7m0uR8B0rFdTyI4GJV57lb96Ds1fb9Ig/exec';
-
-      const response = await fetch(scriptURL, {
-        method: 'POST',
-        body: new URLSearchParams(payload),
-        mode: 'no-cors'
-      });
-
-      console.log('レスポンス受信:', response);
-
-      alert('ご予約ありがとうございます！\n新郎新婦からの連絡をお待ちください');
-      
-      form.reset();
-      document.querySelectorAll('.rsvp-attend-option').forEach(o => o.classList.remove('selected'));
-
-    } catch (error) {
-      console.error('送信エラー:', error);
-      alert('エラーが発生しました。\n' + error.message);
+  // チェックボックスの状態変更時
+  privacyConsent.addEventListener('change', function() {
+    if (this.checked) {
+      // チェックされた場合：送信ボタンを有効化
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      submitBtn.style.cursor = 'pointer';
+      // sessionStorageに同意情報を保存
+      sessionStorage.setItem('privacyConsent', 'true');
+      console.log('個人情報の取り扱いに同意されました');
+    } else {
+      // チェックが外された場合：送信ボタンを無効化
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.5';
+      submitBtn.style.cursor = 'not-allowed';
+      sessionStorage.removeItem('privacyConsent');
     }
   });
+
+  // ページ読み込み時にsessionStorageから同意状態を復元
+  if (sessionStorage.getItem('privacyConsent') === 'true') {
+    privacyConsent.checked = true;
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+    submitBtn.style.cursor = 'pointer';
+  }
 });

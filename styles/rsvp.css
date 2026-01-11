@@ -399,6 +399,52 @@
 }
 
 
+/* プライバシー同意チェックボックス */
+.rsvp-privacy-consent {
+    background: #FFF9E6;
+    padding: 20px;
+    border-radius: 8px;
+    border: 3px solid var(--tawareco-red);
+    margin: 30px 0 20px;
+    box-shadow: 3px 3px 0 var(--tawareco-yellow);
+}
+
+.privacy-consent-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--tawareco-black);
+    line-height: 1.6;
+}
+
+.privacy-consent-label input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: var(--tawareco-red);
+}
+
+.privacy-consent-label a {
+    color: #CC0000;
+    text-decoration: underline;
+    font-weight: 900;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 1px rgba(204, 0, 0, 0.3);
+}
+
+.privacy-consent-label a:hover {
+    color: #000000;
+    background-color: var(--tawareco-yellow);
+    padding: 2px 4px;
+    border-radius: 3px;
+    text-shadow: none;
+}
+
 /* フォームフッター（利用規約、回答ボタン、通信時間メッセージ） */
 .rsvp-terms {
     color: #666; /* 以前の黒文字から変更 */
@@ -541,6 +587,21 @@
 
     .rsvp-note-xinyun {
         font-size: 0.68rem;
+    }
+
+    .rsvp-privacy-consent {
+        padding: 15px;
+        margin: 20px 0 15px;
+    }
+
+    .privacy-consent-label {
+        font-size: 13px;
+        gap: 8px;
+    }
+
+    .privacy-consent-label input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
     }
 
 }
