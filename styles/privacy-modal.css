@@ -86,7 +86,7 @@
   padding: 30px;
   overflow-y: auto;
   flex: 1;
-  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'メイリオ', Meiryo, sans-serif;
+  font-family: 'Yusei Magic', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'メイリオ', Meiryo, sans-serif;
   line-height: 1.8;
   color: #333;
 }
@@ -97,12 +97,15 @@
   margin: 25px 0 12px;
   padding-left: 15px;
   border-left: 4px solid #e8b4b8;
+  font-family: 'Yusei Magic', sans-serif;
+  font-weight: 700;
 }
 
 .privacy-modal-body p,
 .privacy-modal-body li {
   margin-bottom: 12px;
   font-size: 14px;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 .privacy-modal-body ul {
@@ -115,6 +118,7 @@
   border-radius: 8px;
   border-left: 4px solid #ffc107;
   margin: 15px 0;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 .privacy-modal-body .highlight strong {
@@ -126,6 +130,7 @@
   border-collapse: collapse;
   margin: 15px 0;
   font-size: 13px;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 .privacy-modal-body table th,
@@ -170,6 +175,7 @@
   font-weight: 600;
   color: var(--tawareco-black);
   line-height: 1.6;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 .privacy-modal-consent-label input[type="checkbox"] {
