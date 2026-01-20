@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>No Wedding No Life - 中文</title>
+  <title>No Wedding No Life</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="styles/global.css" />
   <link rel="stylesheet" href="styles/navigation.css" />
   <link rel="stylesheet" href="styles/hero.css" />
@@ -16,534 +18,158 @@
   <link rel="stylesheet" href="styles/footer.css" />
   <link rel="stylesheet" href="styles/request.css" />
   <link rel="stylesheet" href="styles/privacy-modal.css" />
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="top-bar"></div>
 
-  <header class="menu-header">
-    <input id="menuToggle" class="menu-toggle" type="checkbox" />
-    <label class="hamburger" for="menuToggle">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </label>
-    <nav class="menu-panel">
-      <ul>
-        <li><a href="#message-section" onclick="document.getElementById('menuToggle').checked=false;">寄语 / 留言</a></li>
-        <li><a href="#profile-section" onclick="document.getElementById('menuToggle').checked=false;">简介</a></li>
-        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">倒计时</a></li>
-        <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">日程安排</a></li>
-        <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">地点</a></li>
-        <li><a href="#rsvp-section" onclick="document.getElementById('menuToggle').checked=false;">预约 / 回复</a></li>
-        <li><a href="#footer-section" onclick="document.getElementById('menuToggle').checked=false;">联系方式</a></li>
-      </ul>
-    </nav>
-  </header>
+<div class="top-bar"></div>
 
-  <header class="hero-section">
-    <div class="slider-container">
-      <div class="top-track">
-        <img src="images/image_cafe.png" alt="">
-        <img src="images/image_doya.png" alt="">
-        <img src="images/image_elevator.png" alt="">
-        <img src="images/image_gpt.png" alt="">
-        <img src="images/image_last_xinyun.png" alt="">
-        <img src="images/image_cafe.png" alt="">
-        <img src="images/image_doya.png" alt="">
-        <img src="images/image_elevator.png" alt="">
-        <img src="images/image_gpt.png" alt="">
-        <img src="images/image_last_xinyun.png" alt="">
-      </div>
-      <div class="bottom-track">
-        <img src="images/image_hanabi.png" alt="">
-        <img src="images/image_haruya.png" alt="">
-        <img src="images/image_haruya_yokohama.png" alt="">
-        <img src="images/image_xinyun.png" alt="">
-        <img src="images/image_kinugawa.png" alt="">
-        <img src="images/image_hanabi.png" alt="">
-        <img src="images/image_haruya.png" alt="">
-        <img src="images/image_haruya_yokohama.png" alt="">
-        <img src="images/image_xinyun.png" alt="">
-        <img src="images/image_kinugawa.png" alt="">
-      </div>
-    </div>
-    <div class="hero-title-box">
-      <p class="title-sub">XINYUN & HARUYA presents</p>
-      <h1 class="title-main">WEDDING</h1>
-      <p class="title-date">2026.10.26 (周一)</p>
-    </div>
-  </header>
+<!-- NAVIGATION -->
+<header class="menu-header">
+  <input id="menuToggle" class="menu-toggle" type="checkbox" />
+  <label class="hamburger" for="menuToggle">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </label>
+  <nav class="menu-panel">
+    <ul>
+      <li><a href="#message">致辞</a></li>
+      <li><a href="#profile">简介</a></li>
+      <li><a href="#countdown">倒计时</a></li>
+      <li><a href="#schedule">日程</a></li>
+      <li><a href="#location">会场</a></li>
+      <li><a href="#rsvp">出席回复</a></li>
+      <li><a href="#contact">联系方式</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <h2 id="shared-message-title" class="shared-section-title fade-section">寄语 / 留言</h2>
-  <main id="message-section" class="message-container fade-section">
-    <section class="message-panel">
-      <p class="message-text">
-        尊敬的各位：<br><br>
-        我们衷心祝愿大家身体健康，万事如意。<br><br>
-        我们已于<br>
-        <span class="message-date">2026年03月05日</span><br>
-        登记结婚。<br><br>
-        为了向一直以来关照我们的重要亲友们报告喜讯并致以问候，<br>
-        我们准备举办一个简单的婚礼。<br><br>
-        百忙之中打扰各位，实在抱歉，<br>
-        但我们由衷期待您的光临。<br><br>
-        敬上
+<!-- HERO -->
+<header class="hero-section">
+  <div class="hero-title-box">
+    <p class="title-sub">XINYUN & HARUYA 敬邀</p>
+    <h1 class="title-main">WEDDING</h1>
+    <p class="title-date">2026.10.26 (MON)</p>
+  </div>
+</header>
+
+<!-- MESSAGE -->
+<h2 id="message" class="shared-section-title">致辞</h2>
+<section class="message-container">
+  <p class="message-text">
+    敬启者<br><br>
+    谨祝各位身体健康，事业顺利。<br><br>
+    我们二人已于<br>
+    <strong>2026 年 03 月 05 日</strong><br>
+    正式登记结婚。<br><br>
+    借此机会，诚挚邀请一直以来关心与支持我们的各位贵宾，<br>
+    谨此报告并致以诚挚问候，<br>
+    特举办一场婚礼仪式。<br><br>
+    倘蒙百忙之中拨冗出席，<br>
+    不胜感激，谨此恭候光临。<br><br>
+    此致<br>
+    敬礼
+  </p>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="profile-section">
+  <h2 class="profile-title">简介</h2>
+
+  <div class="profile-container">
+    <div class="profile-card">
+      <h3>Haruya</h3>
+      <p>
+        2001年3月6日出生　神奈川县<br>
+        血型：B型　公司职员
       </p>
-    </section>
-  </main>
-
-  <section id="profile-section" class="profile-section fade-section">
-    <h2 class="profile-title">我们的简介</h2>
-    <div class="profile-container">
-      <div class="profile-card">
-        <img src="images/image_haruya.png" alt="新郎 / Groom" class="profile-img" />
-        <h3 class="profile-name">HARUYA</h3>
-        <p class="profile-text">
-          2001年3月6日生于神奈川县<br>
-          B型 血型，公司职员<br>
-        </p>
-      </div>
-      <div class="profile-card">
-        <img src="images/image_train_xinyun.png" alt="新娘 / Bride" class="profile-img" />
-        <h3 class="profile-name">XINYUN</h3>
-        <p class="profile-text">
-          1997年9月20日生于上海<br>
-          A型 血型，研究员<br>
-          每年参加超过30场演唱会<br>
-          我的爱好其实是制作键盘<br>
-          期待在婚礼当天与大家相见
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="countdown-section" class="countdown-section fade-section">
-    <h2 class="countdown-heading">倒计时</h2>
-
-    <div class="countdown-date">
-        <span class="date-text">2026.10.26</span>
     </div>
 
-    <div id="countdown-timer" class="countdown-timer" aria-live="polite">
-      <div>
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div>
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div>
-        <span id="minutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div>
-        <span id="seconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-
-    <div class="countdown-message" id="message">
-      音乐响起，心声呐喊。在会场等候。<br>
-      就快到了 — 做好准备，最棒的夜晚即将开始。<br>
-    </div>
-
-    <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
-  </section>
-
-
-  <section id="schedule-section" class="schedule-section fade-section">
-    <h2 class="schedule-title">日程安排</h2>
-    <div class="schedule-timeline">
-      <div class="schedule-item">
-        <div class="schedule-time">10:00</div>
-        <div class="schedule-content">
-          <h3>开始签到 <span>START</span></h3>
-          <p>请您务必在当天10点前到达。</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">11:30</div>
-        <div class="schedule-content">
-          <h3>婚礼仪式 <span>CEREMONY</span></h3>
-          <p>请参加温馨感人的仪式。</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">12:00</div>
-        <div class="schedule-content">
-          <h3>合影留念 <span>PHOTO</span></h3>
-          <p>退场后将进行家庭合影。</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">12:30</div>
-        <div class="schedule-content">
-          <h3>婚宴 <span>RECEPTION</span></h3>
-          <p>请与我们共享欢乐时光。</p>
-        </div>
-      </div>
-      <div class="schedule-item">
-        <div class="schedule-time">14:45</div>
-        <div class="schedule-content">
-          <h3>送别 <span>THANK YOU</span></h3>
-          <p>感谢您今日的光临！</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="location-section" class="location-section fade-section">
-    <h2 class="location-title">地点</h2>
-    <div class="location-card">
-      <div class="location-info-row">
-        <span class="location-label">会场</span>
-        <span class="location-value">GARDEN WEDDING</span>
-      </div>
-      <div class="location-info-row">
-        <span class="location-label">会场名称</span>
-        <span class="location-value">花园礼拜堂</span>
-      </div>
-      <div class="location-info-row">
-        <span class="location-label">网址</span>
-        <span class="location-value">
-          <a href="https://brapla.com/invitation" target="_blank">https://brapla.com/invitation</a>
-        </span>
-      </div>
-      <div class="location-info-row">
-        <span class="location-label">地址</span>
-        <span class="location-value">福冈县北九州市八幡西区幸神</span>
-      </div>
-      <div class="location-info-row">
-        <span class="location-label">电话</span>
-        <span class="location-value">03-1234-5678</span>
-      </div>
-      <div class="location-map-wrapper">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.9613987487795!2d139.7671250152589!3d35.68123618019333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf0d52b8a4d%3A0x2e8c3d6edb2e69d3!2z5pel5pys44CB44CSMTAwLTAwMTUg5p2x5Lqs6YO95paw5a6_5Yy66KW_5Zyw77yS5LiB55uu77yR77yQ77yR!5e0!3m2!1sja!2sjp!4v1695891785792!5m2!1sja!2sjp"
-          width="100%"
-          height="250"
-          style="border:0; border-radius: 10px;"
-          allowfullscreen=""
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="request-section" class="invitation-wrapper fade-section">
-    <h2 class="invitation-title">特别请求 / 敬请留意</h2>
-    <div class="invitation-card">
-        <div class="invitation-content">
-          <p class="invitation-text">非常抱歉</p>
-          <p class="invitation-text">诚挚邀请您出席婚礼仪式</p>
-          <p class="invitation-text">请于当天<br>
-            <span class="time-highlight">11:30</span><br>
-            光临<br></p>
-          <p class="invitation-text">不胜感激</p>
-        </div>
-
-        <div class="flower-decoration" style="margin-top: 40px;">✿ ✿ ✿</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="rsvp-section" class="rsvp-section fade-section">
-    <h2 class="rsvp-title">回复邀请</h2>
-    <p class="rsvp-message">
-      烦请您<br />
-      在以下日期之前回复是否出席。<br />
-      如果在此期限内难以答复，<br />
-      请先选择「保留」。
-    </p>
-    <div class="rsvp-deadline">
-      <div class="rsvp-date-block">
-        <span class="rsvp-num">12</span>
-        <span class="rsvp-label">月</span>
-      </div>
-      <div class="rsvp-separator">|</div>
-      <div class="rsvp-date-block">
-        <span class="rsvp-num">02</span>
-        <span class="rsvp-label">日</span>
-      </div>
-      <div class="rsvp-separator">|</div>
-      <div class="rsvp-date-block">
-        <span class="rsvp-num">2025</span>
-        <span class="rsvp-label">年</span>
-      </div>
-    </div>
-
-    <div class="rsvp-attendance-row">
-      <div class="rsvp-attendance-buttons">
-        <div class="rsvp-attend-option" data-choice="attend">
-          <div class="rsvp-circle"></div>
-          <div class="rsvp-text">
-            <p class="rsvp-jp">出席</p>
-            <p class="rsvp-en">Attend</p>
-          </div>
-        </div>
-        <div class="rsvp-attend-option" data-choice="absent">
-          <div class="rsvp-circle"></div>
-          <div class="rsvp-text">
-            <p class="rsvp-jp">婉拒</p>
-            <p class="rsvp-en">Decline</p>
-          </div>
-        </div>
-        <div class="rsvp-attend-option" data-choice="keep">
-          <div class="rsvp-circle"></div>
-          <div class="rsvp-text">
-            <p class="rsvp-jp">保留</p>
-            <p class="rsvp-en">Keep</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <input type="hidden" name="attendance[]" />
-
-    <form id="rsvp-form" class="rsvp-form">
-      <p class="rsvp-note"><span>*</span>为必填项</p>
-
-      <div class="rsvp-guest rsvp-open">
-        <div class="rsvp-guest-header">
-          <span class="rsvp-guest-title">宾客 1（发送人）</span>
-        </div>
-        <div class="rsvp-guest-content">
-          <button type="button" class="rsvp-remove-guest" style="display:none;">删除</button>
-          <div class="rsvp-field-row">
-            <label>姓名*</label>
-            <div class="rsvp-field-group">
-              <input type="text" name="first_name[]" placeholder="姓" required />
-              <input type="text" name="last_name[]" placeholder="名" required />
-            </div>
-          </div>
-          <div class="rsvp-field-row">
-            <label>拼音</label>
-            <div class="rsvp-field-group">
-              <input type="text" name="first_name_kana[]" placeholder="Xing" />
-              <input type="text" name="last_name_kana[]" placeholder="Ming" />
-            </div>
-          </div>
-          <div class="rsvp-field-row">
-            <label>电子邮件地址*</label>
-            <input type="email" name="email[]" placeholder="例：sample@email.com" required>
-          </div>
-          <div class="rsvp-field-row">
-            <label>邮政编码*</label>
-            <div class="field-group">
-              <input type="text" name="postal_code[]" placeholder="例：100-0001" />
-            </div>
-          </div>
-          <div class="rsvp-field-row">
-            <label>地址*</label>
-            <input type="text" name="address[]" placeholder="例：東京都渋谷区〜" required>
-          </div>
-          <div class="rsvp-field-row">
-            <label>过敏信息</label>
-            <input type="text" name="allergy[]" placeholder="过敏信息" />
-          </div>
-          <div class="rsvp-field-row">
-            <label>留言</label>
-            <textarea name="message[]" placeholder="请输入留言"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="rsvp-add-guest" id="rsvp-add-guest-btn">
-        <span class="rsvp-plus">＋</span> 添加同行人员
-      </div>
-
-      <div class="rsvp-privacy-consent">
-        <label class="privacy-consent-label">
-          <input type="checkbox" id="privacy-consent" required>
-          <span>
-            关于<a href="privace.html" target="_blank">个人信息的处理</a>，已确认并同意全部内容。
-            <small style="color: #666; display: block; margin-top: 5px;">※如果不同意，将无法使用出席确认表单。</small>
-          </span>
-        </label>
-      </div>
-      <button type="submit" class="rsvp-submit-btn" disabled>回复</button>
-    </form>
-  </section>
-
-  <footer id="footer-section" class="footer-section fade-section">
-    <h3 class="footer-title">联系方式 (行程工作人员)</h3>
-    <p class="footer-contact-info">
-      负责人：[担当者名]<br>
-      电话：[電話番号]<br>
-      邮箱：[メールアドレス]
-    </p>
-    <p>© 2026 XINYUN</p>
-    <button type="submit" class="footer-return-button">
-      <a href="index.html">返回</a>
-    </button>
-  </footer>
-
-  <script src="scripts/global.js"></script>
-  <script src="scripts/navigation.js"></script>
-  <script src="scripts/hero.js"></script>
-  <script src="scripts/message.js"></script>
-  <script src="scripts/profile.js"></script>
-  <script src="scripts/countdown.js"></script>
-  <script src="scripts/schedule.js"></script>
-  <script src="scripts/location.js"></script>
-  <script src="scripts/request.js"></script>
-  <script src="scripts/rsvp.js"></script>
-  <script type="module" src="scripts/rsvp_firebase.js"></script>
-  <script src="scripts/privacy-modal.js"></script>
-  <script src="scripts/footer.js"></script>
-
-  <!-- 隐私政策 模态窗口 -->
-  <div id="privacy-modal-overlay" class="privacy-modal-overlay"></div>
-  <div id="privacy-modal" class="privacy-modal">
-    <div class="privacy-modal-header">
-      <h2>📋 个人信息的处理</h2>
-      <button id="privacy-modal-close" class="privacy-modal-close">×</button>
-    </div>
-    <div class="privacy-modal-body">
-      <div class="highlight">
-        <p><strong>本网站为确认婚礼出席情况，将收集必要的最小限度个人信息。</strong></p>
-        <p>在输入信息之前，请确认以下内容并表示同意后再进行回复。</p>
-      </div>
-
-      <div class="section">
-        <h3>1. 个人信息管理者</h3>
-        <p>姓名: [新郎姓名] ・ [新娘姓名]<br>
-        联系方式: [电子邮箱地址]</p>
-      </div>
-
-      <div class="section">
-        <h3>2. 个人信息收集目的</h3>
-        <p>收集的个人信息仅用于以下目的：</p>
-        <ul>
-          <li>婚礼·婚宴出席确认</li>
-          <li>当天座位安排及接待业务</li>
-          <li>餐饮安排（包括过敏对应）</li>
-          <li>礼品·邀请函寄送</li>
-          <li>婚礼相关事前联络</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>3. 收集的个人信息项目</h3>
-        <table>
-          <tr>
-            <th>项目</th>
-            <th>详细</th>
-          </tr>
-          <tr>
-            <td>姓名</td>
-            <td>全名（汉字·拼音）</td>
-          </tr>
-          <tr>
-            <td>电子邮箱地址</td>
-            <td>联络用</td>
-          </tr>
-          <tr>
-            <td>邮政编码·地址</td>
-            <td>礼品·邀请函寄送用</td>
-          </tr>
-          <tr>
-            <td>过敏信息</td>
-            <td>餐饮安排用（选填）</td>
-          </tr>
-          <tr>
-            <td>留言</td>
-            <td>意见·要求（选填）</td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="section">
-        <h3>4. 个人信息管理方法</h3>
-        <ul>
-          <li><strong>保存位置:</strong> Google Firebase（美国Google公司提供的云服务）</li>
-          <li><strong>安全性:</strong> 所有通信均通过SSL/TLS加密保护</li>
-          <li><strong>访问限制:</strong> 通过邀请码进行认证，本人以外无法访问</li>
-          <li><strong>管理者:</strong> 仅新郎新娘可以访问数据</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>5. 向第三方提供</h3>
-        <p>收集的个人信息除以下情况外，不会向第三方提供：</p>
-        <ul>
-          <li><strong>向婚礼场馆·合作商提供</strong>
-            <ul>
-              <li>婚礼场馆（用于餐饮安排、座位配置）</li>
-              <li>印刷业者（用于制作席位卡、礼品卡）</li>
-              <li>配送业者（用于礼品寄送）</li>
-            </ul>
-          </li>
-          <li>基于法律规定的披露请求</li>
-          <li>获得本人同意的情况</li>
-        </ul>
-        <p style="background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 4px solid #ffc107; margin: 15px 0;">※向场馆·业者提供的信息仅限必要最小限度，并通过合同规定保密义务。</p>
-      </div>
-
-      <div class="section">
-        <h3>6. 个人信息保管期限</h3>
-        <ul>
-          <li><strong>保管期限:</strong> 婚礼结束后3个月</li>
-          <li><strong>删除预定日:</strong> [婚礼日期] 的3个月后（[删除预定日]）</li>
-          <li>届时将完全删除所有数据</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>7. 本人的权利</h3>
-        <p>关于您输入的个人信息，享有以下权利：</p>
-        <ul>
-          <li><strong>披露请求:</strong> 可以请求披露自己的信息</li>
-          <li><strong>更正请求:</strong> 可以请求更正错误信息</li>
-          <li><strong>删除请求:</strong> 可以请求删除信息（可能影响出席确认）</li>
-          <li><strong>停止使用请求:</strong> 可以请求停止使用信息</li>
-        </ul>
-        <p>这些请求请联系下方咨询窗口。</p>
-      </div>
-
-      <div class="section">
-        <h3>8. Cookie·跟踪技术</h3>
-        <p>本网站使用以下技术：</p>
-        <ul>
-          <li><strong>会话存储:</strong> 保持邀请码认证状态（关闭浏览器后删除）</li>
-          <li><strong>Firebase Analytics:</strong> 网站使用情况分析（不收集能够识别个人的信息）</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3>9. 个人信息保护法的遵守</h3>
-        <p>本网站遵守《个人信息保护相关法律》（个人信息保护法），妥善处理个人信息。</p>
-      </div>
-
-      <div class="section">
-        <h3>10. 咨询窗口</h3>
-        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin-top: 20px;">
-          <p><strong>个人信息相关咨询窗口:</strong></p>
-          <p>管理负责人: [新郎姓名] ・ [新娘姓名]</p>
-          <p>电子邮箱地址: [电子邮箱地址]</p>
-          <p>受理时间: 工作日 10:00～18:00</p>
-        </div>
-      </div>
-
-      <p style="text-align: right; color: #666; font-size: 14px; margin-top: 30px;">制定日: 2026年1月11日<br>最后更新日: 2026年1月11日</p>
-
-      <div class="privacy-modal-consent-box">
-        <label class="privacy-modal-consent-label">
-          <input type="checkbox" id="privacy-modal-consent">
-          <span>
-            关于上述个人信息的处理，已确认全部内容并表示同意。
-            <small style="color: #666; display: block; margin-top: 5px;">※如果不同意，将无法使用出席确认表单。</small>
-          </span>
-        </label>
-      </div>
-    </div>
-    <div class="privacy-modal-footer">
-      <button id="privacy-agree-btn" class="privacy-modal-btn privacy-modal-btn-agree" disabled>同意并关闭</button>
-      <button id="privacy-cancel-btn" class="privacy-modal-btn privacy-modal-btn-cancel">取消</button>
+    <div class="profile-card">
+      <h3>Xinyun</h3>
+      <p>
+        1997年9月20日出生　上海<br>
+        血型：A型　研究员<br>
+        每年参加30场以上的现场演出<br>
+        兴趣是制作键盘<br>
+        期待在婚礼当天与各位相见
+      </p>
     </div>
   </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section id="countdown" class="countdown-section">
+  <h2>倒计时</h2>
+  <p class="countdown-message">
+    当音乐响起，心随之共鸣。<br>
+    我们在会场恭候您的到来。<br>
+    一场难忘的美好时刻即将开启。
+  </p>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" class="schedule-section">
+  <h2>日程安排</h2>
+
+  <div class="schedule-item">
+    <strong>10:00</strong> 受付开始<br>
+    敬请于当日10:00前莅临会场。
+  </div>
+
+  <div class="schedule-item">
+    <strong>11:30</strong> 婚礼仪式<br>
+    诚邀您共同见证这一温馨时刻。
+  </div>
+
+  <div class="schedule-item">
+    <strong>12:00</strong> 合影留念<br>
+    仪式结束后将进行合影拍摄。
+  </div>
+
+  <div class="schedule-item">
+    <strong>12:30</strong> 婚宴<br>
+    敬请共享愉快时光。
+  </div>
+
+  <div class="schedule-item">
+    <strong>14:45</strong> 致谢恭送<br>
+    衷心感谢您的莅临。
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="location-section">
+  <h2>会场信息</h2>
+  <p>
+    会场：有栖川清水<br>
+    地址：东京都港区南麻布3-5-40<br>
+    电话：03-6432-9472<br>
+    <a href="https://arisugawa-shimizu.sp-bridal.jp" target="_blank">官方网站</a>
+  </p>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="rsvp-section">
+  <h2>出席回复</h2>
+  <p>
+    敬请您于指定日期前回复是否出席。<br>
+    如暂时无法确定，请选择“保留”。
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact" class="footer-section">
+  <h3>联系方式</h3>
+  <p>
+    联系人：[负责人姓名]<br>
+    电话：[电话号码]<br>
+    邮箱：[电子邮箱]
+  </p>
+  <p>© 2026 XINYUN</p>
+</footer>
+
 </body>
 </html>
