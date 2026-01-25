@@ -10,6 +10,13 @@ firebase-debug.*.log*
 # JSON files
 *.json
 
+# CSV files
+*.csv
+
+# Python files
+*.py
+
+
 # Firebase cache
 .firebase/
 

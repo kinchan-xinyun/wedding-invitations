@@ -2,6 +2,19 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    // 招待コレクション: 読み取りのみ許可（招待コードの検証用）
+    match /invitations/{inviteCode} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // 回答コレクション: 読み書き許可（回答の保存・読み込み用）
+    match /responses/{inviteCode} {
+      allow read: if true;
+      allow write: if true;
+    }
+    
+    // その他のドキュメント: すべて拒否
     match /{document=**} {
       allow read, write: if false;
     }

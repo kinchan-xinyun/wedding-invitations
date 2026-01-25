@@ -1,4 +1,11 @@
 {
+  "name": "wedding-invitations",
+  "version": "1.0.0",
+  "description": "Wedding invitation management system",
+  "scripts": {
+    "import": "python3 import_invitations.py",
+    "list": "python3 import_invitations.py list"
+  },
   "dependencies": {
     "firebase": "^12.7.0"
   }
