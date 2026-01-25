@@ -95,7 +95,7 @@ function showInviteCodePrompt() {
         ">
           招待状に記載された招待コードを入力してください
         </p>
-        <input type="text" id="invite-code-input" placeholder="例: ABC123XYZ" 
+        <input type="text" id="invite-code-input" placeholder="例: test" 
           style="
             width: 100%; 
             padding: 12px; 
@@ -176,7 +176,7 @@ function showInviteCodePrompt() {
 
 async function verifyInviteCode() {
   const input = document.getElementById('invite-code-input');
-  const code = input.value.trim().toUpperCase();
+  const code = input.value.trim();
 
   if (!code) {
     alert('招待コードを入力してください');
