@@ -310,24 +310,25 @@ function fillFormWithExistingData(data) {
           const guestEl = allGuests[index];
           
           // 各フィールドに値を設定
-          const firstNameInput = guestEl.querySelector('input[name="first_name[]"]');
-          const lastNameInput = guestEl.querySelector('input[name="last_name[]"]');
-          const firstNameKanaInput = guestEl.querySelector('input[name="first_name_kana[]"]');
-          const lastNameKanaInput = guestEl.querySelector('input[name="last_name_kana[]"]');
+          const firstNameInput = guestEl.querySelector('input[name="firstName[]"]');
+          const lastNameInput = guestEl.querySelector('input[name="lastName[]"]');
+          const firstNameKanaInput = guestEl.querySelector('input[name="firstNameKana[]"]');
+          const lastNameKanaInput = guestEl.querySelector('input[name="lastNameKana[]"]');
           const emailInput = guestEl.querySelector('input[name="email[]"]');
-          const postalCodeInput = guestEl.querySelector('input[name="postal_code[]"]');
+          const postalCodeInput = guestEl.querySelector('input[name="postalCode[]"]');
           const addressInput = guestEl.querySelector('input[name="address[]"]');
-          const allergyInput = guestEl.querySelector('input[name="allergy[]"]');
+          const allergiesInput = guestEl.querySelector('input[name="allergies[]"]');
           const messageInput = guestEl.querySelector('textarea[name="message[]"]');
+          const notesInput = guestEl.querySelector('textarea[name="notes[]"]');
           
-          if (firstNameInput) firstNameInput.value = guest.first_name || '';
-          if (lastNameInput) lastNameInput.value = guest.last_name || '';
-          if (firstNameKanaInput) firstNameKanaInput.value = guest.first_name_kana || '';
-          if (lastNameKanaInput) lastNameKanaInput.value = guest.last_name_kana || '';
+          if (firstNameInput) firstNameInput.value = guest.firstName || '';
+          if (lastNameInput) lastNameInput.value = guest.lastName || '';
+          if (firstNameKanaInput) firstNameKanaInput.value = guest.firstNameKana || '';
+          if (lastNameKanaInput) lastNameKanaInput.value = guest.lastNameKana || '';
           if (emailInput) emailInput.value = guest.email || '';
-          if (postalCodeInput) postalCodeInput.value = guest.postal_code || '';
+          if (postalCodeInput) postalCodeInput.value = guest.postalCode || '';
           if (addressInput) addressInput.value = guest.address || '';
-          if (allergyInput) allergyInput.value = guest.allergy || '';
+          if (allergiesInput) allergiesInput.value = guest.allergies || '';
           if (messageInput) messageInput.value = guest.message || '';
         }
       });
@@ -378,13 +379,13 @@ function setupFormSubmit() {
         }
 
         const guest = {
-          guest_no: index + 1,
-          first_name: firstName,
-          last_name: lastName,
-          first_name_kana: guestEl.querySelector('input[name="first_name_kana[]"]')?.value?.trim() || '',
-          last_name_kana: guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '',
+          guestNo: index + 1,
+          firstName: firstName,
+          lastName: lastName,
+          firstNameKana: guestEl.querySelector('input[name="first_name_kana[]"]')?.value?.trim() || '',
+          lastNameKana: guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '',
           email: email,
-          postal_code: guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '',
+          postalCode: guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '',
           address: address,
           allergy: guestEl.querySelector('input[name="allergy[]"]')?.value?.trim() || '',
           message: guestEl.querySelector('textarea[name="message[]"]')?.value?.trim() || ''
@@ -399,14 +400,14 @@ function setupFormSubmit() {
 
       // Firebaseに保存するデータ
       const payload = {
-        invite_code: currentInviteCode,
+        inviteCode: currentInviteCode,
         timestamp: new Date().toISOString(),
-        timestamp_jst: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
-        last_updated: serverTimestamp(),
+        timestampJst: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
+        lastUpdated: serverTimestamp(),
         attendance: attendance,
-        guest_count: guests.length,
+        guestCount: guests.length,
         guests: guests, // オブジェクト配列として直接保存
-        raw_guests_json: JSON.stringify(guests) // バックアップ用
+        rawGuestsJson: JSON.stringify(guests) // バックアップ用
       };
 
       console.log('送信ペイロード:', payload);
