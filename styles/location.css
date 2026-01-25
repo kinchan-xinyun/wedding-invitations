@@ -95,6 +95,108 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     /* 地図の枠にも赤のボーダーを追加 */
     border: 2px solid var(--tawareco-red);
+    position: relative;
+}
+
+.location-map-wrapper .access-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.location-map-wrapper .access-map-image:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.location-map-wrapper .access-map-image:active {
+    transform: scale(0.98);
+}
+
+.map-hint {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--tawareco-red);
+    margin-top: 8px;
+    font-weight: 600;
+    font-family: "Yusei Magic", sans-serif;
+}
+
+/* アクセスマップ拡大モーダル */
+.map-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-modal-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.map-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    max-width: 95vw;
+    max-height: 95vh;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.map-modal.active {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.map-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: var(--tawareco-red);
+    color: white;
+    border: 2px solid var(--tawareco-yellow);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.map-modal-close:hover {
+    background: var(--tawareco-yellow);
+    color: var(--tawareco-red);
+    transform: rotate(90deg);
+}
+
+#map-modal-image {
+    max-width: 100%;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 /* ---- Responsive ---- */

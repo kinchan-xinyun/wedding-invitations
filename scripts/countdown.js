@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const countdownSection = document.getElementById("countdown-section");
   if (!countdownSection) return;
 
-  const targetDate = new Date("2026-10-26T00:00:00+09:00"); // 日本時間
+  const targetDate = new Date("2026-10-24T00:00:00+09:00"); // 日本時間
 
   // ========== タイプライター効果 ==========
   function typewriterEffect() {
