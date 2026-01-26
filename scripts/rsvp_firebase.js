@@ -95,7 +95,7 @@ function showInviteCodePrompt() {
         ">
           招待状に記載された招待コードを入力してください
         </p>
-        <input type="text" id="invite-code-input" placeholder="例: test" 
+        <input type="text" id="invite-code-input" placeholder="例: abc123xyz" 
           style="
             width: 100%; 
             padding: 12px; 
