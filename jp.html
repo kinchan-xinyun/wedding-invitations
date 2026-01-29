@@ -359,6 +359,7 @@
 
     <form id="rsvp-form" class="rsvp-form  fade-section">
       <p class="rsvp-note"><span>*</span>は必須項目です</p>
+      <p class="rsvp-note" style="margin-top: -15px; margin-bottom: 20px; font-size: 0.9rem;">※出席を選択された場合のみ、住所・アレルギー・2次会参加の入力が必要です</p>
 
       <div class="rsvp-guest rsvp-open">
         <div class="rsvp-guest-header">
@@ -405,6 +406,28 @@
           <div class="rsvp-field-row">
             <label>アレルギー</label>
             <input type="text" name="allergy[]" placeholder="アレルギー" />
+          </div>
+          <div class="rsvp-field-row">
+            <label>2次会参加</label>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="radio-group" style="display: flex; gap: 10px; width: 100%;">
+                <label style="display: flex; align-items: center; cursor: pointer; flex: 1; justify-content: center; padding: 12px; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease;">
+                  <input type="radio" name="afterparty[]" value="参加する" style="width: 20px; height: 20px; margin-right: 8px; cursor: pointer; accent-color: #CC0000;">
+                  <span style="color: #000; font-size: 16px; font-weight: 500;">参加する</span>
+                </label>
+                <label style="display: flex; align-items: center; cursor: pointer; flex: 1; justify-content: center; padding: 12px; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease;">
+                  <input type="radio" name="afterparty[]" value="欠席する" style="width: 20px; height: 20px; margin-right: 8px; cursor: pointer; accent-color: #CC0000;">
+                  <span style="color: #000; font-size: 16px; font-weight: 500;">欠席する</span>
+                </label>
+                <label style="display: flex; align-items: center; cursor: pointer; flex: 1; justify-content: center; padding: 12px; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease;">
+                  <input type="radio" name="afterparty[]" value="未定" style="width: 20px; height: 20px; margin-right: 8px; cursor: pointer; accent-color: #CC0000;">
+                  <span style="color: #000; font-size: 16px; font-weight: 500;">未定</span>
+                </label>
+              </div>
+              <button type="button" class="afterparty-clear-btn" style="padding: 12px 16px; background: linear-gradient(135deg, #FFCC00 0%, #ffd633 100%); color: #CC0000; border: 2px solid #CC0000; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; white-space: nowrap; transition: all 0.3s ease; font-family: 'Yusei Magic', sans-serif; align-self: flex-start;">
+                選択をクリア
+              </button>
+            </div>
           </div>
           <div class="rsvp-field-row">
             <label>メッセージ</label>

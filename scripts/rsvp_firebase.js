@@ -367,36 +367,110 @@ function setupFormSubmit() {
 
       console.log('ゲスト数:', guestElements.length);
 
+      // 出席状況を先に取得
+      const selectedOption = document.querySelector('.rsvp-attend-option.selected');
+      const attendance = selectedOption?.dataset.choice || 'unknown';
+
       guestElements.forEach((guestEl, index) => {
         const firstName = guestEl.querySelector('input[name="first_name[]"]')?.value?.trim() || '';
         const lastName = guestEl.querySelector('input[name="last_name[]"]')?.value?.trim() || '';
         const email = guestEl.querySelector('input[name="email[]"]')?.value?.trim() || '';
         const address = guestEl.querySelector('input[name="address[]"]')?.value?.trim() || '';
 
-        if (!firstName || !lastName || !email || !address) {
-          alert(`Guest ${index + 1}: 名前、メール、住所は必須です`);
+        // 名前とメールは常に必須
+        if (!firstName || !lastName || !email) {
+          alert(`Guest ${index + 1}: 名前、メールアドレスは必須です`);
           throw new Error(`Guest ${index + 1}: 必須項目が不足`);
         }
+
+        // 出席の場合のみ住所も必須
+        if (attendance === 'attend' && !address) {
+          alert(`Guest ${index + 1}: 出席の場合、住所は必須です`);
+          throw new Error(`Guest ${index + 1}: 住所が不足`);
+        }
+
+        // 2次会参加の選択を取得
+        const afterpartyRadio = guestEl.querySelector('input[name="afterparty[]"]:checked');
+        const afterparty = afterpartyRadio?.value || '';
+
+        const firstNameKana = guestEl.querySelector('input[name="first_name_kana[]"]')?.value?.trim() || '';
+        const lastNameKana = guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '';
+        const postalCode = guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '';
+        const allergy = guestEl.querySelector('input[name="allergy[]"]')?.value?.trim() || '';
 
         const guest = {
           guestNo: index + 1,
           firstName: firstName,
           lastName: lastName,
-          firstNameKana: guestEl.querySelector('input[name="first_name_kana[]"]')?.value?.trim() || '',
-          lastNameKana: guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '',
+          firstNameKana: firstNameKana,
+          lastNameKana: lastNameKana,
           email: email,
-          postalCode: guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '',
+          postalCode: postalCode,
           address: address,
-          allergy: guestEl.querySelector('input[name="allergy[]"]')?.value?.trim() || '',
+          allergy: allergy,
+          afterparty: afterparty,
           message: guestEl.querySelector('textarea[name="message[]"]')?.value?.trim() || ''
         };
 
+        // 出欠状況に応じて連絡用メッセージを生成
+        if (attendance === 'attend') {
+          guest.notificationMessage = `${lastName} ${firstName} 様
+
+ご出席のご連絡をいただき、ありがとうございます。
+
+【ご参加にあたっての情報確認】
+▼ お名前
+　漢字：${lastName} ${firstName}
+　ローマ字：${lastNameKana} ${firstNameKana}
+
+▼ ご住所
+　郵便番号：${postalCode}
+　住所：${address}
+
+▼ メールアドレス
+　${email}
+
+▼ アレルギーについて
+　${allergy || 'なし'}
+
+▼ 2次会参加
+　${afterparty || '未回答'}
+
+上記の内容に誤りがないか、ご確認をお願いいたします。
+後日、登録いただいたメールアドレス宛に Slackの招待をお送りします ので、ご確認ください。
+
+ご不明な点やご変更がございましたら、新郎新婦それぞれの個別LINEまで お問い合わせください。`;
+        } else if (attendance === 'absent') {
+          guest.notificationMessage = `${lastName} ${firstName} 様
+
+このたびはご連絡をいただき、ありがとうございます。
+ご欠席とのこと、承知いたしました。
+
+【ご確認事項】
+ご欠席の場合、特にご対応いただくことはございません。
+
+今後のご連絡（ご案内メール等）はお送りいたしませんので、ご了承ください。
+
+なお、何かご不明な点やご連絡事項がございましたら、新郎新婦それぞれの個別LINEまでお問い合わせください。`;
+        } else if (attendance === 'keep') {
+          guest.notificationMessage = `${lastName} ${firstName} 様
+
+このたびはご連絡をいただき、ありがとうございます。
+ご出欠について「保留」とのこと、承知いたしました。
+
+【今後の流れについて】
+ご出欠が確定しましたら、改めてご連絡をお願いいたします。
+恐れ入りますが、10月3日までにご連絡をいただけますと幸いです。
+
+出席が確定した場合は、後日、登録いただいたメールアドレス宛に
+Slackの招待をお送りします。
+
+ご不明な点やご変更がございましたら、
+新郎新婦それぞれの個別LINEまでお問い合わせください。`;
+        }
+
         guests.push(guest);
       });
-
-      // 出席状況
-      const selectedOption = document.querySelector('.rsvp-attend-option.selected');
-      const attendance = selectedOption?.dataset.choice || 'unknown';
 
       // Firebaseに保存するデータ
       const payload = {
@@ -406,8 +480,7 @@ function setupFormSubmit() {
         lastUpdated: serverTimestamp(),
         attendance: attendance,
         guestCount: guests.length,
-        guests: guests, // オブジェクト配列として直接保存
-        rawGuestsJson: JSON.stringify(guests) // バックアップ用
+        guests: guests
       };
 
       console.log('送信ペイロード:', payload);

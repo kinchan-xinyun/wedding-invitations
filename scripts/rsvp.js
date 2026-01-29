@@ -131,6 +131,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // イベントをバインド
     bindGuestEvents(newGuest);
+
+    // 現在の出欠選択に応じてフィールドを制御
+    const selectedOption = document.querySelector('.rsvp-attend-option.selected');
+    if (selectedOption) {
+      const choice = selectedOption.dataset.choice;
+      // 追加されたゲストのみに適用
+      toggleFormFieldsForGuest(newGuest, choice);
+    }
   });
 
   // 最初のゲストにもイベントをバインド
@@ -225,9 +233,56 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hiddenInput) {
         hiddenInput.value = valueMap[choice] || '';
       }
+
+      // フォームフィールドの表示/非表示を制御
+      toggleFormFields(choice);
     });
   });
 });
+
+// ========================================
+// 出欠選択に応じたフォーム制御
+// ========================================
+function toggleFormFieldsForGuest(guest, choice) {
+  // 対象フィールド
+  const postalCodeRow = guest.querySelector('.rsvp-field-row:has(input[name="postal_code[]"])');
+  const addressRow = guest.querySelector('.rsvp-field-row:has(input[name="address[]"])');
+  const allergyRow = guest.querySelector('.rsvp-field-row:has(input[name="allergy[]"])');
+  const afterpartyRow = guest.querySelector('.rsvp-field-row:has(input[name="afterparty[]"])');
+  
+  const postalCodeInput = guest.querySelector('input[name="postal_code[]"]');
+  const addressInput = guest.querySelector('input[name="address[]"]');
+
+  if (choice === 'attend') {
+    // 出席の場合：全フィールド表示・必須
+    if (postalCodeRow) postalCodeRow.style.display = '';
+    if (addressRow) addressRow.style.display = '';
+    if (allergyRow) allergyRow.style.display = '';
+    if (afterpartyRow) afterpartyRow.style.display = '';
+    
+    if (postalCodeInput) postalCodeInput.required = false;
+    if (addressInput) addressInput.required = true;
+  } else {
+    // 欠席・保留の場合：住所関連フィールドを非表示・任意
+    if (postalCodeRow) postalCodeRow.style.display = 'none';
+    if (addressRow) addressRow.style.display = 'none';
+    if (allergyRow) allergyRow.style.display = 'none';
+    if (afterpartyRow) afterpartyRow.style.display = 'none';
+    
+    if (postalCodeInput) postalCodeInput.required = false;
+    if (addressInput) addressInput.required = false;
+  }
+}
+
+function toggleFormFields(choice) {
+  const form = document.querySelector('#rsvp-form');
+  if (!form) return;
+
+  const guests = form.querySelectorAll('.rsvp-guest');
+  guests.forEach(guest => {
+    toggleFormFieldsForGuest(guest, choice);
+  });
+}
 
 // ========================================
 // 郵便番号自動入力
@@ -420,5 +475,71 @@ document.addEventListener('DOMContentLoaded', () => {
 
       console.log('フォーム送信OK - プライバシー同意:', privacyConsent.checked, '出欠選択:', selectedAttendance);
     });
+  }
+});
+
+// ========================================
+// 2次会参加のクリアボタン
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+  function attachAfterpartyClearListener(guest) {
+    const clearBtn = guest.querySelector('.afterparty-clear-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const radioButtons = guest.querySelectorAll('input[name="afterparty[]"]');
+        radioButtons.forEach(radio => {
+          radio.checked = false;
+        });
+        // ボーダーのハイライトもクリア
+        const labels = guest.querySelectorAll('.radio-group label');
+        labels.forEach(label => {
+          label.style.borderColor = '#ddd';
+          label.style.background = 'transparent';
+        });
+      });
+    }
+  }
+
+  // 初期ロード時のゲスト
+  const initialGuests = document.querySelectorAll('.rsvp-guest');
+  initialGuests.forEach(guest => attachAfterpartyClearListener(guest));
+
+  // ラジオボタン選択時のハイライト
+  function attachAfterpartyHighlight(guest) {
+    const radioButtons = guest.querySelectorAll('input[name="afterparty[]"]');
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const labels = guest.querySelectorAll('.radio-group label');
+        labels.forEach(label => {
+          const input = label.querySelector('input[type="radio"]');
+          if (input && input.checked) {
+            label.style.borderColor = '#CC0000';
+            label.style.background = 'rgba(204, 0, 0, 0.05)';
+          } else {
+            label.style.borderColor = '#ddd';
+            label.style.background = 'transparent';
+          }
+        });
+      });
+    });
+  }
+
+  initialGuests.forEach(guest => attachAfterpartyHighlight(guest));
+
+  // ゲスト追加時のイベント（MutationObserver使用）
+  const form = document.querySelector('#rsvp-form');
+  if (form) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1 && node.classList && node.classList.contains('rsvp-guest')) {
+            attachAfterpartyClearListener(node);
+            attachAfterpartyHighlight(node);
+          }
+        });
+      });
+    });
+    observer.observe(form, { childList: true });
   }
 });

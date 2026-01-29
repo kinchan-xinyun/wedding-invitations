@@ -605,3 +605,25 @@
     }
 
 }
+
+/* ========================================
+   2次会参加ラジオボタンのスタイル
+   ======================================== */
+.radio-group label:hover {
+    border-color: #CC0000 !important;
+    background: rgba(204, 0, 0, 0.03) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(204, 0, 0, 0.15);
+}
+
+.afterparty-clear-btn:hover {
+    background: linear-gradient(135deg, #ffd633 0%, #ffe066 100%) !important;
+    border-color: #CC0000 !important;
+    color: #CC0000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.4);
+}
+
+.afterparty-clear-btn:active {
+    transform: translateY(0) scale(0.98);
+}
