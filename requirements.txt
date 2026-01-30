@@ -1,5 +1,0 @@
-# Firebase Admin SDK
-firebase-admin>=6.5.0
-
-# CSV処理（標準ライブラリに含まれているが、明示的に記載）
-# csv は標準ライブラリなので不要
