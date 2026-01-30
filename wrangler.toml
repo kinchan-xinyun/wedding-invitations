@@ -1,19 +1,12 @@
+# Cloudflare Pages Configuration
+# This file is optional for Pages projects.
+# For deployment, use: wrangler pages deploy . --project-name=wedding-invitations
+
 name = "wedding-invitations"
 compatibility_date = "2024-01-01"
 
-# Cloudflare Pages configuration
-pages_build_output_dir = "."
-
-# Environment variables (optional)
+# Pages-specific configuration
+# Uncomment if using Pages Functions
 # [env.production]
 # [env.production.vars]
-# API_KEY = "your-api-key"
-
-# Custom build settings (if needed)
-# [build]
-# command = ""  # No build command needed for static sites
-# cwd = ""
-
-# Deployment settings
-[vars]
-# Add any environment variables here if needed
+# Add environment variables here if needed
