@@ -38,7 +38,72 @@ p {
     filter: blur(0);
 }
 
+/* 固定フローティングボタン */
+.floating-rsvp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #CC0000 0%, #ff1a1a 100%);
+    color: #FFFFFF;
+    padding: 18px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-family: "Yusei Magic", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 8px 24px rgba(204, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border: 3px solid #FFCC00;
+    animation: float-pulse 2s ease-in-out infinite;
+}
 
+.floating-rsvp-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(204, 0, 0, 0.6);
+    background: linear-gradient(135deg, #ff1a1a 0%, #CC0000 100%);
+}
+
+.floating-rsvp-btn:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.floating-btn-icon {
+    font-size: 22px;
+    animation: icon-bounce 1s ease-in-out infinite;
+}
+
+.floating-btn-text {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+@keyframes float-pulse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* RSVPセクションに到達したらボタンを非表示 */
+.floating-rsvp-btn.hide {
+    opacity: 0;
+    pointer-events: none;
+}
 
 @media (max-width: 600px) {
     html {
@@ -50,5 +115,20 @@ p {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         touch-action: manipulation;
+    }
+    
+    .floating-rsvp-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    
+    .floating-btn-icon {
+        font-size: 18px;
+    }
+    
+    .floating-btn-text {
+        font-size: 14px;
     }
 }
