@@ -30,13 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden'; // 背景のスクロールを無効化
     
     // モーダルを開いた時、メインのチェック状態をモーダルに反映
-    if (sessionStorage.getItem('privacyConsent') === 'true') {
-      modalCheckbox.checked = true;
-      agreeBtn.disabled = false;
-    } else {
-      modalCheckbox.checked = false;
-      agreeBtn.disabled = true;
-    }
+    modalCheckbox.checked = false;
+    agreeBtn.disabled = true;
     
     // モーダルの最上部にスクロール
     const modalBody = modal.querySelector('.privacy-modal-body');
@@ -61,9 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (agreeBtn) {
     agreeBtn.addEventListener('click', () => {
       if (modalCheckbox.checked) {
-        // sessionStorageに保存
-        sessionStorage.setItem('privacyConsent', 'true');
-        
         // メインのチェックボックスをチェック
         mainCheckbox.checked = true;
         

@@ -31,17 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function checkAuthentication() {
-  // セッションストレージから招待コードを取得
-  const storedCode = sessionStorage.getItem('inviteCode');
-  
-  if (storedCode) {
-    currentInviteCode = storedCode;
-    isAuthenticated = true;
-    showRSVPForm();
-    // リロード時は既存回答のチェックをしない（招待コード入力時のみチェック）
-  } else {
-    showInviteCodePrompt();
-  }
+  showInviteCodePrompt();
 }
 
 function showInviteCodePrompt() {
@@ -200,7 +190,6 @@ async function verifyInviteCode() {
     if (inviteDoc.exists()) {
       currentInviteCode = code;
       isAuthenticated = true;
-      sessionStorage.setItem('inviteCode', code);
 
       // 認証画面を削除
       document.getElementById('invite-code-auth').remove();
@@ -242,25 +231,12 @@ function showRSVPForm() {
 
 async function loadExistingResponse(code) {
   try {
-    // この招待コードで既に確認したかチェック
-    const confirmedKey = `confirmed_${code}`;
-    const alreadyConfirmed = sessionStorage.getItem(confirmedKey);
-    
     const responseDoc = await getDoc(doc(db, 'responses', code));
     
     if (responseDoc.exists()) {
       const data = responseDoc.data();
       
-      // 既に確認済みの場合はダイアログを表示しない
-      if (alreadyConfirmed) {
-        console.log('既存データあり（確認済み）');
-        return;
-      }
-      
       const reload = confirm('以前の回答が見つかりました。\n内容を読み込みますか?\n\n「OK」= 読み込む\n「キャンセル」= 新規入力');
-      
-      // 確認したことを記録
-      sessionStorage.setItem(confirmedKey, 'true');
       
       if (reload && data.guests) {
         console.log('既存データ読み込み:', data);
@@ -437,7 +413,6 @@ function setupFormSubmit() {
 　${afterparty || '未回答'}
 
 上記の内容に誤りがないか、ご確認をお願いいたします。
-後日、登録いただいたメールアドレス宛に Slackの招待をお送りします ので、ご確認ください。
 
 ご不明な点やご変更がございましたら、新郎新婦それぞれの個別LINEまで お問い合わせください。`;
         } else if (attendance === 'absent') {
@@ -449,8 +424,6 @@ function setupFormSubmit() {
 【ご確認事項】
 ご欠席の場合、特にご対応いただくことはございません。
 
-今後のご連絡（ご案内メール等）はお送りいたしませんので、ご了承ください。
-
 なお、何かご不明な点やご連絡事項がございましたら、新郎新婦それぞれの個別LINEまでお問い合わせください。`;
         } else if (attendance === 'keep') {
           guest.notificationMessage = `${lastName} ${firstName} 様
@@ -461,9 +434,6 @@ function setupFormSubmit() {
 【今後の流れについて】
 ご出欠が確定しましたら、改めてご連絡をお願いいたします。
 恐れ入りますが、10月3日までにご連絡をいただけますと幸いです。
-
-出席が確定した場合は、後日、登録いただいたメールアドレス宛に
-Slackの招待をお送りします。
 
 ご不明な点やご変更がございましたら、
 新郎新婦それぞれの個別LINEまでお問い合わせください。`;

@@ -418,11 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // プライバシー同意チェックボックスの状態変更時
   privacyConsent.addEventListener('change', function() {
     if (this.checked) {
-      // sessionStorageに同意情報を保存
-      sessionStorage.setItem('privacyConsent', 'true');
       console.log('個人情報の取り扱いに同意されました');
-    } else {
-      sessionStorage.removeItem('privacyConsent');
     }
     updateSubmitButton();
   });
@@ -435,11 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateSubmitButton();
     });
   });
-
-  // ページ読み込み時にsessionStorageから同意状態を復元
-  if (sessionStorage.getItem('privacyConsent') === 'true') {
-    privacyConsent.checked = true;
-  }
   
   // 既に出席選択されているかチェック（selectedクラスがある場合）
   const alreadySelected = document.querySelector('.rsvp-attend-option.selected');
