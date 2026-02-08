@@ -1,10 +1,10 @@
 // ========================================
-// Firebase設定とフォーム送信
+// Firebase设置与表单提交
 // ========================================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// Firebase設定
+// Firebase配置
 const firebaseConfig = {
     apiKey: "AIzaSyCu2Cl4bHBM_53rPdSu1QutxPXLvF-HceU",
     authDomain: "li-oda-wedding.firebaseapp.com",
@@ -15,12 +15,12 @@ const firebaseConfig = {
     measurementId: "G-GTG79DQX1H"
 };
 
-// Firebase初期化
+// Firebase初始化
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // ========================================
-// 名前認証（ひらがな）
+// 姓名认证（平假名）
 // ========================================
 let currentInviteCode = null;
 let isAuthenticated = false;
@@ -38,10 +38,10 @@ function showInviteCodePrompt() {
   const form = document.querySelector('#rsvp-form');
   if (!form) return;
 
-  // フォームを非表示
+  // 隐藏表单
   form.style.display = 'none';
 
-  // 認証画面を作成
+  // 创建认证界面
   const authDiv = document.createElement('div');
   authDiv.id = 'invite-code-auth';
   authDiv.innerHTML = `
@@ -75,7 +75,7 @@ function showInviteCodePrompt() {
           font-weight: 900;
           letter-spacing: 0.1em;
           text-shadow: 2px 2px 0px #000000;
-        ">📛 お名前入力</h2>
+        ">📛 输入姓名</h2>
         <p style="
           margin-bottom: 25px; 
           color: #000000; 
@@ -83,9 +83,9 @@ function showInviteCodePrompt() {
           text-align: center;
           font-size: 1.1rem;
         ">
-          お名前を <span style="text-decoration: underline;">ひらがな</span> で入力してください (確認ボタンを押した後に詳細情報の入力が要求されます)
+          请用 <span style="text-decoration: underline;">拼音</span> 输入您的姓名（点击确认按钮后需填写详细信息）
         </p>
-        <input type="text" id="invite-code-input" placeholder="例: やまだたろう" 
+        <input type="text" id="invite-code-input" placeholder="例如：zhangsan" 
           style="
             width: 100%; 
             padding: 12px; 
@@ -113,7 +113,7 @@ function showInviteCodePrompt() {
             font-family: 'Yusei Magic', sans-serif;
             box-shadow: 4px 4px 0px #FFC107;
           ">
-          確認
+          确认
         </button>
         <p style="
           margin-top: 20px; 
@@ -122,7 +122,7 @@ function showInviteCodePrompt() {
           text-align: center;
           line-height: 1.6;
         ">
-          正しく入力したにもかかわらずエラーが出る場合は、新郎新婦にお問い合わせください
+          如果正确输入仍出现错误，请联系新郎新娘
         </p>
       </div>
     </div>
@@ -130,14 +130,14 @@ function showInviteCodePrompt() {
 
   form.parentNode.insertBefore(authDiv, form);
 
-  // イベントリスナー
+  // 事件监听器
   document.getElementById('verify-code-btn').addEventListener('click', verifyInviteCode);
   const input = document.getElementById('invite-code-input');
   input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') verifyInviteCode();
   });
   
-  // 入力フィールドのフォーカススタイル
+  // 输入框焦点样式
   input.addEventListener('focus', () => {
     input.style.borderColor = '#E53935';
     input.style.outline = 'none';
@@ -148,7 +148,7 @@ function showInviteCodePrompt() {
     input.style.boxShadow = 'none';
   });
 
-  // ボタンホバー効果
+  // 按钮悬停效果
   const btn = document.getElementById('verify-code-btn');
   btn.addEventListener('mouseenter', () => {
     btn.style.background = '#FFC107';
@@ -169,7 +169,7 @@ async function verifyInviteCode() {
   const code = input.value.trim();
 
   if (!code) {
-    alert('お名前（ひらがな）を入力してください');
+    alert('请输入姓名（平假名）');
     input.style.borderColor = '#E53935';
     input.style.boxShadow = '0 0 0 2px rgba(229, 57, 53, 0.3)';
     input.focus();
@@ -178,44 +178,44 @@ async function verifyInviteCode() {
 
   const btn = document.getElementById('verify-code-btn');
   btn.disabled = true;
-  btn.textContent = '確認中...';
+  btn.textContent = '确认中...';
   btn.style.background = '#999';
   btn.style.cursor = 'not-allowed';
   btn.style.boxShadow = '2px 2px 0px #666';
 
   try {
-    // Firestoreで招待コードを確認
+    // 在Firestore中验证邀请码
     const inviteDoc = await getDoc(doc(db, 'invitations', code));
 
     if (inviteDoc.exists()) {
       currentInviteCode = code;
       isAuthenticated = true;
 
-      // 認証画面を削除
+      // 删除认证界面
       document.getElementById('invite-code-auth').remove();
       
-      // RSVPフォームを表示
+      // 显示RSVP表单
       showRSVPForm();
 
-      // 既存の回答があれば読み込む
+      // 如果有已有回复则加载
       await loadExistingResponse(code);
     } else {
-      alert('お名前が見つかりませんでした。\n招待状に記載されたひらがなのお名前をご確認ください。\n\n（例：やまだたろう）');
+      alert('未找到该姓名。\n请确认邀请函上的平假名姓名。\n\n（例如：やまだたろう）');
       input.value = '';
       input.style.borderColor = '#E53935';
       input.style.boxShadow = '0 0 0 2px rgba(229, 57, 53, 0.3)';
       input.focus();
       btn.disabled = false;
-      btn.textContent = '確認';
+      btn.textContent = '确认';
       btn.style.background = '#E53935';
       btn.style.cursor = 'pointer';
       btn.style.boxShadow = '4px 4px 0px #FFC107';
     }
   } catch (error) {
-    console.error('認証エラー:', error);
-    alert('認証中にエラーが発生しました。\nもう一度お試しください。\n\nエラー詳細: ' + error.message);
+    console.error('认证错误:', error);
+    alert('认证过程中发生错误。\n请重试。\n\n错误详情: ' + error.message);
     btn.disabled = false;
-    btn.textContent = '確認';
+    btn.textContent = '确认';
     btn.style.background = '#E53935';
     btn.style.cursor = 'pointer';
     btn.style.boxShadow = '4px 4px 0px #FFC107';
@@ -236,24 +236,24 @@ async function loadExistingResponse(code) {
     if (responseDoc.exists()) {
       const data = responseDoc.data();
       
-      const reload = confirm('以前の回答が見つかりました。\n内容を読み込みますか?\n\n「OK」= 読み込む\n「キャンセル」= 新規入力');
+      const reload = confirm('找到了之前的回复。\n是否加载内容？\n\n「确定」= 加载\n「取消」= 重新填写');
       
       if (reload && data.guests) {
-        console.log('既存データ読み込み:', data);
+        console.log('加载已有数据:', data);
         fillFormWithExistingData(data);
       }
     }
   } catch (error) {
-    console.error('データ読み込みエラー:', error);
+    console.error('数据加载错误:', error);
   }
 }
 
-// フォームに既存データを入力する関数
+// 将已有数据填入表单
 function fillFormWithExistingData(data) {
   const form = document.querySelector('#rsvp-form');
   if (!form) return;
 
-  // 出席状況を設定
+  // 设置出席状态
   if (data.attendance) {
     const attendanceMap = {
       '出席': 'attend',
@@ -267,17 +267,17 @@ function fillFormWithExistingData(data) {
     }
   }
 
-  // ゲストデータを入力
+  // 填入宾客数据
   if (data.guests && Array.isArray(data.guests)) {
     const existingGuests = form.querySelectorAll('.rsvp-guest');
     
-    // 必要に応じてゲストを追加
+    // 根据需要添加宾客
     const addGuestBtn = document.getElementById('rsvp-add-guest-btn');
     while (existingGuests.length < data.guests.length && addGuestBtn) {
       addGuestBtn.click();
     }
     
-    // 少し待ってから入力（ゲストが追加されるのを待つ）
+    // 稍等片刻后再填入（等待宾客添加完成）
     setTimeout(() => {
       const allGuests = form.querySelectorAll('.rsvp-guest');
       
@@ -285,7 +285,7 @@ function fillFormWithExistingData(data) {
         if (index < allGuests.length) {
           const guestEl = allGuests[index];
           
-          // 各フィールドに値を設定
+          // 设置各字段的值
           const firstNameInput = guestEl.querySelector('input[name="firstName[]"]');
           const lastNameInput = guestEl.querySelector('input[name="lastName[]"]');
           const firstNameKanaInput = guestEl.querySelector('input[name="firstNameKana[]"]');
@@ -309,41 +309,41 @@ function fillFormWithExistingData(data) {
         }
       });
       
-      console.log('✅ フォームに既存データを入力しました');
-      alert('✅ 以前の回答を読み込みました！\n内容を確認・編集して再送信してください。');
+      console.log('✅ 已将已有数据填入表单');
+      alert('✅ 已加载之前的回复！\n请确认、编辑内容后重新提交。');
     }, 500);
   }
 }
 
 // ========================================
-// フォーム送信処理
+// 表单提交处理
 // ========================================
 function setupFormSubmit() {
   const form = document.querySelector('#rsvp-form');
 
   if (!form) {
-    console.error('フォーム (#rsvp-form) が見つかりません');
+    console.error('未找到表单 (#rsvp-form)');
     return;
   }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log('フォーム送信開始');
+    console.log('表单提交开始');
 
-    // 認証チェック
+    // 认证检查
     if (!isAuthenticated || !currentInviteCode) {
-      alert('お名前の認証が必要です。\nページを再読み込みしてください。');
+      alert('需要姓名认证。\n请重新加载页面。');
       return;
     }
 
     try {
-      // ゲストデータ収集
+      // 收集宾客数据
       const guests = [];
       const guestElements = form.querySelectorAll('.rsvp-guest');
 
-      console.log('ゲスト数:', guestElements.length);
+      console.log('宾客人数:', guestElements.length);
 
-      // 出席状況を先に取得
+      // 先获取出席状态
       const selectedOption = document.querySelector('.rsvp-attend-option.selected');
       const attendance = selectedOption?.dataset.choice || 'unknown';
 
@@ -353,19 +353,19 @@ function setupFormSubmit() {
         const email = guestEl.querySelector('input[name="email[]"]')?.value?.trim() || '';
         const address = guestEl.querySelector('input[name="address[]"]')?.value?.trim() || '';
 
-        // 名前とメールは常に必須
+        // 姓名和邮箱必填
         if (!firstName || !lastName || !email) {
-          alert(`Guest ${index + 1}: 名前、メールアドレスは必須です`);
-          throw new Error(`Guest ${index + 1}: 必須項目が不足`);
+          alert(`宾客 ${index + 1}：姓名、邮箱地址为必填项`);
+          throw new Error(`宾客 ${index + 1}：缺少必填项`);
         }
 
-        // 出席の場合のみ住所も必須
+        // 出席时地址也必填
         if (attendance === 'attend' && !address) {
-          alert(`Guest ${index + 1}: 出席の場合、住所は必須です`);
-          throw new Error(`Guest ${index + 1}: 住所が不足`);
+          alert(`宾客 ${index + 1}：出席时地址为必填项`);
+          throw new Error(`宾客 ${index + 1}：缺少地址`);
         }
 
-        // 2次会参加の選択を取得
+        // 获取二次会参加选择
         const afterpartyRadio = guestEl.querySelector('input[name="afterparty[]"]:checked');
         const afterparty = afterpartyRadio?.value || '';
 
@@ -388,61 +388,61 @@ function setupFormSubmit() {
           message: guestEl.querySelector('textarea[name="message[]"]')?.value?.trim() || ''
         };
 
-        // 出欠状況に応じて連絡用メッセージを生成
+        // 根据出席情况生成通知消息
         if (attendance === 'attend') {
-          guest.notificationMessage = `${lastName} ${firstName} 様
+          guest.notificationMessage = `${lastName} ${firstName} 先生/女士
 
-ご出席のご連絡をいただき、ありがとうございます。
+感谢您的出席通知。
 
-【ご参加にあたっての情報確認】
-▼ お名前
-　漢字：${lastName} ${firstName}
-　ローマ字：${lastNameKana} ${firstNameKana}
+【参加相关信息确认】
+▼ 姓名
+　汉字：${lastName} ${firstName}
+　罗马字：${lastNameKana} ${firstNameKana}
 
-▼ ご住所
-　郵便番号：${postalCode}
-　住所：${address}
+▼ 地址
+　邮编：${postalCode}
+　地址：${address}
 
-▼ メールアドレス
+▼ 邮箱地址
 　${email}
 
-▼ アレルギーについて
-　${allergy || 'なし'}
+▼ 过敏情况
+　${allergy || '无'}
 
-▼ 2次会参加
+▼ 二次会参加
 　${afterparty || '未回答'}
 
-上記の内容に誤りがないか、ご確認をお願いいたします。
+请确认以上内容是否有误。
 
-ご不明な点やご変更がございましたら、新郎新婦それぞれの個別LINEまで お問い合わせください。`;
+如有疑问或需要修改，请通过新郎新娘各自的私人LINE联系。`;
         } else if (attendance === 'absent') {
-          guest.notificationMessage = `${lastName} ${firstName} 様
+          guest.notificationMessage = `${lastName} ${firstName} 先生/女士
 
-このたびはご連絡をいただき、ありがとうございます。
-ご欠席とのこと、承知いたしました。
+感谢您的联系。
+已知悉您将缺席。
 
-【ご確認事項】
-ご欠席の場合、特にご対応いただくことはございません。
+【确认事项】
+缺席时无需特别处理。
 
-なお、何かご不明な点やご連絡事項がございましたら、新郎新婦それぞれの個別LINEまでお問い合わせください。`;
+如有疑问或需要告知的事项，请通过新郎新娘各自的私人LINE联系。`;
         } else if (attendance === 'keep') {
-          guest.notificationMessage = `${lastName} ${firstName} 様
+          guest.notificationMessage = `${lastName} ${firstName} 先生/女士
 
-このたびはご連絡をいただき、ありがとうございます。
-ご出欠について「保留」とのこと、承知いたしました。
+感谢您的联系。
+已知悉您的出席状态为「待定」。
 
-【今後の流れについて】
-ご出欠が確定しましたら、改めてご連絡をお願いいたします。
-恐れ入りますが、10月3日までにご連絡をいただけますと幸いです。
+【今后流程】
+出席情况确定后，请再次联系我们。
+恳请您在10月3日前联系我们。
 
-ご不明な点やご変更がございましたら、
-新郎新婦それぞれの個別LINEまでお問い合わせください。`;
+如有疑问或需要修改，
+请通过新郎新娘各自的私人LINE联系。`;
         }
 
         guests.push(guest);
       });
 
-      // Firebaseに保存するデータ
+      // 保存到Firebase的数据
       const payload = {
         inviteCode: currentInviteCode,
         timestamp: new Date().toISOString(),
@@ -453,22 +453,22 @@ function setupFormSubmit() {
         guests: guests
       };
 
-      console.log('送信ペイロード:', payload);
+      console.log('提交载荷:', payload);
 
-      // Firestoreに保存
+      // 保存到Firestore
       await setDoc(doc(db, 'responses', currentInviteCode), payload, { merge: true });
 
       console.log('Firestore保存成功');
 
-      alert('✅ ご予約ありがとうございます！\n新郎新婦からの連絡をお待ちください');
+      alert('✅ 感谢您的预约！\n请等待新郎新娘的联系');
       
-      // フォームリセット
+      // 重置表单
       form.reset();
       document.querySelectorAll('.rsvp-attend-option').forEach(o => o.classList.remove('selected'));
 
     } catch (error) {
-      console.error('送信エラー:', error);
-      alert('❌ エラーが発生しました。\n\nエラー詳細:\n' + error.message + '\n\nもう一度お試しいただくか、新郎新婦にご連絡ください。');
+      console.error('提交错误:', error);
+      alert('❌ 发生错误。\n\n错误详情:\n' + error.message + '\n\n请重试或联系新郎新娘。');
     }
   });
 }
