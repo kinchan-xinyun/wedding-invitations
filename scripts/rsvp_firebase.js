@@ -85,7 +85,7 @@ function showInviteCodePrompt() {
         ">
           お名前を <span style="text-decoration: underline;">ひらがな</span> で入力してください (確認ボタンを押した後に詳細情報の入力が要求されます)
         </p>
-        <input type="text" id="invite-code-input" placeholder="例: やまだたろう" 
+        <input type="text" id="invite-code-input" placeholder="例: やまなかたくや" 
           style="
             width: 100%; 
             padding: 12px; 
@@ -200,7 +200,7 @@ async function verifyInviteCode() {
       // 既存の回答があれば読み込む
       await loadExistingResponse(code);
     } else {
-      alert('お名前が見つかりませんでした。\n招待状に記載されたひらがなのお名前をご確認ください。\n\n（例：やまだたろう）');
+      alert('お名前が見つかりませんでした。\nお名前のひらがなが正しく入力された場合は新郎新婦にお問い合わせください。\n\n（例：やまなかたくや）');
       input.value = '';
       input.style.borderColor = '#E53935';
       input.style.boxShadow = '0 0 0 2px rgba(229, 57, 53, 0.3)';
