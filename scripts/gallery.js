@@ -24,4 +24,15 @@
       track.scrollBy({ left: slideAmount(), behavior: 'smooth' });
     });
   }
+
+  // 画像の保存（右クリック・ドラッグ・長押し）を抑止
+  track.querySelectorAll('img').forEach(function (img) {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+    img.addEventListener('dragstart', function (e) {
+      e.preventDefault();
+    });
+  });
 })();
