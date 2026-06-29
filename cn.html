@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles/hero.css" />
   <link rel="stylesheet" href="styles/message.css" />
   <link rel="stylesheet" href="styles/profile.css" />
+  <link rel="stylesheet" href="styles/gallery.css" />
   <link rel="stylesheet" href="styles/countdown.css" />
   <link rel="stylesheet" href="styles/schedule.css" />
   <link rel="stylesheet" href="styles/location.css" />
@@ -61,6 +62,7 @@
       <ul>
         <li><a href="#shared-message-title" onclick="document.getElementById('menuToggle').checked=false;">致辞</a></li>
         <li><a href="#profile-section" onclick="document.getElementById('menuToggle').checked=false;">简介</a></li>
+        <li><a href="#gallery-section" onclick="document.getElementById('menuToggle').checked=false;">相册</a></li>
         <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">倒计时</a></li>
         <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">日程</a></li>
         <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">会场</a></li>
@@ -159,6 +161,61 @@
         </p>
       </div>
     </div>
+  </section>
+
+  <!-- ============================================
+       相册（横向手动滑动）
+       ============================================ -->
+  <section id="gallery-section" class="gallery-section">
+    <h2 class="gallery-title fade-section">GALLERY</h2>
+    <div class="gallery-slider-wrap fade-section">
+      <button type="button" class="gallery-nav prev" aria-label="上一张">‹</button>
+      <div id="gallery-track" class="gallery-track">
+        <div class="gallery-slide"><img src="images/w_018_Original.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7901.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/y_IMG_7825.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7817.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7852.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/y_IMG_7831.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7820.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/o_IMG_7821.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/y_IMG_7842.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7839.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/y_IMG_7844.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7832.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/w_IMG_7840.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_1464.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_1465.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_1739.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2603.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2618.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2714.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2727.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2729.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_2983.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_3898.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_4379.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_4729.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_6575.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_6588.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_6733.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_7080.JPG" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_1667.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_3903.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_4373.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_5531.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_5539.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_6338.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_6580.jpg" alt="" loading="lazy"></div>
+        <div class="gallery-slide"><img src="images/IMG_7312.jpg" alt="" loading="lazy"></div>
+      </div>
+      <button type="button" class="gallery-nav next" aria-label="下一张">›</button>
+    </div>
+    <p class="gallery-hint fade-section">← 滑动 / 点击按钮切换照片 →</p>
+    <p class="gallery-notice fade-section">
+      婚纱・和服照片（于旧平田源七邸拍摄）的著作权及其他知识产权，均归 TORUTOKOYA photo&amp;movie 新宿店，或创作者（野﨑 大志先生）所有。<br>
+      如需用于私人用途以外的目的，或发布至微信等社交平台时，请<span class="gallery-notice-strong">务必</span>联系新娘。
+    </p>
   </section>
 
   <!-- ============================================
@@ -507,6 +564,7 @@
   <script src="scripts/hero.js"></script>
   <script src="scripts/message.js"></script>
   <script src="scripts/profile.js"></script>
+  <script src="scripts/gallery.js"></script>
   <script src="scripts/countdown.js"></script>
   <script src="scripts/schedule.js"></script>
   <script src="scripts/location.js"></script>

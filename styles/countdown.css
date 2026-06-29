@@ -187,12 +187,17 @@
 
     .countdown-timer {
         gap: 12px;
+        /* スマホでは days・hours / minutes・seconds の2行に分ける */
+        max-width: 320px;
     }
 
     .countdown-timer div {
         padding: 14px 18px;
-        min-width: 80px;
+        min-width: 0;
         border-width: 2px;
+        /* 1行に2つずつ並べる */
+        flex: 0 0 calc(50% - 6px);
+        box-sizing: border-box;
     }
 
     .countdown-timer span {

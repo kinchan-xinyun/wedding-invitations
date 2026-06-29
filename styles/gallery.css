@@ -1,0 +1,173 @@
+/* ======== タワレコ風 GALLERY セクション（横手動スライド） ======== */
+.gallery-section {
+    background: #FFFDE7;
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 8px solid var(--tawareco-yellow);
+    border-top: 8px solid var(--tawareco-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-title {
+    font-size: 4em;
+    font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
+    font-weight: 900;
+    color: var(--tawareco-yellow);
+    text-transform: uppercase;
+    text-shadow:
+        4px 4px 0px var(--tawareco-red),
+        8px 8px 0px var(--tawareco-white);
+    letter-spacing: 0.15em;
+    margin: 0 auto 50px;
+}
+
+/* スライダー本体 */
+.gallery-slider-wrap {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 10px 0 30px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.gallery-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.gallery-slide {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    background: var(--tawareco-black);
+    border: 4px solid var(--tawareco-red);
+    border-radius: 8px;
+    box-shadow: 8px 8px 0px var(--tawareco-yellow);
+    overflow: hidden;
+}
+
+.gallery-slide img {
+    display: block;
+    /* 元画像の縦横比を維持（高さ基準で幅は自動） */
+    width: auto;
+    height: 420px;
+    max-width: 85vw;
+    object-fit: contain;
+}
+
+/* 前後ボタン */
+.gallery-nav {
+    position: absolute;
+    top: calc(50% - 28px);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid var(--tawareco-yellow);
+    background: var(--tawareco-red);
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.15s ease, background 0.15s ease;
+    box-shadow: 0 0 12px rgba(255, 193, 7, 0.6);
+}
+
+.gallery-nav:hover {
+    background: var(--tawareco-yellow);
+    color: var(--tawareco-red);
+    transform: scale(1.08);
+}
+
+.gallery-nav.prev {
+    left: 0;
+}
+
+.gallery-nav.next {
+    right: 0;
+}
+
+/* スワイプ案内 */
+.gallery-hint {
+    color: #aaa;
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+/* 著作権・利用に関する注意書き */
+.gallery-notice {
+    max-width: 760px;
+    width: calc(100% - 48px);
+    box-sizing: border-box;
+    margin: 24px auto 0;
+    padding: 18px 24px;
+    color: #888;
+    font-family: "Yusei Magic", sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: 2px dashed #666;
+    border-radius: 8px;
+}
+
+.gallery-notice-strong {
+    color: var(--tawareco-red);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .gallery-section {
+        padding: 60px 0;
+    }
+
+    .gallery-title {
+        font-size: 2.8rem;
+        margin-bottom: 30px;
+    }
+
+    .gallery-slider-wrap {
+        padding: 0 12px;
+    }
+
+    .gallery-slide {
+        border-width: 3px;
+        box-shadow: 6px 6px 0px var(--tawareco-yellow);
+    }
+
+    .gallery-slide img {
+        height: 320px;
+        max-width: 82vw;
+    }
+
+    /* スマホでは指スワイプ主体にし、ボタンは小さく */
+    .gallery-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+        top: calc(50% - 22px);
+    }
+
+    .gallery-notice {
+        font-size: 0.72rem;
+        padding: 0 16px;
+        line-height: 1.7;
+    }
+}
