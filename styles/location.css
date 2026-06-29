@@ -60,6 +60,7 @@
 
 .location-label {
     /* タワレコカラー（赤）を使い、強調 */
+    font-family: "Yusei Magic", sans-serif;
     display: inline-block;
     min-width: 80px;
     background-color: var(--tawareco-red); /* 赤 */

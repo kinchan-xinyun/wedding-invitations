@@ -89,7 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // フォーム値をリセット
     newGuest.querySelectorAll('input, textarea').forEach(el => {
-      el.value = '';
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        el.checked = false;
+      } else {
+        el.value = '';
+      }
       el.required = el.hasAttribute('required');
     });
 
@@ -249,6 +253,7 @@ function toggleFormFieldsForGuest(guest, choice) {
   const addressRow = guest.querySelector('.rsvp-field-row:has(input[name="address[]"])');
   const allergyRow = guest.querySelector('.rsvp-field-row:has(input[name="allergy[]"])');
   const afterpartyRow = guest.querySelector('.rsvp-field-row:has(input[name="afterparty[]"])');
+  const minorRow = guest.querySelector('.rsvp-field-row:has(input[name="is_minor[]"])');
   
   const postalCodeInput = guest.querySelector('input[name="postal_code[]"]');
   const addressInput = guest.querySelector('input[name="address[]"]');
@@ -259,6 +264,7 @@ function toggleFormFieldsForGuest(guest, choice) {
     if (addressRow) addressRow.style.display = '';
     if (allergyRow) allergyRow.style.display = '';
     if (afterpartyRow) afterpartyRow.style.display = '';
+    if (minorRow) minorRow.style.display = '';
     
     if (postalCodeInput) postalCodeInput.required = false;
     if (addressInput) addressInput.required = true;
@@ -268,6 +274,7 @@ function toggleFormFieldsForGuest(guest, choice) {
     if (addressRow) addressRow.style.display = 'none';
     if (allergyRow) allergyRow.style.display = 'none';
     if (afterpartyRow) afterpartyRow.style.display = 'none';
+    if (minorRow) minorRow.style.display = 'none';
     
     if (postalCodeInput) postalCodeInput.required = false;
     if (addressInput) addressInput.required = false;

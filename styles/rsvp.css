@@ -401,6 +401,7 @@
 
 /* プライバシー同意チェックボックス */
 .rsvp-privacy-consent {
+    font-family: "Yusei Magic", sans-serif;
     background: #FFF9E6;
     padding: 20px;
     border-radius: 8px;

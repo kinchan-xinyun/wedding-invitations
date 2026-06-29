@@ -124,6 +124,69 @@
     text-transform: uppercase;
 }
 
+/* 親族向け補足ボックス */
+.invitation-relatives-info {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 40px auto 0;
+    padding: 34px 26px 26px;
+    text-align: center;
+    background: #FFFDE7; /* セクション背景になじむわずかに黄色がかった白 */
+    border: 3px solid var(--tawareco-black);
+    border-radius: 6px;
+}
+
+/* 見出しバッジ（テープ風に上端へ配置） */
+.relatives-badge {
+    font-family: 'Yusei Magic', sans-serif;
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    display: inline-block;
+    padding: 6px 22px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    color: var(--tawareco-white);
+    background: var(--tawareco-red);
+    border: 2px solid var(--tawareco-black);
+    border-radius: 4px;
+}
+
+.relatives-text {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.9;
+    color: var(--text-color);
+    margin: 0 0 12px;
+}
+
+.relatives-text:last-child {
+    margin-bottom: 0;
+}
+
+/* 時刻の強調（下線＋太字） */
+.relatives-time {
+    font-family: 'Yusei Magic', sans-serif;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* 集合場所の強調 */
+.relatives-place {
+    font-family: 'Yusei Magic', sans-serif;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
 /* 装飾 - 削除またはシンプル化 */
 .flower-decoration {
     /* シンプルな黒の区切り線に変更 */
@@ -166,5 +229,17 @@
     }
     .invitation-request {
         font-size: 16px;
+    }
+    .invitation-relatives-info {
+        max-width: 100%;
+        padding: 30px 18px 22px;
+    }
+    .relatives-badge {
+        font-size: 0.85rem;
+        padding: 5px 16px;
+    }
+    .relatives-text {
+        font-size: 0.92rem;
+        line-height: 1.85;
     }
 }

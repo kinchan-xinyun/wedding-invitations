@@ -373,6 +373,7 @@ function setupFormSubmit() {
         const lastNameKana = guestEl.querySelector('input[name="last_name_kana[]"]')?.value?.trim() || '';
         const postalCode = guestEl.querySelector('input[name="postal_code[]"]')?.value?.trim() || '';
         const allergy = guestEl.querySelector('input[name="allergy[]"]')?.value?.trim() || '';
+        const isMinor = guestEl.querySelector('input[name="is_minor[]"]')?.checked || false;
 
         const guest = {
           guestNo: index + 1,
@@ -385,6 +386,7 @@ function setupFormSubmit() {
           address: address,
           allergy: allergy,
           afterparty: afterparty,
+          isMinor: isMinor,
           message: guestEl.querySelector('textarea[name="message[]"]')?.value?.trim() || ''
         };
 
@@ -408,6 +410,9 @@ function setupFormSubmit() {
 
 ▼ 过敏情况
 　${allergy || '无'}
+
+▼ 年龄确认（用于酒水安排）
+　${isMinor ? '未满二十周岁' : '已满二十周岁'}
 
 ▼ 二次会参加
 　${afterparty || '未回答'}
