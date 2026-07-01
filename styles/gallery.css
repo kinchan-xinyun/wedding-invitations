@@ -13,11 +13,11 @@
     font-size: 4em;
     font-family: 'Luckiest Guy', 'Arial Black', 'Impact', sans-serif;
     font-weight: 900;
-    color: var(--tawareco-yellow);
+    color: var(--tawareco-red);
     text-transform: uppercase;
     text-shadow:
-        4px 4px 0px var(--tawareco-red),
-        8px 8px 0px var(--tawareco-white);
+        4px 4px 0px var(--tawareco-yellow),
+        8px 8px 0px var(--tawareco-black);
     letter-spacing: 0.15em;
     margin: 0 auto 50px;
 }
