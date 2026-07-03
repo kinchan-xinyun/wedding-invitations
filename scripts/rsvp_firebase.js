@@ -291,6 +291,7 @@ function fillFormWithExistingData(data) {
           const firstNameKanaInput = guestEl.querySelector('input[name="firstNameKana[]"]');
           const lastNameKanaInput = guestEl.querySelector('input[name="lastNameKana[]"]');
           const emailInput = guestEl.querySelector('input[name="email[]"]');
+          const phoneInput = guestEl.querySelector('input[name="phone[]"]');
           const postalCodeInput = guestEl.querySelector('input[name="postalCode[]"]');
           const addressInput = guestEl.querySelector('input[name="address[]"]');
           const allergiesInput = guestEl.querySelector('input[name="allergies[]"]');
@@ -302,6 +303,7 @@ function fillFormWithExistingData(data) {
           if (firstNameKanaInput) firstNameKanaInput.value = guest.firstNameKana || '';
           if (lastNameKanaInput) lastNameKanaInput.value = guest.lastNameKana || '';
           if (emailInput) emailInput.value = guest.email || '';
+          if (phoneInput) phoneInput.value = guest.phone || '';
           if (postalCodeInput) postalCodeInput.value = guest.postalCode || '';
           if (addressInput) addressInput.value = guest.address || '';
           if (allergiesInput) allergiesInput.value = guest.allergies || '';
@@ -351,11 +353,12 @@ function setupFormSubmit() {
         const firstName = guestEl.querySelector('input[name="first_name[]"]')?.value?.trim() || '';
         const lastName = guestEl.querySelector('input[name="last_name[]"]')?.value?.trim() || '';
         const email = guestEl.querySelector('input[name="email[]"]')?.value?.trim() || '';
+        const phone = guestEl.querySelector('input[name="phone[]"]')?.value?.trim() || '';
         const address = guestEl.querySelector('input[name="address[]"]')?.value?.trim() || '';
 
-        // 名前とメールは常に必須
-        if (!firstName || !lastName || !email) {
-          alert(`Guest ${index + 1}: 名前、メールアドレスは必須です`);
+        // 名前・メール・電話番号は常に必須
+        if (!firstName || !lastName || !email || !phone) {
+          alert(`Guest ${index + 1}: 名前、メールアドレス、電話番号は必須です`);
           throw new Error(`Guest ${index + 1}: 必須項目が不足`);
         }
 
@@ -382,6 +385,7 @@ function setupFormSubmit() {
           firstNameKana: firstNameKana,
           lastNameKana: lastNameKana,
           email: email,
+          phone: phone,
           postalCode: postalCode,
           address: address,
           allergy: allergy,
@@ -407,6 +411,9 @@ function setupFormSubmit() {
 
 ▼ メールアドレス
 　${email}
+
+▼ 電話番号
+　${phone || '未回答'}
 
 ▼ アレルギーについて
 　${allergy || 'なし'}
