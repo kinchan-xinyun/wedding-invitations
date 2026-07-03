@@ -60,10 +60,10 @@
     </label>
     <nav class="menu-panel">
       <ul>
+        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">倒计时</a></li>
         <li><a href="#shared-message-title" onclick="document.getElementById('menuToggle').checked=false;">致辞</a></li>
         <li><a href="#profile-section" onclick="document.getElementById('menuToggle').checked=false;">简介</a></li>
         <li><a href="#gallery-section" onclick="document.getElementById('menuToggle').checked=false;">相册</a></li>
-        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">倒计时</a></li>
         <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">日程</a></li>
         <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">会场</a></li>
         <li><a href="#rsvp-section" onclick="document.getElementById('menuToggle').checked=false;">出席回复</a></li>
@@ -105,6 +105,46 @@
       <p class="title-date">2026.10.24 (SAT)</p>
     </div>
   </header>
+
+  <!-- ============================================
+       倒计时
+       ============================================ -->
+  <section id="countdown-section" class="countdown-section">
+    <!-- 倒计时标题 -->
+    <h2 class="countdown-heading fade-section">倒计时</h2>
+
+    <div class="countdown-date fade-section">
+        <span class="date-text">2026.10.24</span>
+    </div>
+
+    <!-- 倒计时计时器（天/时/分/秒） -->
+    <div id="countdown-timer" class="countdown-timer fade-section" aria-live="polite">
+      <div>
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+      <div>
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+      <div>
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+      <div>
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
+    </div>
+
+    <div class="countdown-message fade-section" id="message">
+      当音乐响起，心随之共鸣。我们在会场恭候您的到来。<br>
+      即将到来 — 准备好迎接最美好的一天。<br>
+    </div>
+
+    <!-- 倒计时结束时的消息 -->
+    <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
+  </section>
 
   <!-- ============================================
        致辞
@@ -216,47 +256,6 @@
       如需用于私人用途以外的目的，或发布至微信等社交平台时，请<span class="gallery-notice-strong">务必</span>联系新娘。
     </p>
   </section>
-
-  <!-- ============================================
-       倒计时
-       ============================================ -->
-    <section id="countdown-section" class="countdown-section">
-    <!-- 倒计时标题 -->
-    <h2 class="countdown-heading fade-section">倒计时</h2>
-
-    <div class="countdown-date fade-section">
-        <span class="date-text">2026.10.24</span>
-    </div>
-
-    <!-- 倒计时计时器（天/时/分/秒） -->
-    <div id="countdown-timer" class="countdown-timer fade-section" aria-live="polite">
-      <div>
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div>
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div>
-        <span id="minutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div>
-        <span id="seconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-
-    <div class="countdown-message fade-section" id="message">
-      当音乐响起，心随之共鸣。我们在会场恭候您的到来。<br>
-      即将到来 — 准备好迎接最美好的一天。<br>
-    </div>
-
-    <!-- 倒计时结束时的消息 -->
-    <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
-  </section>
-
 
   <!-- ============================================
        日程安排

@@ -48,10 +48,10 @@
     </label>
     <nav class="menu-panel">
       <ul>
+        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">Countdown</a></li>
         <li><a href="#shared-message-title" onclick="document.getElementById('menuToggle').checked=false;">Message</a></li>
         <li><a href="#profile-section" onclick="document.getElementById('menuToggle').checked=false;">Profile</a></li>
         <li><a href="#gallery-section" onclick="document.getElementById('menuToggle').checked=false;">Gallery</a></li>
-        <li><a href="#countdown-section" onclick="document.getElementById('menuToggle').checked=false;">Countdown</a></li>
         <li><a href="#schedule-section" onclick="document.getElementById('menuToggle').checked=false;">Schedule</a></li>
         <li><a href="#location-section" onclick="document.getElementById('menuToggle').checked=false;">Location</a></li>
         <li><a href="#rsvp-section" onclick="document.getElementById('menuToggle').checked=false;">Reservation</a></li>
@@ -93,6 +93,47 @@
       <p class="title-date">2026.10.24 (SAT)</p>
     </div>
   </header>
+
+
+  <!-- ============================================
+       COUNTDOWN
+       ============================================ -->
+       <section id="countdown-section" class="countdown-section">
+        <!-- バンド名／イベントタイトルを強めに表示 -->
+        <h2 class="countdown-heading fade-section">Countdown</h2>
+    
+        <div class="countdown-date fade-section">
+            <span class="date-text">2026.10.24</span>
+        </div>
+    
+        <!-- カウントダウンタイマー（days/hours/minutes/seconds） -->
+        <div id="countdown-timer" class="countdown-timer fade-section" aria-live="polite">
+          <div>
+            <span id="days">00</span>
+            <small>Days</small>
+          </div>
+          <div>
+            <span id="hours">00</span>
+            <small>Hours</small>
+          </div>
+          <div>
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+          </div>
+          <div>
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+          </div>
+        </div>
+    
+        <div class="countdown-message fade-section" id="message">
+          音が鳴れば、心が叫ぶ。会場で待ってる。<br>
+          もうすぐだ — 覚悟しろ、最高の1日が始まる。<br>
+        </div>
+    
+        <!-- カウントダウン終了時のメッセージを出力 -->
+        <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
+      </section>
 
   <!-- ============================================
        MESSAGE
@@ -206,45 +247,6 @@
     </p>
   </section>
 
-  <!-- ============================================
-       COUNTDOWN
-       ============================================ -->
-    <section id="countdown-section" class="countdown-section">
-    <!-- バンド名／イベントタイトルを強めに表示 -->
-    <h2 class="countdown-heading fade-section">Countdown</h2>
-
-    <div class="countdown-date fade-section">
-        <span class="date-text">2026.10.24</span>
-    </div>
-
-    <!-- カウントダウンタイマー（days/hours/minutes/seconds） -->
-    <div id="countdown-timer" class="countdown-timer fade-section" aria-live="polite">
-      <div>
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div>
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div>
-        <span id="minutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div>
-        <span id="seconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-
-    <div class="countdown-message fade-section" id="message">
-      音が鳴れば、心が叫ぶ。会場で待ってる。<br>
-      もうすぐだ — 覚悟しろ、最高の1日が始まる。<br>
-    </div>
-
-    <!-- カウントダウン終了時のメッセージを出力 -->
-    <p id="countdown-finish" class="countdown-finish" aria-hidden="true"></p>
-  </section>
 
 
   <!-- ============================================
