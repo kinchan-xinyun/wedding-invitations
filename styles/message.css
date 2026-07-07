@@ -1,3 +1,21 @@
+/* ======== タワレコ風 メッセージセクション全体の枠 ======== */
+.message-section {
+    /* 他セクションと同様の背景 */
+    background: #FFFDE7;
+    padding: 60px 20px;
+    text-align: center;
+    /* タワレコカラーの赤（上）と黄色（下）で上下を強調 */
+    border-top: 8px solid var(--tawareco-red); /* 赤 */
+    border-bottom: 8px solid var(--tawareco-yellow); /* 黄色/金 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* バンド内ではタイトル上部の余白をリセット（重複防止） */
+.message-section #shared-message-title {
+    margin-top: 0;
+}
+
 /* ======== タワレコ風 メッセージコンテナ (グラデーションなし) ======== */
 #shared-message-title {
     font-size: 4em;
